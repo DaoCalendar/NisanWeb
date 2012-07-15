@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ms="http://microsoft.com/wsdl/types/" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element  name="Customer" type="Customer"/>
+  <xsd:element  name="User" type="User"/>
+  <xsd:element  name="DatabaseObject" type="DatabaseObject"/>
+  <xsd:element  name="Agent" type="Agent"/>
+  <xsd:element  name="Stock" type="Stock"/>
+  <xsd:element  name="Transaction" type="Transaction"/>
+  <xsd:element  name="TransactionItem" type="TransactionItem"/>
+  <xsd:element  name="Order" type="Order"/>
+  <xsd:element  name="Address" type="Address"/>
+  <xsd:element  name="State" type="State"/>
+  <xsd:element  name="Payment" type="Payment"/>
+  <xsd:element  name="Commission" type="Commission"/>
+  <xsd:element  name="Delivery" type="Delivery"/>
+  <xsd:element  name="Nisan" type="Nisan"/>
+  <xsd:complexType name="Customer">
+    <xsd:complexContent>
+      <xsd:extension base="User"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="User">
+    <xsd:complexContent>
+      <xsd:extension base="DatabaseObject">
+        <xsd:attribute  name="Name" type="xsd:string" />
+        <xsd:attribute  name="Passwod" type="xsd:string" />
+        <xsd:attribute  name="Email" type="xsd:string" />
+        <xsd:attribute  name="Phone" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DatabaseObject">
+    <xsd:attribute   name="Id" type="xsd:integer" />
+    <xsd:attribute name="tableName" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="Agent">
+    <xsd:complexContent>
+      <xsd:extension base="User">
+        <xsd:sequence>
+          <xsd:element   name="Parent" type="Agent"/>
+        </xsd:sequence>
+        <xsd:attribute  name="Code" type="xsd:string" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="TransactionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Order"/>
+      <xsd:enumeration value="Payment"/>
+      <xsd:enumeration value="Commission"/>
+      <xsd:enumeration value="Delivery"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Stock">
+    <xsd:complexContent>
+      <xsd:extension base="DatabaseObject">
+        <xsd:attribute  name="Type" type="xsd:string" />
+        <xsd:attribute  name="Price" type="xsd:decimal" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Transaction">
+    <xsd:complexContent>
+      <xsd:extension base="DatabaseObject">
+        <xsd:sequence>
+          <xsd:element    maxOccurs="unbounded" name="Items" type="TransactionItem"/>
+          <xsd:element   name="CreatedBy" type="User"/>
+        </xsd:sequence>
+        <xsd:attribute   name="Type" type="TransactionType" />
+        <xsd:attribute  name="CreatedAt" type="xsd:dateTime" />
+        <xsd:attribute  name="No" type="xsd:string" />
+        <xsd:attribute   name="Refrence" type="xsd:integer" />
+        <xsd:attribute  name="Amount" type="xsd:decimal" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TransactionItem">
+    <xsd:complexContent>
+      <xsd:extension base="DatabaseObject">
+        <xsd:sequence>
+          <xsd:element   name="Stock" type="Stock"/>
+        </xsd:sequence>
+        <xsd:attribute   name="Parent" type="xsd:integer" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Order">
+    <xsd:complexContent>
+      <xsd:extension base="TransactionItem">
+        <xsd:sequence>
+          <xsd:element   name="ShipTo" type="Address"/>
+          <xsd:element   name="Agent" type="Agent"/>
+        </xsd:sequence>
+        <xsd:attribute   name="Quantity" type="xsd:integer" />
+        <xsd:attribute   name="Status" type="TransactionStage" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="TransactionStage">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Draft"/>
+      <xsd:enumeration value="Confirmed"/>
+      <xsd:enumeration value="Paid"/>
+      <xsd:enumeration value="WorkInProgress"/>
+      <xsd:enumeration value="Delivering"/>
+      <xsd:enumeration value="Received"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Address">
+    <xsd:sequence>
+      <xsd:element   name="State" type="State"/>
+    </xsd:sequence>
+    <xsd:attribute  name="Street" type="xsd:string" />
+    <xsd:attribute  name="Postal" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="State">
+    <xsd:attribute  name="Name" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="Payment">
+    <xsd:complexContent>
+      <xsd:extension base="TransactionItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Commission">
+    <xsd:complexContent>
+      <xsd:extension base="TransactionItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Delivery">
+    <xsd:complexContent>
+      <xsd:extension base="TransactionItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Nisan">
+    <xsd:complexContent>
+      <xsd:extension base="Stock">
+        <xsd:attribute  name="Name" type="xsd:string" />
+        <xsd:attribute  name="Jawi" type="xsd:string" />
+        <xsd:attribute  name="Born" type="xsd:dateTime" />
+        <xsd:attribute  name="Death" type="xsd:dateTime" />
+        <xsd:attribute  name="Deathm" type="xsd:dateTime" />
+        <xsd:attribute   name="Age" type="xsd:integer" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NisanWeb", "NisanWeb\", "{21918121-1757-41F4-BFFA-35DFE4308F78}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
+		ProjectReferences = "{AA5C622B-9B36-4846-9DE6-72F846723920}|HLGranite.Nisan.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/NisanWeb"
+		Debug.AspNetCompiler.PhysicalPath = "NisanWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\NisanWeb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/NisanWeb"
+		Release.AspNetCompiler.PhysicalPath = "NisanWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\NisanWeb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60961"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLGranite.Nisan", "HLGranite.Nisan\HLGranite.Nisan.csproj", "{AA5C622B-9B36-4846-9DE6-72F846723920}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21918121-1757-41F4-BFFA-35DFE4308F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21918121-1757-41F4-BFFA-35DFE4308F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21918121-1757-41F4-BFFA-35DFE4308F78}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{21918121-1757-41F4-BFFA-35DFE4308F78}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{AA5C622B-9B36-4846-9DE6-72F846723920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA5C622B-9B36-4846-9DE6-72F846723920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA5C622B-9B36-4846-9DE6-72F846723920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA5C622B-9B36-4846-9DE6-72F846723920}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

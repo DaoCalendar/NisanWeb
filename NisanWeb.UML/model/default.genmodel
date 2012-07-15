@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel" modelDirectory="/NisanWeb.UML/src"
+    modelPluginID="NisanWeb.UML" modelName="Default" importerID="org.eclipse.uml2.uml.ecore.importer"
+    complianceLevel="6.0" copyrightFields="false">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="REPORT"/>
+    <details key="DUPLICATE_FEATURES" value="DISCARD"/>
+    <details key="SUBSETTING_PROPERTIES" value="REPORT"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="DISCARD"/>
+    <details key="DUPLICATE_OPERATIONS" value="DISCARD"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="REDEFINING_PROPERTIES" value="REPORT"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="DISCARD"/>
+    <details key="REDEFINING_OPERATIONS" value="REPORT"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+  </genAnnotations>
+  <foreignModel>default.uml</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="HLGraniteNisan" disposableProviderFactory="true"
+      ecorePackage="HLGraniteNisan.ecore#/">
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="HLGraniteNisan.ecore#//TransactionType">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionType/Order"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionType/Payment"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionType/Commission"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionType/Delivery"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="HLGraniteNisan.ecore#//TransactionStage">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionStage/Draft"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionStage/Confirmed"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionStage/Paid"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionStage/WorkInProgress"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionStage/Delivering"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="HLGraniteNisan.ecore#//TransactionStage/Received"/>
+    </genEnums>
+    <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="HLGraniteNisan.ecore#//Decimal"/>
+    <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="HLGraniteNisan.ecore#//DateTime"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Customer">
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Customer/MakeOrder"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Customer/UpdateOrder"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Customer/CancelOrder"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Customer/Pay"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Customer/GetOrder"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Customer/GetAllOrders"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//User">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Passwod"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Email"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Phone"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//User/Register"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//User/Login"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//DatabaseObject">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//DatabaseObject/Id"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//DatabaseObject/tableName"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//DatabaseObject/Save"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//DatabaseObject/Load"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Agent">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Agent/Code"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Agent/Agent"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Agent/Parent"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Agent/GetOutstanding"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Agent/AddCommission"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Agent/GetPaid"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Stock">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Stock/Type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Stock/Price"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Transaction">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Transaction/Type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Transaction/CreatedAt"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Transaction/No"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Transaction/Refrence"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Transaction/Amount"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Transaction/Items"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Transaction/CreatedBy"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//TransactionItem">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//TransactionItem/Parent"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//TransactionItem/Stock"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Order">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Order/Quantity"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Order/Status"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Order/ShipTo"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Order/Agent"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Order/Find"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Address">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Address/Street"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Address/Postal"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Address/State"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//State">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//State/Name"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Payment"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Commission"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Delivery"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Nisan">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Nisan/Name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Nisan/Jawi"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Nisan/Born"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Nisan/Death"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Nisan/Deathm"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Nisan/Age"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

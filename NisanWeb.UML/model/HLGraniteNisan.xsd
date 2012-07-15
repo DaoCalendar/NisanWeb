@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:HLGraniteNisan="http:///HLGraniteNisan.ecore" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="HLGraniteNisan" ecore:package="HLGraniteNisan" targetNamespace="http:///HLGraniteNisan.ecore">
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  <xsd:element ecore:ignore="true" name="Customer" type="HLGraniteNisan:Customer"/>
+  <xsd:element ecore:ignore="true" name="User" type="HLGraniteNisan:User"/>
+  <xsd:element ecore:ignore="true" name="DatabaseObject" type="HLGraniteNisan:DatabaseObject"/>
+  <xsd:element ecore:ignore="true" name="Agent" type="HLGraniteNisan:Agent"/>
+  <xsd:element ecore:ignore="true" name="Stock" type="HLGraniteNisan:Stock"/>
+  <xsd:element ecore:ignore="true" name="Transaction" type="HLGraniteNisan:Transaction"/>
+  <xsd:element ecore:ignore="true" name="TransactionItem" type="HLGraniteNisan:TransactionItem"/>
+  <xsd:element ecore:ignore="true" name="Order" type="HLGraniteNisan:Order"/>
+  <xsd:element ecore:ignore="true" name="Address" type="HLGraniteNisan:Address"/>
+  <xsd:element ecore:ignore="true" name="State" type="HLGraniteNisan:State"/>
+  <xsd:element ecore:ignore="true" name="Payment" type="HLGraniteNisan:Payment"/>
+  <xsd:element ecore:ignore="true" name="Commission" type="HLGraniteNisan:Commission"/>
+  <xsd:element ecore:ignore="true" name="Delivery" type="HLGraniteNisan:Delivery"/>
+  <xsd:element ecore:ignore="true" name="Nisan" type="HLGraniteNisan:Nisan"/>
+  <xsd:complexType name="Customer">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="MakeOrder" ordered="false"/>
+        <operation lowerBound="1" name="UpdateOrder" ordered="false"/>
+        <operation lowerBound="1" name="CancelOrder" ordered="false"/>
+        <operation lowerBound="1" name="Pay" ordered="false"/>
+        <operation lowerBound="1" name="GetOrder" ordered="false"/>
+        <operation lowerBound="1" name="GetAllOrders" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:User"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="User">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="Register" ordered="false"/>
+        <operation lowerBound="1" name="Login" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:DatabaseObject">
+        <xsd:attribute ecore:name="Name" name="Name" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Passwod" name="Passwod" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Email" name="Email" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Phone" name="Phone" type="ecore:EString" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DatabaseObject">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="Save" ordered="false"/>
+        <operation lowerBound="1" name="Load" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:attribute ecore:name="Id" ecore:unsettable="false" name="Id" type="ecore:EInt" use="required"/>
+    <xsd:attribute name="tableName" type="ecore:EString" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="Agent">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="GetOutstanding" ordered="false"/>
+        <operation lowerBound="1" name="AddCommission" ordered="false"/>
+        <operation lowerBound="1" name="GetPaid" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:User">
+        <xsd:sequence>
+          <xsd:element ecore:name="Agent" ecore:resolveProxies="true" name="Agent" type="HLGraniteNisan:Agent"/>
+          <xsd:element ecore:name="Parent" ecore:resolveProxies="true" name="Parent" type="HLGraniteNisan:Agent"/>
+        </xsd:sequence>
+        <xsd:attribute ecore:name="Code" name="Code" type="ecore:EString" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType ecore:instanceClass="Decimal" name="Decimal">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType ecore:instanceClass="DateTime" name="DateTime">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="TransactionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Order"/>
+      <xsd:enumeration value="Payment"/>
+      <xsd:enumeration value="Commission"/>
+      <xsd:enumeration value="Delivery"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Stock">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:DatabaseObject">
+        <xsd:attribute ecore:name="Type" name="Type" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Price" name="Price" type="HLGraniteNisan:Decimal" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Transaction">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:DatabaseObject">
+        <xsd:sequence>
+          <xsd:element ecore:name="Items" ecore:ordered="false" ecore:resolveProxies="true" maxOccurs="unbounded" name="Items" type="HLGraniteNisan:TransactionItem"/>
+          <xsd:element ecore:name="CreatedBy" ecore:resolveProxies="true" name="CreatedBy" type="HLGraniteNisan:User"/>
+        </xsd:sequence>
+        <xsd:attribute ecore:name="Type" ecore:unsettable="false" name="Type" type="HLGraniteNisan:TransactionType" use="required"/>
+        <xsd:attribute ecore:name="CreatedAt" name="CreatedAt" type="HLGraniteNisan:DateTime" use="required"/>
+        <xsd:attribute ecore:name="No" name="No" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Refrence" ecore:unsettable="false" name="Refrence" type="ecore:EInt" use="required"/>
+        <xsd:attribute ecore:name="Amount" name="Amount" type="HLGraniteNisan:Decimal" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TransactionItem">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:DatabaseObject">
+        <xsd:sequence>
+          <xsd:element ecore:name="Stock" ecore:resolveProxies="true" name="Stock" type="HLGraniteNisan:Stock"/>
+        </xsd:sequence>
+        <xsd:attribute ecore:name="Parent" ecore:unsettable="false" name="Parent" type="ecore:EInt" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Order">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="Find" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:TransactionItem">
+        <xsd:sequence>
+          <xsd:element ecore:name="ShipTo" ecore:resolveProxies="true" name="ShipTo" type="HLGraniteNisan:Address"/>
+          <xsd:element ecore:name="Agent" ecore:resolveProxies="true" name="Agent" type="HLGraniteNisan:Agent"/>
+        </xsd:sequence>
+        <xsd:attribute ecore:name="Quantity" ecore:unsettable="false" name="Quantity" type="ecore:EInt" use="required"/>
+        <xsd:attribute ecore:name="Status" ecore:unsettable="false" name="Status" type="HLGraniteNisan:TransactionStage" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="TransactionStage">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Draft"/>
+      <xsd:enumeration value="Confirmed"/>
+      <xsd:enumeration value="Paid"/>
+      <xsd:enumeration value="WorkInProgress"/>
+      <xsd:enumeration value="Delivering"/>
+      <xsd:enumeration value="Received"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Address">
+    <xsd:sequence>
+      <xsd:element ecore:name="State" ecore:resolveProxies="true" name="State" type="HLGraniteNisan:State"/>
+    </xsd:sequence>
+    <xsd:attribute ecore:name="Street" name="Street" type="ecore:EString" use="required"/>
+    <xsd:attribute ecore:name="Postal" name="Postal" type="ecore:EString" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="State">
+    <xsd:attribute ecore:name="Name" name="Name" type="ecore:EString" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="Payment">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:TransactionItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Commission">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:TransactionItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Delivery">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:TransactionItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Nisan">
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:Stock">
+        <xsd:attribute ecore:name="Name" name="Name" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Jawi" name="Jawi" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Born" name="Born" type="HLGraniteNisan:DateTime" use="required"/>
+        <xsd:attribute ecore:name="Death" name="Death" type="HLGraniteNisan:DateTime" use="required"/>
+        <xsd:attribute ecore:name="Deathm" name="Deathm" type="HLGraniteNisan:DateTime" use="required"/>
+        <xsd:attribute ecore:name="Age" ecore:unsettable="false" name="Age" type="ecore:EInt" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

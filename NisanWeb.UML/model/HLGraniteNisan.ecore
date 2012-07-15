@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="HLGraniteNisan"
+    nsURI="http:///HLGraniteNisan.ecore" nsPrefix="HLGraniteNisan">
+  <eClassifiers xsi:type="ecore:EClass" name="Customer" eSuperTypes="#//User">
+    <eOperations name="MakeOrder" ordered="false" lowerBound="1"/>
+    <eOperations name="UpdateOrder" ordered="false" lowerBound="1"/>
+    <eOperations name="CancelOrder" ordered="false" lowerBound="1"/>
+    <eOperations name="Pay" ordered="false" lowerBound="1"/>
+    <eOperations name="GetOrder" ordered="false" lowerBound="1"/>
+    <eOperations name="GetAllOrders" ordered="false" lowerBound="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//DatabaseObject">
+    <eOperations name="Register" ordered="false" lowerBound="1"/>
+    <eOperations name="Login" ordered="false" lowerBound="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Passwod" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Email" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Phone" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseObject">
+    <eOperations name="Save" ordered="false" lowerBound="1"/>
+    <eOperations name="Load" ordered="false" lowerBound="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Id" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="#//User">
+    <eOperations name="GetOutstanding" ordered="false" lowerBound="1"/>
+    <eOperations name="AddCommission" ordered="false" lowerBound="1"/>
+    <eOperations name="GetPaid" ordered="false" lowerBound="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Code" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Agent" ordered="false"
+        lowerBound="1" eType="#//Agent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Parent" ordered="false"
+        lowerBound="1" eType="#//Agent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Decimal" instanceClassName="Decimal"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DateTime" instanceClassName="DateTime"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="TransactionType">
+    <eLiterals name="Order"/>
+    <eLiterals name="Payment" value="1"/>
+    <eLiterals name="Commission" value="2"/>
+    <eLiterals name="Delivery" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stock" eSuperTypes="#//DatabaseObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Price" ordered="false"
+        lowerBound="1" eType="#//Decimal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transaction" eSuperTypes="#//DatabaseObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" ordered="false" lowerBound="1"
+        eType="#//TransactionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="CreatedAt" ordered="false"
+        lowerBound="1" eType="#//DateTime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="No" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Refrence" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Amount" ordered="false"
+        lowerBound="1" eType="#//Decimal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Items" ordered="false"
+        lowerBound="1" upperBound="-1" eType="#//TransactionItem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CreatedBy" ordered="false"
+        lowerBound="1" eType="#//User" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransactionItem" eSuperTypes="#//DatabaseObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Parent" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Stock" ordered="false"
+        lowerBound="1" eType="#//Stock" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//TransactionItem">
+    <eOperations name="Find" ordered="false" lowerBound="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Quantity" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Status" ordered="false"
+        lowerBound="1" eType="#//TransactionStage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ShipTo" ordered="false"
+        lowerBound="1" eType="#//Address" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Agent" ordered="false"
+        lowerBound="1" eType="#//Agent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TransactionStage">
+    <eLiterals name="Draft"/>
+    <eLiterals name="Confirmed" value="1"/>
+    <eLiterals name="Paid" value="2"/>
+    <eLiterals name="WorkInProgress" value="3"/>
+    <eLiterals name="Delivering" value="4"/>
+    <eLiterals name="Received" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Address">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Street" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Postal" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="State" ordered="false"
+        lowerBound="1" eType="#//State" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Payment" eSuperTypes="#//TransactionItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Commission" eSuperTypes="#//TransactionItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Delivery" eSuperTypes="#//TransactionItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Nisan" eSuperTypes="#//Stock">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Jawi" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Born" ordered="false" lowerBound="1"
+        eType="#//DateTime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Death" ordered="false"
+        lowerBound="1" eType="#//DateTime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Deathm" ordered="false"
+        lowerBound="1" eType="#//DateTime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Age" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>
