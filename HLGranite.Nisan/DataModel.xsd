@@ -3,13 +3,13 @@
   <xsd:element  name="Customer" type="Customer"/>
   <xsd:element  name="User" type="User"/>
   <xsd:element  name="DatabaseObject" type="DatabaseObject"/>
+  <xsd:element  name="Address" type="Address"/>
+  <xsd:element  name="State" type="State"/>
   <xsd:element  name="Agent" type="Agent"/>
   <xsd:element  name="Stock" type="Stock"/>
   <xsd:element  name="Transaction" type="Transaction"/>
   <xsd:element  name="TransactionItem" type="TransactionItem"/>
   <xsd:element  name="Order" type="Order"/>
-  <xsd:element  name="Address" type="Address"/>
-  <xsd:element  name="State" type="State"/>
   <xsd:element  name="Payment" type="Payment"/>
   <xsd:element  name="Commission" type="Commission"/>
   <xsd:element  name="Delivery" type="Delivery"/>
@@ -22,6 +22,9 @@
   <xsd:complexType name="User">
     <xsd:complexContent>
       <xsd:extension base="DatabaseObject">
+        <xsd:sequence>
+          <xsd:element   minOccurs="0" name="Address" type="Address"/>
+        </xsd:sequence>
         <xsd:attribute  name="Name" type="xsd:string" />
         <xsd:attribute  name="Passwod" type="xsd:string" />
         <xsd:attribute  name="Email" type="xsd:string" />
@@ -32,6 +35,17 @@
   <xsd:complexType name="DatabaseObject">
     <xsd:attribute   name="Id" type="xsd:integer" />
     <xsd:attribute name="tableName" type="xsd:string" />
+    <xsd:attribute  name="Remarks" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="Address">
+    <xsd:sequence>
+      <xsd:element   name="State" type="State"/>
+    </xsd:sequence>
+    <xsd:attribute  name="Street" type="xsd:string" />
+    <xsd:attribute  name="Postal" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="State">
+    <xsd:attribute  name="Name" type="xsd:string" />
   </xsd:complexType>
   <xsd:complexType name="Agent">
     <xsd:complexContent>
@@ -106,16 +120,6 @@
       <xsd:enumeration value="Received"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:complexType name="Address">
-    <xsd:sequence>
-      <xsd:element   name="State" type="State"/>
-    </xsd:sequence>
-    <xsd:attribute  name="Street" type="xsd:string" />
-    <xsd:attribute  name="Postal" type="xsd:string" />
-  </xsd:complexType>
-  <xsd:complexType name="State">
-    <xsd:attribute  name="Name" type="xsd:string" />
-  </xsd:complexType>
   <xsd:complexType name="Payment">
     <xsd:complexContent>
       <xsd:extension base="TransactionItem"/>

@@ -35,6 +35,10 @@
     <ownedAttribute xmi:id="_IgHhIM6wEeGMUc6iHmKVLQ" name="Phone" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedAttribute xmi:id="_Vij0Ys8LEeG5JtKMvktCdg" name="Address" type="_uTFaQM60EeGMUc6iHmKVLQ" aggregation="composite" association="_ViQSYM8LEeG5JtKMvktCdg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Vikbcc8LEeG5JtKMvktCdg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VikbcM8LEeG5JtKMvktCdg"/>
+    </ownedAttribute>
     <ownedOperation xmi:id="_L2ZUQKMdEeGmn_qORpoPMA" name="Register"/>
     <ownedOperation xmi:id="_PYPDUKMdEeGmn_qORpoPMA" name="Login"/>
   </packagedElement>
@@ -43,6 +47,9 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_-Jg-gM5TEeGHsqsXAGIaWw" name="tableName" visibility="protected" aggregation="composite">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_3hyS8M8LEeG5JtKMvktCdg" name="Remarks" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedOperation xmi:id="_QSp5pqMcEeGmn_qORpoPMA" name="Save"/>
@@ -228,6 +235,12 @@
     <ownedEnd xmi:id="_l8ATMM63EeGMUc6iHmKVLQ" name="src" type="_GYidEKMgEeGmn_qORpoPMA" association="_l7928M63EeGMUc6iHmKVLQ">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l8A6QM63EeGMUc6iHmKVLQ" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l8ATMc63EeGMUc6iHmKVLQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ViQSYM8LEeG5JtKMvktCdg" memberEnd="_VijNUM8LEeG5JtKMvktCdg _Vij0Ys8LEeG5JtKMvktCdg">
+    <ownedEnd xmi:id="_VijNUM8LEeG5JtKMvktCdg" name="src" type="_QSEEYqMcEeGmn_qORpoPMA" association="_ViQSYM8LEeG5JtKMvktCdg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Vij0Yc8LEeG5JtKMvktCdg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Vij0YM8LEeG5JtKMvktCdg" value="1"/>
     </ownedEnd>
   </packagedElement>
 </uml:Package>

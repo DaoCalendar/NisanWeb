@@ -25,6 +25,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NisanWeb", "NisanWeb\", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLGranite.Nisan", "HLGranite.Nisan\HLGranite.Nisan.csproj", "{AA5C622B-9B36-4846-9DE6-72F846723920}"
 EndProject
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "NisanSQL", "NisanSQL\NisanSQL.dbp", "{6079098D-B2E8-4212-AD38-8A25A301AB9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

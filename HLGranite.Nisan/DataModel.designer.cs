@@ -24,6 +24,8 @@ namespace HLGranite.Nisan
     public partial class User : DatabaseObject
     {
 
+        private Address addressField;
+
         private string nameField;
 
         private string passwodField;
@@ -31,6 +33,23 @@ namespace HLGranite.Nisan
         private string emailField;
 
         private string phoneField;
+
+        public User()
+        {
+            this.addressField = new Address();
+        }
+
+        public Address Address
+        {
+            get
+            {
+                return this.addressField;
+            }
+            set
+            {
+                this.addressField = value;
+            }
+        }
 
         public string Name
         {
@@ -77,67 +96,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.phoneField = value;
-            }
-        }
-    }
-
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TransactionItem))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Delivery))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Commission))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Payment))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Order))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Transaction))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Stock))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Nisan))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
-    public partial class DatabaseObject
-    {
-
-        private string idField;
-
-        private string tableNameField;
-
-        public string Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-
-        public string tableName
-        {
-            get
-            {
-                return this.tableNameField;
-            }
-            set
-            {
-                this.tableNameField = value;
-            }
-        }
-    }
-
-    public partial class State
-    {
-
-        private string nameField;
-
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
             }
         }
     }
@@ -189,6 +147,81 @@ namespace HLGranite.Nisan
             set
             {
                 this.postalField = value;
+            }
+        }
+    }
+
+    public partial class State
+    {
+
+        private string nameField;
+
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TransactionItem))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Delivery))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Commission))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Payment))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Order))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Transaction))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Stock))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Nisan))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
+    public partial class DatabaseObject
+    {
+
+        private string idField;
+
+        private string tableNameField;
+
+        private string remarksField;
+
+        public string Id
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+
+        public string tableName
+        {
+            get
+            {
+                return this.tableNameField;
+            }
+            set
+            {
+                this.tableNameField = value;
+            }
+        }
+
+        public string Remarks
+        {
+            get
+            {
+                return this.remarksField;
+            }
+            set
+            {
+                this.remarksField = value;
             }
         }
     }
@@ -510,7 +543,6 @@ namespace HLGranite.Nisan
 
     public partial class Agent : User
     {
-
 
         private Agent parentField;
 

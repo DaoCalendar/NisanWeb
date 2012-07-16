@@ -54,22 +54,31 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Passwod"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Email"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//User/Phone"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//User/Address"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//User/Register"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//User/Login"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//DatabaseObject">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//DatabaseObject/Id"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//DatabaseObject/tableName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//DatabaseObject/Remarks"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//DatabaseObject/Save"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//DatabaseObject/Load"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Address">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Address/Street"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Address/Postal"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Address/State"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//State">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//State/Name"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Agent">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Agent/Code"/>
       <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
-          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Agent/Agent"/>
-      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
           createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Agent/Parent"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Agent/GetOutstanding"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Agent/AddCommission"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Agent/GetPaid"/>
     </genClasses>
@@ -100,15 +109,6 @@
       <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
           createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Order/Agent"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="HLGraniteNisan.ecore#//Order/Find"/>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Address">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Address/Street"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//Address/Postal"/>
-      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
-          createChild="true" ecoreFeature="ecore:EReference HLGraniteNisan.ecore#//Address/State"/>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//State">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute HLGraniteNisan.ecore#//State/Name"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Payment"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="HLGraniteNisan.ecore#//Commission"/>
