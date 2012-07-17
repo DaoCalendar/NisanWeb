@@ -14,5 +14,9 @@ namespace HLGranite.Nisan
         {
             throw new NotImplementedException();
         }
+        protected void Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

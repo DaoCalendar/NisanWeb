@@ -6,13 +6,9 @@ namespace HLGranite.Nisan
 {
     public partial class Agent
     {
-        public void AddCommission(decimal amount)
+        public List<Order> GetSales()
         {
-            throw new NotImplementedException();
-        }
-        public List<Order> GetPaid(DateTime from, DateTime to)
-        {
-            throw new NotImplementedException();
+            throw new NotFiniteNumberException();
         }
     }
 }

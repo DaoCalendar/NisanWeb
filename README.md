@@ -3,6 +3,10 @@ NisanWeb
 
 An e-commerce website for purchasing nisan or Malay tomb.
 
+Todo:
+======
+1. create a table to store agent transferred amount.
+
 Useful Links
 ======
 - [Eclipse Galileo MDT](http://www.eclipse.org/downloads/packages/eclipse-modeling-tools-includes-incubating-components/galileor)

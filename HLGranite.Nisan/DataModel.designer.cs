@@ -19,6 +19,9 @@ namespace HLGranite.Nisan
     {
     }
 
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Teller))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Carrier))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Designer))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
     public partial class User : DatabaseObject
@@ -33,6 +36,10 @@ namespace HLGranite.Nisan
         private string emailField;
 
         private string phoneField;
+
+        private Role typeField;
+
+        private bool typeFieldSpecified;
 
         public User()
         {
@@ -98,33 +105,41 @@ namespace HLGranite.Nisan
                 this.phoneField = value;
             }
         }
+
+        public Role Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TypeSpecified
+        {
+            get
+            {
+                return this.typeFieldSpecified;
+            }
+            set
+            {
+                this.typeFieldSpecified = value;
+            }
+        }
     }
 
     public partial class Address
     {
 
-        private State stateField;
-
         private string streetField;
 
         private string postalField;
 
-        public Address()
-        {
-            this.stateField = new State();
-        }
-
-        public State State
-        {
-            get
-            {
-                return this.stateField;
-            }
-            set
-            {
-                this.stateField = value;
-            }
-        }
+        private string stateField;
 
         public string Street
         {
@@ -149,22 +164,16 @@ namespace HLGranite.Nisan
                 this.postalField = value;
             }
         }
-    }
 
-    public partial class State
-    {
-
-        private string nameField;
-
-        public string Name
+        public string State
         {
             get
             {
-                return this.nameField;
+                return this.stateField;
             }
             set
             {
-                this.nameField = value;
+                this.stateField = value;
             }
         }
     }
@@ -178,6 +187,9 @@ namespace HLGranite.Nisan
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Stock))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Nisan))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Teller))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Carrier))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Designer))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
     public partial class DatabaseObject
@@ -275,8 +287,6 @@ namespace HLGranite.Nisan
 
         private decimal priceField;
 
-        private bool priceFieldSpecified;
-
         public string Type
         {
             get
@@ -300,23 +310,12 @@ namespace HLGranite.Nisan
                 this.priceField = value;
             }
         }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PriceSpecified
-        {
-            get
-            {
-                return this.priceFieldSpecified;
-            }
-            set
-            {
-                this.priceFieldSpecified = value;
-            }
-        }
     }
 
     public partial class Nisan : Stock
     {
+
+        private Uri uriField;
 
         private string nameField;
 
@@ -335,6 +334,22 @@ namespace HLGranite.Nisan
         private bool deathmFieldSpecified;
 
         private string ageField;
+
+        public Nisan()
+        {
+        }
+
+        public Uri Uri
+        {
+            get
+            {
+                return this.uriField;
+            }
+            set
+            {
+                this.uriField = value;
+            }
+        }
 
         public string Name
         {
@@ -546,10 +561,13 @@ namespace HLGranite.Nisan
 
         private Agent parentField;
 
+        private List<Agent> membersField;
+
         private string codeField;
 
         public Agent()
         {
+            this.membersField = new List<Agent>();
             this.parentField = new Agent();
         }
 
@@ -562,6 +580,18 @@ namespace HLGranite.Nisan
             set
             {
                 this.parentField = value;
+            }
+        }
+
+        public List<Agent> Members
+        {
+            get
+            {
+                return this.membersField;
+            }
+            set
+            {
+                this.membersField = value;
             }
         }
 
@@ -767,5 +797,36 @@ namespace HLGranite.Nisan
 
         /// <remarks/>
         Delivery,
+    }
+
+    public enum Role
+    {
+
+        /// <remarks/>
+        Teller,
+
+        /// <remarks/>
+        Designer,
+
+        /// <remarks/>
+        Agent,
+
+        /// <remarks/>
+        Carrier,
+
+        /// <remarks/>
+        Customer,
+    }
+
+    public partial class Teller : User
+    {
+    }
+
+    public partial class Carrier : User
+    {
+    }
+
+    public partial class Designer : User
+    {
     }
 }

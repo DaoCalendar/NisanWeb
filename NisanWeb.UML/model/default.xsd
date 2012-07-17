@@ -5,7 +5,6 @@
   <xsd:element ecore:ignore="true" name="User" type="HLGraniteNisan:User"/>
   <xsd:element ecore:ignore="true" name="DatabaseObject" type="HLGraniteNisan:DatabaseObject"/>
   <xsd:element ecore:ignore="true" name="Address" type="HLGraniteNisan:Address"/>
-  <xsd:element ecore:ignore="true" name="State" type="HLGraniteNisan:State"/>
   <xsd:element ecore:ignore="true" name="Agent" type="HLGraniteNisan:Agent"/>
   <xsd:element ecore:ignore="true" name="Stock" type="HLGraniteNisan:Stock"/>
   <xsd:element ecore:ignore="true" name="Transaction" type="HLGraniteNisan:Transaction"/>
@@ -15,6 +14,10 @@
   <xsd:element ecore:ignore="true" name="Commission" type="HLGraniteNisan:Commission"/>
   <xsd:element ecore:ignore="true" name="Delivery" type="HLGraniteNisan:Delivery"/>
   <xsd:element ecore:ignore="true" name="Nisan" type="HLGraniteNisan:Nisan"/>
+  <xsd:element ecore:ignore="true" name="Uri" type="HLGraniteNisan:Uri"/>
+  <xsd:element ecore:ignore="true" name="Designer" type="HLGraniteNisan:Designer"/>
+  <xsd:element ecore:ignore="true" name="Carrier" type="HLGraniteNisan:Carrier"/>
+  <xsd:element ecore:ignore="true" name="Teller" type="HLGraniteNisan:Teller"/>
   <xsd:complexType name="Customer">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
@@ -46,6 +49,7 @@
         <xsd:attribute ecore:name="Passwod" name="Passwod" type="ecore:EString" use="required"/>
         <xsd:attribute ecore:name="Email" name="Email" type="ecore:EString" use="required"/>
         <xsd:attribute ecore:name="Phone" name="Phone" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:name="Type" ecore:unsettable="false" name="Type" type="HLGraniteNisan:Role" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -54,6 +58,7 @@
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
         <operation lowerBound="1" name="Save" ordered="false"/>
         <operation lowerBound="1" name="Load" ordered="false"/>
+        <operation lowerBound="1" name="Delete" ordered="false"/>
       </xsd:appinfo>
     </xsd:annotation>
     <xsd:attribute ecore:name="Id" ecore:unsettable="false" name="Id" type="ecore:EInt" use="required"/>
@@ -61,26 +66,30 @@
     <xsd:attribute ecore:name="Remarks" name="Remarks" type="ecore:EString" use="required"/>
   </xsd:complexType>
   <xsd:complexType name="Address">
-    <xsd:sequence>
-      <xsd:element ecore:name="State" ecore:resolveProxies="true" name="State" type="HLGraniteNisan:State"/>
-    </xsd:sequence>
     <xsd:attribute ecore:name="Street" name="Street" type="ecore:EString" use="required"/>
     <xsd:attribute ecore:name="Postal" name="Postal" type="ecore:EString" use="required"/>
+    <xsd:attribute ecore:name="State" name="State" type="ecore:EString" use="required"/>
   </xsd:complexType>
-  <xsd:complexType name="State">
-    <xsd:attribute ecore:name="Name" name="Name" type="ecore:EString" use="required"/>
-  </xsd:complexType>
+  <xsd:simpleType name="Role">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Teller"/>
+      <xsd:enumeration value="Designer"/>
+      <xsd:enumeration value="Agent"/>
+      <xsd:enumeration value="Carrier"/>
+      <xsd:enumeration value="Customer"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="Agent">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation lowerBound="1" name="AddCommission" ordered="false"/>
-        <operation lowerBound="1" name="GetPaid" ordered="false"/>
+        <operation lowerBound="1" name="GetSales" ordered="false"/>
       </xsd:appinfo>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="HLGraniteNisan:User">
         <xsd:sequence>
           <xsd:element ecore:name="Parent" ecore:resolveProxies="true" name="Parent" type="HLGraniteNisan:Agent"/>
+          <xsd:element ecore:name="Members" ecore:ordered="false" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="Members" type="HLGraniteNisan:Agent"/>
         </xsd:sequence>
         <xsd:attribute ecore:name="Code" name="Code" type="ecore:EString" use="required"/>
       </xsd:extension>
@@ -134,11 +143,6 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="Order">
-    <xsd:annotation>
-      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation lowerBound="1" name="Find" ordered="false"/>
-      </xsd:appinfo>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="HLGraniteNisan:TransactionItem">
         <xsd:sequence>
@@ -178,6 +182,9 @@
   <xsd:complexType name="Nisan">
     <xsd:complexContent>
       <xsd:extension base="HLGraniteNisan:Stock">
+        <xsd:sequence>
+          <xsd:element ecore:name="Uri" ecore:resolveProxies="true" name="Uri" type="HLGraniteNisan:Uri"/>
+        </xsd:sequence>
         <xsd:attribute ecore:name="Name" name="Name" type="ecore:EString" use="required"/>
         <xsd:attribute ecore:name="Jawi" name="Jawi" type="ecore:EString" use="required"/>
         <xsd:attribute ecore:name="Born" name="Born" type="HLGraniteNisan:DateTime" use="required"/>
@@ -185,6 +192,39 @@
         <xsd:attribute ecore:name="Deathm" name="Deathm" type="HLGraniteNisan:DateTime" use="required"/>
         <xsd:attribute ecore:name="Age" ecore:unsettable="false" name="Age" type="ecore:EInt" use="required"/>
       </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Uri"/>
+  <xsd:complexType name="Designer">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="GetWorkOrders" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:User"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Carrier">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="Delever" ordered="false">
+          <parameter lowerBound="1" name="order" ordered="false" type="HLGraniteNisan:Order"/>
+        </operation>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:User"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Teller">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation lowerBound="1" name="PayAgentagentAgentamountDecimal" ordered="false"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="HLGraniteNisan:User"/>
     </xsd:complexContent>
   </xsd:complexType>
 </xsd:schema>

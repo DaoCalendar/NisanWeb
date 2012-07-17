@@ -4,13 +4,9 @@ using System.Text;
 
 namespace HLGranite.Nisan
 {
-    public partial class Customer
+    public partial class Carrier
     {
-        public void Pay(Order order)
-        {
-            throw new NotImplementedException();
-        }
-        public List<Order> GetAllOrders()
+        public void Deliver(Order order)
         {
             throw new NotImplementedException();
         }
