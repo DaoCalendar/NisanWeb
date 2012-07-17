@@ -39,8 +39,6 @@ namespace HLGranite.Nisan
 
         private Role typeField;
 
-        private bool typeFieldSpecified;
-
         public User()
         {
             this.addressField = new Address();
@@ -115,19 +113,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.typeField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TypeSpecified
-        {
-            get
-            {
-                return this.typeFieldSpecified;
-            }
-            set
-            {
-                this.typeFieldSpecified = value;
             }
         }
     }
@@ -323,15 +308,9 @@ namespace HLGranite.Nisan
 
         private System.DateTime bornField;
 
-        private bool bornFieldSpecified;
-
         private System.DateTime deathField;
 
-        private bool deathFieldSpecified;
-
         private System.DateTime deathmField;
-
-        private bool deathmFieldSpecified;
 
         private string ageField;
 
@@ -387,19 +366,6 @@ namespace HLGranite.Nisan
             }
         }
 
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BornSpecified
-        {
-            get
-            {
-                return this.bornFieldSpecified;
-            }
-            set
-            {
-                this.bornFieldSpecified = value;
-            }
-        }
-
         public System.DateTime Death
         {
             get
@@ -412,19 +378,6 @@ namespace HLGranite.Nisan
             }
         }
 
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DeathSpecified
-        {
-            get
-            {
-                return this.deathFieldSpecified;
-            }
-            set
-            {
-                this.deathFieldSpecified = value;
-            }
-        }
-
         public System.DateTime Deathm
         {
             get
@@ -434,19 +387,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.deathmField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DeathmSpecified
-        {
-            get
-            {
-                return this.deathmFieldSpecified;
-            }
-            set
-            {
-                this.deathmFieldSpecified = value;
             }
         }
 
@@ -485,8 +425,6 @@ namespace HLGranite.Nisan
         private string quantityField;
 
         private TransactionStage statusField;
-
-        private bool statusFieldSpecified;
 
         public Order()
         {
@@ -539,19 +477,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.statusField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool StatusSpecified
-        {
-            get
-            {
-                return this.statusFieldSpecified;
-            }
-            set
-            {
-                this.statusFieldSpecified = value;
             }
         }
     }
@@ -639,8 +564,6 @@ namespace HLGranite.Nisan
 
         private TransactionType typeField;
 
-        private bool typeFieldSpecified;
-
         private System.DateTime createdAtField;
 
         private bool createdAtFieldSpecified;
@@ -650,8 +573,6 @@ namespace HLGranite.Nisan
         private string refrenceField;
 
         private decimal amountField;
-
-        private bool amountFieldSpecified;
 
         public Transaction()
         {
@@ -695,19 +616,6 @@ namespace HLGranite.Nisan
             }
         }
 
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TypeSpecified
-        {
-            get
-            {
-                return this.typeFieldSpecified;
-            }
-            set
-            {
-                this.typeFieldSpecified = value;
-            }
-        }
-
         public System.DateTime CreatedAt
         {
             get
@@ -717,19 +625,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.createdAtField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CreatedAtSpecified
-        {
-            get
-            {
-                return this.createdAtFieldSpecified;
-            }
-            set
-            {
-                this.createdAtFieldSpecified = value;
             }
         }
 
@@ -766,19 +661,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.amountField = value;
-            }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AmountSpecified
-        {
-            get
-            {
-                return this.amountFieldSpecified;
-            }
-            set
-            {
-                this.amountFieldSpecified = value;
             }
         }
     }

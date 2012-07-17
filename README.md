@@ -6,6 +6,7 @@ An e-commerce website for purchasing nisan or Malay tomb.
 Todo:
 ======
 1. create a table to store agent transferred amount.
+2. globalization.
 
 Useful Links
 ======
