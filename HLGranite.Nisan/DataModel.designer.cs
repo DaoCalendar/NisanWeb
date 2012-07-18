@@ -163,66 +163,6 @@ namespace HLGranite.Nisan
         }
     }
 
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TransactionItem))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Delivery))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Commission))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Payment))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Order))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Transaction))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Stock))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Nisan))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Teller))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Carrier))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Designer))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
-    public partial class DatabaseObject
-    {
-
-        private string idField;
-
-        private string tableNameField;
-
-        private string remarksField;
-
-        public string Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-
-        public string tableName
-        {
-            get
-            {
-                return this.tableNameField;
-            }
-            set
-            {
-                this.tableNameField = value;
-            }
-        }
-
-        public string Remarks
-        {
-            get
-            {
-                return this.remarksField;
-            }
-            set
-            {
-                this.remarksField = value;
-            }
-        }
-    }
-
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Delivery))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Commission))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Payment))]
@@ -300,8 +240,6 @@ namespace HLGranite.Nisan
     public partial class Nisan : Stock
     {
 
-        private Uri uriField;
-
         private string nameField;
 
         private string jawiField;
@@ -314,21 +252,7 @@ namespace HLGranite.Nisan
 
         private string ageField;
 
-        public Nisan()
-        {
-        }
-
-        public Uri Uri
-        {
-            get
-            {
-                return this.uriField;
-            }
-            set
-            {
-                this.uriField = value;
-            }
-        }
+        private Uri uriField;
 
         public string Name
         {
@@ -401,6 +325,18 @@ namespace HLGranite.Nisan
                 this.ageField = value;
             }
         }
+
+        public Uri Uri
+        {
+            get
+            {
+                return this.uriField;
+            }
+            set
+            {
+                this.uriField = value;
+            }
+        }
     }
 
     public partial class Delivery : TransactionItem
@@ -422,15 +358,11 @@ namespace HLGranite.Nisan
 
         private Agent agentField;
 
+        private List<TransactionItem> relatedItemsField;
+
         private string quantityField;
 
         private TransactionStage statusField;
-
-        public Order()
-        {
-            this.agentField = new Agent();
-            this.shipToField = new Address();
-        }
 
         public Address ShipTo
         {
@@ -453,6 +385,18 @@ namespace HLGranite.Nisan
             set
             {
                 this.agentField = value;
+            }
+        }
+
+        public List<TransactionItem> RelatedItems
+        {
+            get
+            {
+                return this.relatedItemsField;
+            }
+            set
+            {
+                this.relatedItemsField = value;
             }
         }
 
@@ -488,8 +432,6 @@ namespace HLGranite.Nisan
 
         private List<Agent> membersField;
 
-        private string codeField;
-
         public Agent()
         {
             this.membersField = new List<Agent>();
@@ -517,18 +459,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.membersField = value;
-            }
-        }
-
-        public string Code
-        {
-            get
-            {
-                return this.codeField;
-            }
-            set
-            {
-                this.codeField = value;
             }
         }
     }
@@ -565,8 +495,6 @@ namespace HLGranite.Nisan
         private TransactionType typeField;
 
         private System.DateTime createdAtField;
-
-        private bool createdAtFieldSpecified;
 
         private string noField;
 

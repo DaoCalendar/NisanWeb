@@ -25,7 +25,7 @@
     <xsd:complexContent>
       <xsd:extension base="DatabaseObject">
         <xsd:sequence>
-          <xsd:element  minOccurs="0" name="Address" type="Address"/>
+          <xsd:element minOccurs="0" name="Address" type="Address"/>
         </xsd:sequence>
         <xsd:attribute name="Name" type="xsd:string" />
         <xsd:attribute name="Passwod" type="xsd:string" />
@@ -61,7 +61,6 @@
           <xsd:element name="Parent" type="Agent"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="Members" type="Agent"/>
         </xsd:sequence>
-        <xsd:attribute  name="Code" type="xsd:string" />
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -112,6 +111,7 @@
         <xsd:sequence>
           <xsd:element name="ShipTo" type="Address"/>
           <xsd:element name="Agent" type="Agent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="RelatedItems" type="TransactionItem"/>
         </xsd:sequence>
         <xsd:attribute name="Quantity" type="xsd:integer" />
         <xsd:attribute name="Status" type="TransactionStage" />
@@ -146,15 +146,13 @@
   <xsd:complexType name="Nisan">
     <xsd:complexContent>
       <xsd:extension base="Stock">
-        <xsd:sequence>
-          <xsd:element name="Uri" type="xsd:anyURI"/>
-        </xsd:sequence>
         <xsd:attribute name="Name" type="xsd:string" />
         <xsd:attribute name="Jawi" type="xsd:string" />
         <xsd:attribute name="Born" type="xsd:dateTime" />
         <xsd:attribute name="Death" type="xsd:dateTime" />
         <xsd:attribute name="Deathm" type="xsd:dateTime" />
         <xsd:attribute name="Age" type="xsd:integer" />
+        <xsd:attribute name="Uri" type="xsd:anyURI" />
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

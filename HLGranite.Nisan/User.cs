@@ -6,6 +6,20 @@ namespace HLGranite.Nisan
 {
     public partial class User
     {
+        public override bool Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Load()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Delete()
+        {
+            throw new NotImplementedException();
+        }
         public void Register()
         {
         }

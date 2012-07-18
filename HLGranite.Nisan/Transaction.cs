@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HLGranite.Nisan
 {
-    public partial class Teller
+    public partial class Transaction
     {
         public override bool Save()
         {
@@ -17,11 +17,6 @@ namespace HLGranite.Nisan
         }
 
         public override bool Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Pay(Agent agent, decimal amount)
         {
             throw new NotImplementedException();
         }
