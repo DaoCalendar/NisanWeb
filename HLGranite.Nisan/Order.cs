@@ -9,7 +9,7 @@ namespace HLGranite.Nisan
     {
         public Order()
         {
-            this.tableName = "TransactionItems";
+            //this.tableName = "TransactionItems";
             this.relatedItemsField = new List<TransactionItem>();
             this.agentField = new Agent();
             this.shipToField = new Address();
@@ -21,31 +21,32 @@ namespace HLGranite.Nisan
         }
         public List<Order> Own(string owner)
         {
-            DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
-            using (DbConnection connection = factory.CreateConnection())
-            {
-                connection.ConnectionString = connectionString;
-                connection.Open();
+            //DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
+            //using (DbConnection connection = factory.CreateConnection())
+            //{
+            //    connection.ConnectionString = connectionString;
+            //    connection.Open();
 
-                //DataSet dataSet = new DataSet();
-                //DbDataAdapter adapter = new DbDataAdapter(sql, connection);
-                //adapter.Fill(dataSet);
-                using (DbCommand command = connection.CreateCommand())
-                {
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM " + this.tableName+" WHERE 
-                    using (DbDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            //TODO: Cloning room
-                            Room room = new Room(
-                            reader["Name"].ToString(), reader["Email"].ToString());
-                            result.Add(room);
-                        }
-                    }
-                }
-            }
+            //    //DataSet dataSet = new DataSet();
+            //    //DbDataAdapter adapter = new DbDataAdapter(sql, connection);
+            //    //adapter.Fill(dataSet);
+            //    using (DbCommand command = connection.CreateCommand())
+            //    {
+            //        command.CommandType = System.Data.CommandType.Text;
+            //        command.CommandText = "SELECT * FROM " + this.tableName+" WHERE 
+            //        using (DbDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                //TODO: Cloning room
+            //                Room room = new Room(
+            //                reader["Name"].ToString(), reader["Email"].ToString());
+            //                result.Add(room);
+            //            }
+            //        }
+            //    }
+            //}
+            throw new NotImplementedException();
         }
         public Order Find(string name)
         {

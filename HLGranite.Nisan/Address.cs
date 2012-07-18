@@ -4,19 +4,19 @@ using System.Text;
 
 namespace HLGranite.Nisan
 {
-    public partial class Transaction
+    public partial class Address
     {
-        public Transaction()
+        public Address()
             : base()
         {
             Initialize();
         }
-
         private void Initialize()
         {
-            this.tableName = "Transactions";
-            this.createdByField = new User();
-            this.itemsField = new List<TransactionItem>();
+            this.tableName = "Addresses";
+            this.streetField = string.Empty;
+            this.postalField = string.Empty;
+            this.stateField = string.Empty;
         }
         public override bool Save()
         {

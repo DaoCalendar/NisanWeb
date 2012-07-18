@@ -39,7 +39,7 @@
     <ownedOperation xmi:id="_L2ZUQKMdEeGmn_qORpoPMA" name="Register"/>
     <ownedOperation xmi:id="_PYPDUKMdEeGmn_qORpoPMA" name="Login"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_QSp5paMcEeGmn_qORpoPMA" name="DatabaseObject">
+  <packagedElement xmi:type="uml:Class" xmi:id="_QSp5paMcEeGmn_qORpoPMA" name="DatabaseObject" isAbstract="true">
     <ownedAttribute xmi:id="_4BZJsM5TEeGHsqsXAGIaWw" name="Id" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
@@ -49,9 +49,10 @@
     <ownedAttribute xmi:id="_3hyS8M8LEeG5JtKMvktCdg" name="Remarks" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedOperation xmi:id="_QSp5pqMcEeGmn_qORpoPMA" name="Save"/>
-    <ownedOperation xmi:id="_QSp5qKMcEeGmn_qORpoPMA" name="Load"/>
-    <ownedOperation xmi:id="_Qu898NAoEeG0HuHKyQAhQg" name="Delete"/>
+    <ownedAttribute xmi:id="_7c4S8NDhEeGxUo6FUM1Y0A" name="Uri" type="_grRZoNCJEeGm2uMWAtE-6Q" aggregation="composite"/>
+    <ownedOperation xmi:id="_QSp5pqMcEeGmn_qORpoPMA" name="Save" isAbstract="true"/>
+    <ownedOperation xmi:id="_QSp5qKMcEeGmn_qORpoPMA" name="Load" isAbstract="true"/>
+    <ownedOperation xmi:id="_Qu898NAoEeG0HuHKyQAhQg" name="Delete" isAbstract="true"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_XTH2QKMdEeGmn_qORpoPMA" name="Agent">
     <generalization xmi:id="_YzFNIKMdEeGmn_qORpoPMA" general="_QSEEYqMcEeGmn_qORpoPMA"/>
@@ -184,7 +185,6 @@
     <ownedAttribute xmi:id="_gPgZgM6uEeGMUc6iHmKVLQ" name="Age" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_7D80oNAoEeG0HuHKyQAhQg" name="Uri" type="_grRZoNCJEeGm2uMWAtE-6Q" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_nmTLcM6vEeGMUc6iHmKVLQ" memberEnd="_nmTygM6vEeGMUc6iHmKVLQ">
     <ownedEnd xmi:id="_nmTygM6vEeGMUc6iHmKVLQ" name="src" type="_ecsrkKMeEeGmn_qORpoPMA" association="_nmTLcM6vEeGMUc6iHmKVLQ">
@@ -199,6 +199,7 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_uTFaQM60EeGMUc6iHmKVLQ" name="Address">
+    <generalization xmi:id="_WtRUcNECEeGqxqDKOxHOaA" general="_QSp5paMcEeGmn_qORpoPMA"/>
     <ownedAttribute xmi:id="_vHWIwM60EeGMUc6iHmKVLQ" name="Street" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>

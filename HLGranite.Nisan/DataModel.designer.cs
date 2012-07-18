@@ -39,11 +39,6 @@ namespace HLGranite.Nisan
 
         private Role typeField;
 
-        public User()
-        {
-            this.addressField = new Address();
-        }
-
         public Address Address
         {
             get
@@ -117,7 +112,7 @@ namespace HLGranite.Nisan
         }
     }
 
-    public partial class Address
+    public partial class Address : DatabaseObject
     {
 
         private string streetField;
@@ -250,9 +245,7 @@ namespace HLGranite.Nisan
 
         private System.DateTime deathmField;
 
-        private string ageField;
-
-        private Uri uriField;
+        private int ageField;
 
         public string Name
         {
@@ -314,7 +307,7 @@ namespace HLGranite.Nisan
             }
         }
 
-        public string Age
+        public int Age
         {
             get
             {
@@ -323,18 +316,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.ageField = value;
-            }
-        }
-
-        public Uri Uri
-        {
-            get
-            {
-                return this.uriField;
-            }
-            set
-            {
-                this.uriField = value;
             }
         }
     }
@@ -501,12 +482,6 @@ namespace HLGranite.Nisan
         private string refrenceField;
 
         private decimal amountField;
-
-        public Transaction()
-        {
-            this.createdByField = new User();
-            this.itemsField = new List<TransactionItem>();
-        }
 
         public List<TransactionItem> Items
         {
