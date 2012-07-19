@@ -1,31 +1,83 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>HLGranite Nisan Ordering</title>
-    <link href="scripts/StyleSheet.css" rel="Stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <link href="Scripts/StyleSheet.css" rel="Stylesheet" type="text/css" />
+    <link href="Scripts/Print.css" rel="stylesheet" media="print" type="text/css" />
+    <link href="Scripts/sales.xml" type="application/rss+xml" rel="alternate" title="Latest Updates Feed" />
+    <%--<link href="Images/favicon.ico" rel="shortcut icon" type="image/ico" />--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <div class="right">
-            User: 
-            <asp:TextBox ID="txtUser" runat="server" /> 
-            Password: 
-            <asp:TextBox ID="txtPasswod" runat="server" TextMode="Password" />
-            <asp:Button ID="btnLogin" runat="server" Text="Login" />
+   <div id="wrapper">
+        <form id="form1" runat="server" class="bodyBackground">
+        <div id="header">
+            <div id="header-logo">
+                <span class="floatright" style="padding:10px 20px 0 0">
+                    <asp:Label ID="Label1" runat="server" Text="User: " />
+                    <asp:TextBox ID="txtUser" runat="server" />
+                    <asp:Label ID="Label2" runat="server" Text="Password: " />
+                    <asp:TextBox ID="txtPasswod" runat="server" TextMode="Password" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Login" />
+                </span>
+                <div id="logo">
+                    <asp:Label ID="lblTestTag" runat="server" Text="HLGranite Nisan Ordering System" />
+                </div>
+            </div>
+            <asp:Panel ID="Panel1" runat="server" CssClass="search" DefaultButton="btnSearch">
+                <asp:TextBox ID="txtSearch" runat="server" ToolTip="Order No or name" />
+                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click"/>
+                <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtSearch"
+                    WatermarkText="Order No or name" WatermarkCssClass="watermark" />
+            </asp:Panel>
+            <br />
+            <hr />
         </div>
-        Search: 
-        <asp:TextBox ID="txtSearch" runat="server" />
-        <asp:Button ID="btnSearch" runat="server" Text="Search" />
-        <hr />
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
-        </asp:ContentPlaceHolder>
+        <table>
+            <tr>
+                <td>
+                    <div id="body">
+                        <div id="leftcolumn">
+                            <div id="sidebar">
+                                <asp:Panel ID="PanelAdminMenu" runat="server" CssClass="left-box">
+                                    <h1>Menu</h1>
+                                    <asp:Menu ID="Menu2" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
+                                        <Items>
+                                            <asp:MenuItem Text="Catalogue" Value="Catalogue" NavigateUrl="~/Catalogue.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Order" Value="Order" NavigateUrl="~/Order.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/Order.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Add User" Value="Add User" NavigateUrl="~/User.aspx" ImageUrl="~/Images/bullet.gif" />
+                                        </Items>
+                                    </asp:Menu>
+                                </asp:Panel>
+                            </div>
+                        </div>
+                        <div id="rightcolumn">
+                            <div id="main">
+                                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                </asp:ScriptManager>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="footer">
+                        <a href="About.aspx">About Us</a> | 
+                        <a href="mailto:hlgranite@gmail.com">Contact Us</a>
+                        <br />
+                        &nbsp;Copyright © 2012 by HLGranite
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </form>
     </div>
-    </form>
 </body>
 </html>

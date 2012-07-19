@@ -19,7 +19,7 @@ namespace HLGranite.Nisan
     {
     }
 
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Teller))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Admin))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Carrier))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Designer))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]
@@ -588,7 +588,7 @@ namespace HLGranite.Nisan
     {
 
         /// <remarks/>
-        Teller,
+        Admin,
 
         /// <remarks/>
         Designer,
@@ -603,7 +603,7 @@ namespace HLGranite.Nisan
         Customer,
     }
 
-    public partial class Teller : User
+    public partial class Admin : User
     {
     }
 

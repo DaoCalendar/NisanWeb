@@ -1,2 +1,1265 @@
-﻿body {}
-.right {float: right;}
+﻿/**************************************************
+   AUTHOR:			Alain.lye & Yeang-Shing.Then
+   VERSION:         0.0.0.16    
+   DATE:			since 2009-03-14     
+   DESCRIPTION:		For master page use only.	
+** This CSS is cater for only master page usage. 
+** Do not put any unrelated css into this page.
+ *************************************************/
+
+/**************************************************
+  UPDATE LOG
+***************************************************
+	AUTHOR			Change Log Description
+	-------			---------------
+(1) Alain Lye		Standardize CSS style 20090527
+http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page
+Handle IE6
+http://www.quirksmode.org/css/condcom.html
+**************************************************/
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+#wrapper{
+	width: 100%;
+	/*Many older browsers don't support the min-height property*/
+	min-height: 96%;
+	position:absolute; /* for footer handle IE 6 problem*/
+	padding-bottom:20px; /* for footer handle IE 6 problem*/
+}
+#header{
+	margin: 0;
+	padding: 0;
+	height: 80px;
+}
+#body{
+	margin:0 auto;
+	position:relative; /* MUST put to extend the item details width */
+	width:1020px;	
+	padding-bottom: 40px; /* Height of the footer */
+}
+#footer{    	
+	position:absolute; 	
+	bottom:0;	
+	width:100%;
+	height: 40px;	
+	border-top: 1px solid #f2f2f2;
+	background: #000000;
+	padding: 2px 0 10px 0;
+	text-align: center;
+	line-height: 1.5em;
+	font-size: 95%;
+	color: gray;	
+}
+#leftcolumn { 
+	width: 190px;
+	float: left;
+}
+#rightcolumn { 	
+	width: 790px;
+	padding:0 10px 20px 10px;
+	float:left;
+}
+
+
+
+/********************************************
+	(1)	HEADER
+********************************************/
+#header span#slogan {	
+	font: bold 1.2em Verdana, Arial, Tahoma, Sans-serif;
+	color: #FFF;	
+}
+#header-logo {
+	position: relative;
+	clear: both;
+	height: 50px;
+	width:100%;
+	margin: 0;
+	padding: 0px;
+}
+#header-logo #logo{
+	font: bold 30px "trebuchet MS" , Arial, Tahoma, Sans-Serif;
+	margin: 0;
+	padding: 0;
+	letter-spacing: -1px;
+	color: #000;
+}	
+#header ul{
+	position: absolute; 
+	top:0; right:0; 
+	margin: 30px 0 0 0;
+	list-style: none;
+	font: bold 13px 'Trebuchet MS' , Arial, Sans-serif
+}
+#header li {		
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+#header a {
+	float: left;
+	margin: 0;
+	padding: 0 0 0 4px;
+	text-decoration:underline;
+	height: 18px;
+	background-color: Transparent;
+}
+#header a span {
+	float: left;
+	display: block;
+	padding: 5px 15px 4px 6px;
+	color: #FFF;
+}
+#header a:hover span {
+	color: #FFF;
+}
+#header a:hover 
+#header a:hover span
+#header #current a
+#header #current a span {
+	background-position: 0% -42px;
+}
+/**
+ * Only for logo position.
+ * @author	yeang-shing.then
+ * @since	2009-03-19
+ */
+#logo {margin: 8px 0 0 8px;}
+/**
+ * Replace <a> with LinkButton
+ * so move the style here.
+ * @author	yeang-shing.then
+ * @since	2009-03-19
+ */
+#header .navi {
+	color: #FFFFFF;
+	display: block;
+	float: left;
+	padding: 5px 15px 4px 6px;
+}
+/**
+ * Disable temp.
+ * @author	yeang-shing.then
+ * @since	2009-05-08
+ */
+.naviTop li:hover li a,
+.naviTop li:hover li span,
+.naviTop li.AspNet-Menu-Hover li a,
+.naviTop li.AspNet-Menu-Hover li span,
+.naviTop li:hover li:hover li a,
+.naviTop li:hover li:hover li span,
+.naviTop li.AspNet-Menu-Hover li.AspNet-Menu-Hover li a,
+.naviTop li.AspNet-Menu-Hover li.AspNet-Menu-Hover li span {
+	background-color: red;
+}
+
+
+/********************************************
+	(2)	Body
+********************************************/
+#main {	
+	width:800px;
+	/*float: left; cannot put this .. it will make footer go up*/ 
+	margin: 0;
+	padding: 0; 
+}
+#main h1 {
+	margin: 10px 0;
+	padding: 4px 0 4px 8px;
+	font-size: 105%;
+	color: #FFF;
+	text-transform: uppercase;
+	background-color: #CC0000;
+	letter-spacing: .5px;
+}
+
+
+/********************************************
+	(3)	Footer
+********************************************/
+#footer a {
+	text-decoration: none;
+	font-weight: bold;
+	color: White;
+}
+
+
+/********************************************
+		Sidebar
+********************************************/
+#sidebar {
+	float: left;
+	width: 190px; 
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+}
+#sidebar h1 {
+	margin:0px;
+	padding: 4px 0 4px 8px;
+	font: bold 105% Arial, Sans-Serif;
+	color: #FFF;
+	text-transform: uppercase;
+	background: #333;
+	letter-spacing: 1px;
+}
+#sidebar .left-box {
+	border: 1px solid #EBEBEB;
+	margin: 8px 0 5px 0;
+	background: #FFF;
+}
+#sidebar ul.sidemenu {
+	list-style: none;
+	text-align: left;
+	margin: 3px 0px 0px 0;
+	padding: 0;
+	text-decoration: none;
+}
+#sidebar ul.sidemenu li {
+	border-bottom: 1px solid #f2f2f2;
+	background: url(bullet.gif) no-repeat 3px 2px;
+	padding: 3px 5px 3px 25px;
+	margin: 0;
+}
+#sidebar ul.sidemenu a {
+	font-weight: bolder;
+	padding: 3px 0px;
+	background: none;
+}
+
+/********************************************
+		Navigator menu 
+********************************************/
+/**
+ * For navigator menu use only.
+ * @author	yeang-shing.then
+ * @since	2009-03-16
+ */
+.menu {
+	background: transparent none repeat scroll 0 0;
+	font-weight: bolder;
+	padding: 0 3px 0 5px;
+	text-align: left;
+	line-height: 1.5;
+	width:190px;
+}
+.menuItem {		
+	border-bottom: 1px solid #f2f2f2;
+	padding: 3px 5px 3px 5px;
+	margin: 0;
+}
+/********************************************
+		Search Form 
+********************************************/
+.search {
+	position: absolute;
+	top: 40px;
+	right: 20px;
+	padding: 0;
+	margin: 0;
+	border: none;
+	
+}
+.search input.textbox {
+	margin: 0;
+	width: 120px;
+	border: 1px solid #CCC;
+	background: #FFF;
+	color: #333;
+}
+.search input.searchbutton {
+	margin: 0;
+	font-size: 100%;
+	font-family: Arial, Sans-serif;
+	border: 1px solid #CCC;
+	background: #FFFFFF url(headerbg.gif) repeat-x bottom left;
+	padding: 1px;
+	font-weight: bold;
+	height: 23px;
+	color: #333;
+	width: 60px;
+}
+/**
+ * Empty frame for search or filtering panel.
+ * @author	yeang-shing.then
+ * @since	2009-05-07
+ */
+.searchframe {padding: 4px;}
+
+
+/** ----------- Images ------------ */
+img {border:0;}
+img.float-right {margin: 5px 0px 10px 10px;}
+img.float-left {margin: 5px 10px 10px 0px;}
+h1, h2, h3, p {padding: 0;margin: 10px;}
+
+/**
+ * Handle all heading in whole web page.
+ * @author	yeang-shing.then
+ * @since	2009-03-24
+ */
+h1 {
+	background-color:#CC0000;
+	color:#FFFFFF;
+	font-size:105%;
+	letter-spacing:0.5px;
+	margin:10px 0;
+	padding:4px 0 4px 8px;
+	text-transform:uppercase;
+}
+
+ul, ol {
+	margin: 10px 20px;
+	padding: 0 20px;
+}
+
+/** ----------- Form Elements ------------ */
+label {
+	margin: 5px 0;
+}
+input {
+	padding: 2px;
+	border:1px solid #CCCCCC;
+	font: normal 1em Verdana, sans-serif;
+	color:#333333; /*#777;*/
+}
+textarea {
+	width:400px;
+	padding:2px;
+	font: normal 1em Verdana, sans-serif;
+	border:1px solid #CCCCCC;
+	height:100px;
+	display:block;
+	color:#777;
+}
+input.button { 
+	margin: 0; 
+	font: bolder 12px Arial, Sans-serif; 
+	border: 1px solid #CCC; 
+	padding: 1px; 
+	background: #FFF;
+	color: #CC0000;	
+	
+	font-size: 100%; 
+	font-family: Arial, Sans-serif; 
+	border: 1px solid #CCC; 
+	background: #FFFFFF url(headerbg.gif) repeat-x bottom left; 
+	padding: 1px; 
+	font-weight: bold; 
+	height: 23px;
+	color: #333;
+	width: 60px;
+}
+/**
+ * For all button use.
+ * @author	yeang-shing.then
+ * @since	2009-03-16
+ */
+input[type="submit"]{
+	margin: 0;
+	font-size: 100%; 
+	font-family: Arial, Sans-serif; 
+	border: 1px solid #CCC; 
+	background: #FFFFFF url(Images/headerbg.gif) repeat-x bottom left; 
+	padding: 1px; 
+	font-weight: bold; 
+	height: 23px;
+	color: #333;
+	width: 60px;
+	cursor: pointer;
+}
+
+/** alignment classes */
+.float-left  { float: left; }
+.float-right { float: right; }
+.align-left  { text-align: left; }
+.align-right { text-align: right; }
+
+/** display and additional classes  */
+.clear {clear: both; }
+.red {color: #CC0000; }
+.comments { 
+	margin: 20px 10px 5px 10px; 
+	padding: 3px 0;
+	border-bottom: 1px dashed #EFF0F1; 	
+	border-top: 1px dashed #EFF0F1;	
+}
+
+
+/** ----------------------------------------------------*/
+/** GridView and Table Layout							*/
+/** ----------------------------------------------------*/
+/**
+ * Grid View and table style.
+ * @author	yeang-shing.then
+ * @since	2009-03-06
+ */
+.grid {color: #333333;white-space: nowrap;}
+.grid .header {color: White;text-align: left;font-weight: bold;background-color: #333333;}
+.grid .header a {color: White;}
+.grid .footer {color: White;font-weight: bold;background-color: #333333;}
+/*.grid .row {background-color: #F7F6F3;}*/
+.grid .row {background-color: #E8E8E8 ;}
+.grid .alternate {background-color: White;color: #284775;}
+.grid .editing {background-color: #999999;}
+.grid .highlighted {background-color: #E2DED6;font-weight: bold;}
+.grid .pager {color: White;text-align: center;background-color: #333333;}
+.grid .pager a {color: White;text-align: center;}
+.grid .h1 {
+	background-color:#CC0000;
+	color:#FFFFFF;
+	font-size:105%;
+	letter-spacing:0.5px;
+	margin:10px 0;
+	padding:4px 0 4px 8px;
+	text-transform:uppercase;
+	text-align: left;
+}
+
+
+
+/** ----------------------------------------------------*/
+/** Login screen Layout									*/
+/** ----------------------------------------------------*/
+/**
+ * Login Screen use.
+ * Default.aspx
+ * @author	bp.gooi
+ * @since	2009-02-13
+ */
+.loginScreen {
+	text-align: center;
+	margin:10px 20px 0;
+	border: solid 1pt;
+	padding: 10px;
+	width: 500px;
+	height:150px;
+}
+.loginScreen h2 {
+	background-color:#666666;
+	text-align: center;
+	margin: 0 0 10px 0;
+	color: White;
+}
+.loginScreen select {	
+	width: 145px;
+	margin: 4px 4px 0 0;
+}
+.loginLabelTitle 
+{
+	float:left;
+	padding-left:80px;
+	width: 300px;
+	color : black;
+	font-style: italic;
+}
+.loginLabel {
+	color : black;
+	width: 100px;
+	text-align: right;
+	float: left;
+	padding: 0 4px 0 0;	
+}
+.loginRow {
+	width:350px;
+	padding-top:3px;
+	padding-left:20px;
+	float:left;
+}
+.loginRow #right { 
+	float:right;	
+}
+.loginColA {
+	float:left;
+	width: 200;
+	text-align:right;
+}
+.loginColB {
+	float:left;
+	width: 200;
+}
+
+
+ /**
+ * AutoComplete flyout
+ * @author	yeang-shing.then
+ */
+.autocomplete_completionListElement {
+	visibility : hidden;
+	margin : 0px!important;
+	background-color : inherit;
+	color : windowtext;
+	border : buttonshadow;
+	border-width : 1px;
+	border-style : solid;
+	cursor : 'default';
+	overflow : auto;
+	height : 200px;
+    text-align : left; 
+    list-style-type : none;
+}
+/**
+ * AutoComplete highlighted item
+ *
+ */
+.autocomplete_highlightedListItem {
+	background-color: #ffff99;
+	color: black;
+	padding: 1px;
+}
+/**
+ * AutoComplete item
+ *
+ */
+.autocomplete_listItem {
+	background-color : window;
+	color : windowtext;
+	padding : 1px;
+}
+
+
+/**
+ * For all labeling use.
+ * @author	yeang-shing.then
+ * @since	2009-02-05
+ */
+.labeling {
+	width: 130px;
+	text-align: right;
+	float: left;
+	padding: 0 4px 0 0;	
+}
+.labeling-short {
+	width: 110px;
+	text-align: right;
+	float: left;
+	padding: 0 4px 0 0;	
+}
+/**
+ * Labeling use (short).
+ * @author	yeang-shing.then
+ * @since	2009-04-17
+ */
+.shortlabel {
+	width: 60px;
+	text-align: right;
+	float: left;
+	padding: 0 4px 0 0;
+}
+.shortlabel2 {
+	width: 80px;
+	text-align: right;
+	float: left;
+	padding: 0 4px 0 0;
+}
+
+
+/**
+ * Message prompt, status, mandatory aristik star.
+ * @author	yeang-shing.then
+ * @since	2009-02-06
+ */
+.warn {
+	color: Red;
+	font-style: italic;
+}
+
+/**
+ * For note, remarks label use.
+ * @author	yeang-shing.then
+ * @since	2009-02-27
+ */
+.note {font-style: italic;}
+/**
+ * Severe warning.
+ * @author	yeang-shing.then
+ * @since	2009-03-25
+ */
+.caution {
+	color: Red;
+	font-weight: bold;
+}
+
+/**
+ * Common style.
+ * @author	bp.gooi
+ * @since	2009-02-06
+ */
+.center {text-align: center;}
+
+/**
+ * Hide it.
+ * @author	yeang-shing.then
+ * @since	2009-02-23
+ */
+.hidden {display: none;}
+
+/**
+ * Default frame with nothing.
+ * @author	yeang-shing.then
+ * @since	2009-03-03
+ */
+.noframe {
+	padding: 0 10px 10px 10px;
+	margin: 0 0 0 20px;
+}
+/**
+ * Default frame with padding.
+ * For only a gridview.
+ * @author	yeang-shing.then
+ * @since	2009-04-06
+ */
+.blankframe {
+	padding: 10px 10px 10px 10px;
+	margin: 0 0 0 20px;
+}
+
+/**
+ * Bold style for all link.
+ * Or maybe button style for whatever big
+ * to convenient user.
+ * @author	yeang-shing.then
+ * @since	2009-03-05
+ */
+.highlight {font-weight: bold;}
+.highlightYellow {
+	font-weight: bold;
+	background-color:Yellow;	
+	width:100px;		
+	border:solid 1px gray;	
+	padding:3px;
+}
+.highlightLightYellow {
+	font-weight: bold;
+	background-color:#FFFF99;	
+	width:100px;		
+	border:solid 1px gray;	
+	padding:3px;
+}
+.highlightLightBlue{
+	font-weight: bold;
+	background-color:#99CCFF;	
+	width:140px;		
+	border:solid 1px gray;	
+	padding:5px;
+}
+
+.status {
+	background:#FFF9D7 none repeat scroll 0 0;
+	border: 1px solid #E2C822;
+	margin:0 0 10px;
+	padding:5px;
+}
+
+
+/**
+ * For all panel use. i.e. Search panel.
+ * @author	yeang-shing.then
+ * @since	2009-03-05
+ */
+.grouping {margin-bottom: 20px;}
+
+/**
+ * Maintenance Screen use.
+ * @author	yeang-shing.then
+ * @since	2009-02-06
+ */
+.screen {
+	border-style: solid;
+	border-color: inherit;
+	border-width: 1pt;
+	padding: 10px;
+	width: 450px;
+}
+
+/**
+ * Add a blank space.
+ * @author	yeang-shing.then
+ * @since	2009-03-17
+ */
+.tab {width: 40px;}
+
+/**
+ * Center button frame
+ * @author	bp.gooi
+ * @since	2009-02-06
+ */
+.centerFrame {
+	clear:both;
+	padding: 20px 0 20px 0;
+	text-align: center;
+}
+/**
+ * One button frame (align right)
+ * @author	yeang-shing.then
+ * @since	2009-03-18
+ */
+.rightFrame {float:right;}
+
+/**
+ * Break a line and clear all.
+ * @author	yeang-shing.then
+ * @since	2009-03-18
+ */
+br {clear:both;}
+/**
+ * Default apply to almost all control.
+ * @author	yeang-shing.then
+ * @since	2009-03-18
+ */
+.floatleft {float: left;}
+/**
+ * Float right.
+ * @author	yeang-shing.then
+ * @since	2009-03-18
+ */
+.floatright {float: right;}
+.mainFrame {
+	border: solid 1px;
+	padding: 10px;
+	width: 400px;
+}
+/**
+ * Clone TextMode=MultiLine
+ * @author	yeang-shing.then
+ * @since	2009-03-24
+ */
+.multiLineBox {
+	width: 260px;/* 090331tys */
+	height: 30px;
+}
+/**
+ * Gray out background.
+ * @author	yeang-shing.then
+ * @since	2009-03-27
+ */
+.fading { 
+	/*background-color: Silver;*/
+	filter: alpha(opacity=30); 
+	opacity: 0.2;
+}
+/**
+ * Show original picture.
+ * @author	yeang-shing.then
+ * @since	2009-03-27
+ */
+.obvious { 
+	/*background-color: Silver;*/
+	filter: alpha(opacity=100); 
+	opacity: 1;
+}
+/**
+ * Watermark style.
+ * Use in search textbox.
+ * @author	yeang-shing.then
+ * @since	2009-04-02
+ */
+.watermark {
+	font-style: italic;
+	color: silver;
+}
+
+div.framecolor_red {
+	padding: 5px 5px 5px 10px;
+	width: 500px;
+	height: auto;
+	border: #8B814C 1px solid;
+	background: #FFEFDB;	
+	position: relative;
+	height: 1%;
+	text-align: left;
+	font-size: 13px;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+.words {
+	background:#FFFFFF none repeat scroll 0 0;	
+	margin: 0 5px;
+	width:300px;
+	float:left;
+}
+
+
+/**
+ * Calendar in day view or task list
+ * @author	yeang-shing.then
+ * @since	2009-07-08
+ */
+.task {
+	background-color: #FFFFD5;
+	padding: 0 10px 10px 10px;
+	width: 100%;
+	/*min-width:400px;*/
+}
+.task .h1 {
+	font-family: Century, Arial, Sans-serif, Times New Roman;
+	font-weight: bold;
+	font-size: 36pt;
+}
+.task .h2 {
+	background-color: #FFF4BC;
+	font-family: Century, Arial, Sans-serif, Times New Roman;
+	font-size: 24pt;
+	margin: 0 -10px 0 -10px;
+	padding: 0 10px 0 10px;
+	display: block;
+}
+/** Show total count */
+.task .h3 {
+	font-family: Arial, Sans-serif; 
+	font-size: small;
+}
+.task .h2 a {
+	text-decoration: none;
+}
+/**
+ * Title style shown at Task
+ * @author	yeang-shing.then
+ * @since	2009-07-11
+ */
+.task .title {
+	float: right;
+	text-align: right;
+}
+
+
+/**
+ * AJAX ComboBox style
+ * 
+ */
+.AquaStyle .ajax__combobox_inputcontainer .ajax__combobox_textboxcontainer input
+{
+    margin: 0;
+    background-image: url(http://localhost:2584/eShipDoc/Images/aqua-bg.gif);
+    background-position: top left;
+    border: 0px none;
+    padding: 2px 0px 0px 8px;
+    font-size: 11px;
+    height: 17px;
+    width: 150px;
+}
+.AquaStyle .ajax__combobox_inputcontainer .ajax__combobox_buttoncontainer button
+{
+    background-image: url(http://localhost:2584/eShipDoc/Images/aqua-arrow.gif);
+    background-position: top left;
+    border: 0px none;
+    height: 19px;
+    width: 19px;
+}
+.AquaStyle .ajax__combobox_itemlist
+{
+    border-color: #000000;
+    background-color: #FFFFFF;
+}
+
+.BlueStyle .ajax__combobox_inputcontainer .ajax__combobox_textboxcontainer input
+{
+    margin: 0;
+    /*background-image: url(http://localhost:2584/eShipDoc/Images/.gif);*/
+    background-position: top left;
+    border: 0px none;
+    padding: 2px 0px 0px 8px;
+    /*font-size: 11px;*/
+    /*height: 17px;
+    width: 150px;*/
+}
+.BlueStyle .ajax__combobox_inputcontainer .ajax__combobox_buttoncontainer button
+{
+    background-image: url(http://localhost:2584/eShipDoc/Images/down.jpg);
+    background-position: top left;
+    border: 0px none;
+    /*height: 19px;
+    width: 19px;*/
+}
+.BlueStyle .ajax__combobox_itemlist
+{
+    border-color: #000000;
+    background-color: #FFFFFF;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font:  70%/1.5 Verdana, Tahoma, Arial, Helvetica, sans-serif;
+	color: #333;		
+}
+/**
+ * Extra handle background to prevent some other child page
+ * which do not inherit this picture
+ * but still have all project character.
+ * @author	yeang-shing.then
+ * @since	2009-04-03
+ */
+.bodyBackground {
+	background: #FFF url(Images/bg.gif) repeat-x;	
+}
+
+/* ----------- content Colomn ------------ */
+/**
+ * @author	Alain Lye
+ * @since	2009-03-19
+*/
+.ContentFrameColumn {
+	float:left;	
+	width:450px;
+}
+.ContentFrameColumn1 {
+	float:left;	
+	width:410px;
+}
+.ContentFrameRow {	
+	padding:1px 0 2px 0;
+}
+.ContentFrameRow .Label {
+	width: 130px;
+	text-align: right;
+	float: left;
+	padding: 0 7px 0 0;
+}
+.divider {
+	width:10px;
+	float:left;
+}
+
+
+/* ----------- Link ------------ */
+a {
+	color: #003366;
+	background-color: inherit;
+}
+a:hover {
+	color: #CC0001; 
+	background-color: inherit;
+}
+
+/* ----------- Header ------------ */
+h1, h2, h3 {
+	font-family: Arial, 'Trebuchet MS', Sans-Serif;
+	font-weight: bold;
+	color: #333;
+}
+h1 {
+	font-size: 120%;
+	letter-spacing: .5px;
+}
+h2 {
+	font-size: 115%;	
+	text-transform: uppercase; 		
+}
+h3 {
+	font-size: 115%;
+	color: #003366;		
+}
+
+/****************************************/
+/* Entry page use only                  */
+/****************************************/
+/**
+ * Default frame with nothing.
+ * @author	yeang-shing.then
+ * @since	2009-03-03
+ */
+.shipPanel {
+	float: left;
+	padding-right:10px;
+	line-height: 24px;
+	width:390px;
+}
+.shipPanel h1 {
+	height: 18px;
+	line-height: 1.4;
+}
+.shipPanel #shorthead {
+	display: block;
+	font-family: Arial,'Trebuchet MS',Sans-Serif;
+	font-weight:bold;
+	width: 430px;
+	background-color:#CC0000;
+	color:#FFFFFF;
+	font-size:105%;
+	letter-spacing:0.5px;
+	margin:10px 0;
+	padding: 10px 10px 0 10px;
+	text-transform:uppercase;
+	height:18px;
+	line-height:1.2;
+}
+/**
+ * Default frame with nothing.
+ * @author	yeang-shing.then
+ * @since	2009-04-29
+ */
+.shipRightPanel {
+	float: right;
+	display: inline-block;
+	padding: 0 10px 0 0;
+	line-height: 24px;
+}
+/**
+ * Apply to all ship doc header panel.
+ * Reserved for future use.
+ * @author	yeang-shing.then
+ * @sincd	2009-03-26
+ */
+.shipDocCol {
+	/* font-weight: bold; */
+}
+/**
+ * For all multiline texbox use.
+ * @author	yeang-shing.then
+ * @sincd	2009-03-26
+ */
+.shipDocWide {
+	Height: 40px;
+	Width: 260px;
+	color:#333333;
+}
+/**
+ * For all labeling use.
+ *
+ * @author	yeang-shing.then
+ * @since	2009-02-05
+ */
+.shipLabel {
+	width: 120px;
+	text-align: right;
+	clear:left;
+	float: left;
+	padding: 0 4px 0 0;	
+}
+/**
+ * For item header labeling.
+ *
+ */
+.labelQuarter {
+	width: 20px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+.labelHalf {
+	width: 50px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+.labelHalf2 {
+	width: 60px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+.labelEntry {
+	width: 80px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+.labelMedium {
+	width: 120px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+.lableHalfBig
+{
+	width: 160px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+.labelBig {
+	width: 200px;
+	display: inline-block;
+	padding: 0 4px 0 0;
+}
+
+/** For right alignment */
+.labelRightQuarter {
+	width: 20px;
+	display: inline-block;
+	padding: 0 0 0 4px;
+	text-align: right;
+}
+.labelRightHalf {
+	width: 50px;
+	display: inline-block;
+	padding: 0 0 0 4px;
+	text-align: right;
+}
+.labelRightMedium {
+	width: 120px;
+	display: inline-block;
+	padding: 0 0 0 4px;
+	text-align: right;
+}
+.labelRightBig {
+	width: 200px;
+	display: inline-block;
+	padding: 0 0 0 4px;
+	text-align: right;
+}
+
+/** For item line textbox key in. */
+.itemQuarter {width: 20px;}
+.itemHalf {width: 50px;}
+.itemHalf2 {width: 60px;}
+.itemEntry {width: 80px;}
+.itemMedium {width: 120px;}
+.itemHalfBig{width: 160px;}
+.itemBig {width: 200px;}
+
+/** For right alignment */
+.itemRightQuarter {width: 20px;	text-align: right;}
+.itemRightHalf {width: 50px;text-align: right;}
+
+.itemRightMedium {width: 120px;text-align: right;}
+.itemRightBig {width: 200px;text-align: right;}
+
+/** email + printing image button. */
+.emailButton {
+	z-index: 3;
+	position: absolute;
+	right:20px; 
+}
+
+/**
+ * Min height for some small page popup.
+ * ie. PartNumbers.aspx.
+ * @author	yeang-shing.then
+ * @since	2009-04-03
+ */
+#minHeight {min-height: 420px;}
+
+
+/** collapsible panel */
+.collapsePanelHeader {		
+	text-align:left;
+	font-weight:bold;	
+	padding:0 20px 0 0; 
+	cursor: pointer; 	
+}
+.collapsePanel {
+	background-color:white;
+	overflow:hidden;
+}
+.collapsePanelSearch
+{
+	font-weight:bold;	
+	cursor: pointer; 	
+	float:left;
+	width: 150px;
+}
+
+.uploadRule
+{
+	width: 380px;
+	float:left;
+	background:#FFF9D7 none repeat scroll 0 0;
+	border: 1px solid #E2C822;
+	margin:0 0 10px;
+	padding:5px;
+}
+#keyIcon
+{
+	width:25px;
+	float:left;
+	height:60px;
+	padding: 10px 0 0 25px;	
+}
+
+
+/**
+ * Specified only for printer container.
+ * @author	yeang-shing.then
+ * @since	2009-04-02
+ */
+#printer {
+	position: absolute;
+	right: 130px;
+	top: 90px;
+}
+/**
+ * Specified only for printer container.
+ * @author	yeang-shing.then
+ * @since	2009-04-22
+ * @seealso	#printer
+ */
+.printer 
+{
+	position: absolute;
+	right: 100px;
+	top: 30px;
+}
+.printer a {text-decoration: none;}
+
+/**
+ * Toolbar container.
+ * @author	yeang-shing.then
+ * @since	2009-05-07
+ */
+.toolbar {
+	float: right;
+	margin: 0 10px 0 0;
+}
+/**
+ * Toolbar container.
+ * @author	yeang-shing.then
+ * @since	2009-07-24
+ */
+.toolbarleft {
+	float: left;
+}
+.toolbarleft select {
+	/*background-image: url(http://localhost:2584/eShipDoc/Images/dropdown-arrow.gif);*/
+	border: none;
+	background-color: White;
+	scrollbar-arrow-color: #12406F;
+	scrollbar-base-color: red;
+}
+
+/**
+ * Calendar in month view
+ * @author	yeang-shing.then
+ * @since	2009-07-14
+ */
+.calendar {
+	width: 100%; /*not work due to #rightcolumn fixed width*/	
+	border: solid 1pt;
+}
+.calendar .header {
+	background-color: #FFF4BC;
+}
+.calendar .month select {
+	font-family: Century, Arial, Sans-serif, Times New Roman;
+	font-size: 16pt;
+	border: none;
+	background-color: #FFF4BC;
+	/*background-color: Transparent;/*IE fail*/
+	/*filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5; */
+}
+.calendar .month a {
+	font-family: Century, Arial, Sans-serif, Times New Roman;
+	font-size: 16pt;
+}
+.calendar .weekend {
+	background-color: gainsboro;
+}
+.calendar .weekday {
+	background-color: white;
+}
+.calendar .today {
+	font-weight: bold;
+}
+.calendar .otherMonth {
+	background-color: gainsboro;
+}
+.calendar a {
+	text-decoration: none;
+	color: Black;
+}
+.monthView td {
+	/*border: solid 1pt;*/
+}

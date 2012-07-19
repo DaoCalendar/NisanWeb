@@ -10,4 +10,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
 
     }
+    //todo: btnSearch_Click
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+    }
 }

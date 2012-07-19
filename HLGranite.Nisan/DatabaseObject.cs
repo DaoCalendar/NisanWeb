@@ -15,7 +15,7 @@ namespace HLGranite.Nisan
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Stock))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Nisan))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Teller))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Admin))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Carrier))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Designer))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Agent))]

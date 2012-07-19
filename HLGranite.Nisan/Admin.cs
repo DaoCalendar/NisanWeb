@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HLGranite.Nisan
 {
-    public partial class Teller
+    public partial class Admin
     {
         public override bool Save()
         {

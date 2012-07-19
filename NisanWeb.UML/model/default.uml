@@ -260,7 +260,7 @@
     <ownedOperation xmi:id="_cDyvQNAoEeG0HuHKyQAhQg" name="Pay(agent: Agent, amount: Decimal)"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_wyZFQNAoEeG0HuHKyQAhQg" name="Role">
-    <ownedLiteral xmi:id="_xdzZwNAoEeG0HuHKyQAhQg" name="Teller"/>
+    <ownedLiteral xmi:id="_xdzZwNAoEeG0HuHKyQAhQg" name="Admin"/>
     <ownedLiteral xmi:id="_zf-F0NAoEeG0HuHKyQAhQg" name="Designer"/>
     <ownedLiteral xmi:id="_0t54kNAoEeG0HuHKyQAhQg" name="Agent"/>
     <ownedLiteral xmi:id="_1v4S8NAoEeG0HuHKyQAhQg" name="Carrier"/>
