@@ -40,7 +40,6 @@
                     <br />
                     <asp:Label runat="server" Text="Deliver To" CssClass="labeling" />
                     <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" />
-                    <br />
                     <asp:Label runat="server" Text="Postal" CssClass="labeling" />
                     <asp:TextBox ID="txtPostal" runat="server" />
                     <br />
