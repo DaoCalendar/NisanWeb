@@ -34,6 +34,7 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 80px;
+	background: #85ACF7 url('Images/hidr.jpg');
 }
 #body{
 	margin:0 auto;
@@ -46,7 +47,7 @@ body {
 	bottom:0;	
 	width:100%;
 	border-top: 1px solid #f2f2f2;
-	background: #000000;
+	background: #000063;
 	padding: 2px 0 10px 0;
 	text-align: center;
 	line-height: 1.5em;
@@ -203,7 +204,7 @@ body {
 	font: bold 105% Arial, Sans-Serif;
 	color: #FFF;
 	text-transform: uppercase;
-	background: #333;
+	background: #1D1D73;
 	letter-spacing: 1px;
 }
 #sidebar .left-box {
@@ -886,16 +887,6 @@ body {
 	padding: 0;
 	font:  70%/1.5 Verdana, Tahoma, Arial, Helvetica, sans-serif;
 	color: #333;		
-}
-/**
- * Extra handle background to prevent some other child page
- * which do not inherit this picture
- * but still have all project character.
- * @author	yeang-shing.then
- * @since	2009-04-03
- */
-.bodyBackground {
-	background: #FFF url(Images/bg.gif) repeat-x;	
 }
 
 /* ----------- content Colomn ------------ */

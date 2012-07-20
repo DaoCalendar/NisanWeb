@@ -87,7 +87,7 @@ namespace HLGranite.Nisan.Test
             expected.Uri = "banana.jpg";
             expected.Save();
 
-            Stock actual = new Stock(1);
+            Stock actual = new Stock(3);
             Assert.AreEqual(expected.Uri, actual.Uri);
         }
 

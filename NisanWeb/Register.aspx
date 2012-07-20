@@ -27,6 +27,9 @@
         <br />
         <asp:Label runat="server" Text="State" CssClass="labeling" />
         <asp:DropDownList ID="ddlState" runat="server" />
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Remarks" CssClass="labeling" />
+        <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" />
     </asp:Panel>
     <br />
     <div class="center">
