@@ -8,14 +8,14 @@
             <div>
                 <asp:Panel ID="Panel1" runat="server" GroupingText="Information">
                     <asp:Label runat="server" Text="Agent" CssClass="labeling" />
-                    <asp:TextBox ID="txtAgent" runat="server" />
+                    <asp:TextBox ID="txtAgent" runat="server" Width="40px" />
                     <asp:Label ID="lblAgent" runat="server" />
                     <br />
                     <asp:Label runat="server" Text="Stone" CssClass="labeling" />
                     <asp:DropDownList ID="ddlStock" runat="server" />
                     <br />
                     <asp:Label runat="server" Text="Name" CssClass="labeling" />
-                    <asp:TextBox ID="txtName" runat="server" />
+                    <asp:TextBox ID="txtName" runat="server" Width="200px" />
                     <br />
                     <asp:Label runat="server" Text="Death" CssClass="labeling" />
                     <asp:TextBox ID="txtDeath" runat="server" ToolTip="dd/MM/yyyy" Width="110px"></asp:TextBox>
@@ -29,7 +29,7 @@
                     </asp:MaskedEditExtender>
                     <br />
                     <asp:Label runat="server" Text="Remarks" CssClass="labeling" />
-                    <asp:TextBox ID="txtRemarks" runat="server" Rows="4" TextMode="MultiLine" />
+                    <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" />
                 </asp:Panel>
                 <asp:Panel ID="Panel2" runat="server" GroupingText="Contact">
                     <asp:Label runat="server" Text="Email" CssClass="labeling" />
@@ -37,6 +37,10 @@
                     <br />
                     <asp:Label runat="server" Text="Phone" CssClass="labeling" />
                     <asp:TextBox ID="txtPhone" runat="server" />
+                    <br />
+                    <asp:Label runat="server" Text="Deliver To" CssClass="labeling" />
+                    <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" />
+                    <br />
                 </asp:Panel>
                 <br />
                 <div class="center">

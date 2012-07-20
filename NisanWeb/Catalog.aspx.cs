@@ -12,6 +12,7 @@ public partial class Catalog : System.Web.UI.Page
     }
     protected void Order_Click(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine((sender as Button).TabIndex);
+        int stockId = (sender as Button).TabIndex;
+        Response.Redirect("~/Default.aspx?Stock=" + stockId, true);
     }
 }
