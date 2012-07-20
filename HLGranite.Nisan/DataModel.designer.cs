@@ -26,18 +26,17 @@ namespace HLGranite.Nisan
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
     public partial class User : DatabaseObject
     {
-
         private Address addressField;
 
         private string nameField;
 
-        private string passwodField;
+        private string passwordField;
 
         private string emailField;
 
         private string phoneField;
 
-        private Role typeField;
+        protected Role typeField;
 
         public Address Address
         {
@@ -63,15 +62,15 @@ namespace HLGranite.Nisan
             }
         }
 
-        public string Passwod
+        public string Password
         {
             get
             {
-                return this.passwodField;
+                return this.passwordField;
             }
             set
             {
-                this.passwodField = value;
+                this.passwordField = value;
             }
         }
 
@@ -96,18 +95,6 @@ namespace HLGranite.Nisan
             set
             {
                 this.phoneField = value;
-            }
-        }
-
-        public Role Type
-        {
-            get
-            {
-                return this.typeField;
-            }
-            set
-            {
-                this.typeField = value;
             }
         }
     }
@@ -167,12 +154,9 @@ namespace HLGranite.Nisan
 
         private Stock stockField;
 
-        private string parentField;
+        private Transaction parentField;
 
-        public TransactionItem()
-        {
-            this.stockField = new Stock();
-        }
+        private decimal amountField;
 
         public Stock Stock
         {
@@ -186,7 +170,7 @@ namespace HLGranite.Nisan
             }
         }
 
-        public string Parent
+        public Transaction Parent
         {
             get
             {
@@ -195,6 +179,18 @@ namespace HLGranite.Nisan
             set
             {
                 this.parentField = value;
+            }
+        }
+
+        public decimal Amount
+        {
+            get
+            {
+                return this.amountField;
+            }
+            set
+            {
+                this.amountField = value;
             }
         }
     }
@@ -413,12 +409,6 @@ namespace HLGranite.Nisan
 
         private List<Agent> membersField;
 
-        public Agent()
-        {
-            this.membersField = new List<Agent>();
-            this.parentField = new Agent();
-        }
-
         public Agent Parent
         {
             get
@@ -479,7 +469,7 @@ namespace HLGranite.Nisan
 
         private string noField;
 
-        private string refrenceField;
+        private string referenceField;
 
         private decimal amountField;
 
@@ -543,15 +533,15 @@ namespace HLGranite.Nisan
             }
         }
 
-        public string Refrence
+        public string Reference
         {
             get
             {
-                return this.refrenceField;
+                return this.referenceField;
             }
             set
             {
-                this.refrenceField = value;
+                this.referenceField = value;
             }
         }
 

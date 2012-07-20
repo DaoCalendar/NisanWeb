@@ -13,6 +13,8 @@
                 <div style="float:left">
                     <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/Images/" + DataBinder.Eval(Container.DataItem,"Uri") %>' />
                     <br />
+                    <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Type") %>' />
+                    <br />
                     Price: RM <%# DataBinder.Eval(Container.DataItem,"Price") %>
                     <asp:Button runat="server" Text="Order" OnClick="Order_Click" TabIndex='<%# (int)DataBinder.Eval(Container.DataItem, "Id") %>' />
                 </div>

@@ -20,6 +20,7 @@ GO
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[Users]') AND OBJECTPROPERTY(id, N'IsTable') = 1)
 CREATE TABLE [Users] (
 	[Id]					int IDENTITY,
+	[Type]					smallint NOT NULL,	--Role. 1=Admin, 2=Designer, 3=Agent, 4=Carrier, 5=Customer
 	[Code]					varchar(50),
 	[Name]					nvarchar(50) NOT NULL,
 	[Password]				nvarchar(50),
@@ -28,8 +29,9 @@ CREATE TABLE [Users] (
 	[AddressId]				int,
 	[Remarks]				nvarchar(255),
 	[Uri]					nvarchar(255),
-CONSTRAINT [PK_Users] PRIMARY KEY ([Id]),
-CONSTRAINT [FK_Users] FOREIGN KEY ([AddressId]) REFERENCES [Addresses]([Id])
+CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+--alter table Users drop [FK_Users];
+--CONSTRAINT  FOREIGN KEY ([AddressId]) REFERENCES [Addresses]([Id])
 )
 GO
 

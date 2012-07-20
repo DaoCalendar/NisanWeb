@@ -22,7 +22,7 @@
     <ownedAttribute xmi:id="_9KQ3AKMcEeGmn_qORpoPMA" name="Name" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_JDaPQKMdEeGmn_qORpoPMA" name="Passwod" aggregation="composite">
+    <ownedAttribute xmi:id="_JDaPQKMdEeGmn_qORpoPMA" name="Password" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_KQ7LQKMdEeGmn_qORpoPMA" name="Email" aggregation="composite">
@@ -88,8 +88,8 @@
     <ownedAttribute xmi:id="_mzjsAKMiEeGmn_qORpoPMA" name="No" aggregation="composite">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_vvE3cKZBEeGfXKVpn74LKA" name="Refrence" aggregation="composite">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    <ownedAttribute xmi:id="_vvE3cKZBEeGfXKVpn74LKA" name="Reference" aggregation="composite">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_8Cw2oKZBEeGfXKVpn74LKA" name="Amount" type="_25p_IKMdEeGmn_qORpoPMA" aggregation="composite"/>
     <ownedAttribute xmi:id="_s32Jws5QEeGHsqsXAGIaWw" name="Items" type="_gDvP8KMgEeGmn_qORpoPMA" aggregation="composite" association="_s31isM5QEeGHsqsXAGIaWw">
@@ -99,6 +99,10 @@
     <ownedAttribute xmi:id="_Et1xEs6qEeGMUc6iHmKVLQ" name="CreatedBy" type="_QSEEYqMcEeGmn_qORpoPMA" aggregation="composite" association="_Et1KAM6qEeGMUc6iHmKVLQ">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Et2YIc6qEeGMUc6iHmKVLQ" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Et2YIM6qEeGMUc6iHmKVLQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_s31isc5QEeGHsqsXAGIaWw" name="Parent" type="_ecsrkKMeEeGmn_qORpoPMA" association="_s31isM5QEeGHsqsXAGIaWw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_s32Jwc5QEeGHsqsXAGIaWw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s32JwM5QEeGHsqsXAGIaWw" value="1"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_GYidEKMgEeGmn_qORpoPMA" name="Order">
@@ -131,20 +135,13 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_gDvP8KMgEeGmn_qORpoPMA" name="TransactionItem">
     <generalization xmi:id="_aUyW4M5TEeGHsqsXAGIaWw" general="_QSp5paMcEeGmn_qORpoPMA"/>
-    <ownedAttribute xmi:id="_gZSNoKZLEeGfXKVpn74LKA" name="Parent" aggregation="composite">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
     <ownedAttribute xmi:id="_dk_jY85TEeGHsqsXAGIaWw" name="Stock" type="_Ltv5IKMeEeGmn_qORpoPMA" aggregation="composite" association="_dk-8UM5TEeGHsqsXAGIaWw">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dk_jZc5TEeGHsqsXAGIaWw" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dk_jZM5TEeGHsqsXAGIaWw" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:id="_F4LrgNJTEeGs7oXg8TkpnA" name="Amount" type="_25p_IKMdEeGmn_qORpoPMA" aggregation="composite"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_s31isM5QEeGHsqsXAGIaWw" memberEnd="_s31isc5QEeGHsqsXAGIaWw _s32Jws5QEeGHsqsXAGIaWw">
-    <ownedEnd xmi:id="_s31isc5QEeGHsqsXAGIaWw" name="src" type="_ecsrkKMeEeGmn_qORpoPMA" association="_s31isM5QEeGHsqsXAGIaWw">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_s32Jwc5QEeGHsqsXAGIaWw" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s32JwM5QEeGHsqsXAGIaWw" value="1"/>
-    </ownedEnd>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_s31isM5QEeGHsqsXAGIaWw" memberEnd="_s31isc5QEeGHsqsXAGIaWw _s32Jws5QEeGHsqsXAGIaWw"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_dk-8UM5TEeGHsqsXAGIaWw" memberEnd="_dk_jYM5TEeGHsqsXAGIaWw _dk_jY85TEeGHsqsXAGIaWw">
     <ownedEnd xmi:id="_dk_jYM5TEeGHsqsXAGIaWw" name="src" type="_GYidEKMgEeGmn_qORpoPMA" association="_dk-8UM5TEeGHsqsXAGIaWw">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dk_jYs5TEeGHsqsXAGIaWw" value="1"/>
