@@ -41,6 +41,8 @@
                     <asp:Label runat="server" Text="Deliver To" CssClass="labeling" />
                     <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" />
                     <br />
+                    <asp:Label runat="server" Text="State" CssClass="labeling" />
+                    <asp:DropDownList ID="ddlState" runat="server" />
                 </asp:Panel>
                 <br />
                 <div class="center">

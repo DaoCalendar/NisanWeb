@@ -19,7 +19,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NisanWeb", "NisanWeb\", "{2
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "60961"
+		VWDPort = "54734"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

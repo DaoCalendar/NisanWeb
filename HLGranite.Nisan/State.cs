@@ -12,7 +12,7 @@ namespace HLGranite.Nisan
         /// Returns all states for address use.
         /// </summary>
         /// <returns></returns>
-        public static string[] GetAll()
+        public static string[] LoadAll()
         {
             List<string> result = new List<string>();
             string file = AppDomain.CurrentDomain.BaseDirectory

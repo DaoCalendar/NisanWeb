@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<States>
+  <State Name=""/>
+  <State Name="Johor"/>
+  <State Name="Kedah"/>
+  <State Name="Kelantan"/>
+  <State Name="Melaka"/>
+  <State Name="Pahang"/>
+  <State Name="Penang"/>
+  <State Name="Perak"/>
+  <State Name="Perlis"/>
+  <State Name="Sabah"/>
+  <State Name="Sarawak"/>
+  <State Name="Selangor"/>
+  <State Name="Terengganu"/>
+</States>

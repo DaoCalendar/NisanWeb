@@ -17,13 +17,17 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void Initialize()
     {
+        //define stock dropdownlist
         Stock stock = new Stock();
         ddlStock.DataSource = stock.LoadAll();
         ddlStock.DataValueField = "Id";
         ddlStock.DataTextField = "Type";
         ddlStock.DataBind();
-
         if (this.stockId > 0)
             ddlStock.SelectedValue = this.stockId.ToString();
+
+        //define state dropdownlist
+        ddlState.DataSource = State.LoadAll();
+        ddlState.DataBind();
     }
 }
