@@ -47,25 +47,52 @@ namespace HLGranite.Nisan
         public override bool Save()
         {
             bool success = false;
-            using (DbConnection connection = factory.CreateConnection())
+            if (this.idField == 0)
             {
-                connection.ConnectionString = connectionString;
-                connection.Open();
-                using (DbCommand command = connection.CreateCommand())
+                using (DbConnection connection = factory.CreateConnection())
                 {
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "INSERT INTO " + this.tableName + "(Type,Price,Remarks)";
-                    command.CommandText += " VALUES(@Type,@Price,@Remarks)";//,@Uri)";
-                    command.Parameters.Add(CreateParameter("@Type", this.typeField));
-                    command.Parameters.Add(CreateParameter("@Price", this.priceField));
-                    command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
-                    //todo: command.Parameters.Add(CreateParameter("@Uri", this.uriField));
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    using (DbCommand command = connection.CreateCommand())
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        command.CommandText = "INSERT INTO " + this.tableName + "(Type,Price,Remarks,Uri)";
+                        command.CommandText += " VALUES(@Type,@Price,@Remarks,@Uri)";
+                        command.Parameters.Add(CreateParameter("@Type", this.typeField));
+                        command.Parameters.Add(CreateParameter("@Price", this.priceField));
+                        command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
+                        command.Parameters.Add(CreateParameter("@Uri", this.uriField));
 
-                    success = (command.ExecuteNonQuery() > 0) ? true : false;
-                }
+                        success = (command.ExecuteNonQuery() > 0) ? true : false;
+                    }
 
-                connection.Close();
-            }//end
+                    connection.Close();
+                }//end
+            }
+            else
+            {
+                using (DbConnection connection = factory.CreateConnection())
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    using (DbCommand command = connection.CreateCommand())
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        command.CommandText = "UPDATE " + this.tableName;
+                        command.CommandText += " SET Type=@Type,Price=@Price,Remarks=@Remarks,Uri=@Uri";
+                        command.CommandText += " WHERE Id=@Id";
+                        command.Parameters.Add(CreateParameter("@Id", this.idField));
+                        command.Parameters.Add(CreateParameter("@Type", this.typeField));
+                        command.Parameters.Add(CreateParameter("@Price", this.priceField));
+                        command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
+                        command.Parameters.Add(CreateParameter("@Uri", this.uriField));//Uri.Host
+
+                        success = (command.ExecuteNonQuery() > 0) ? true : false;
+                    }
+
+                    connection.Close();
+                }//end
+            }
 
             return success;
         }
@@ -94,8 +121,7 @@ namespace HLGranite.Nisan
                             this.typeField = reader["Type"].ToString();
                             this.priceField = (decimal)reader["Price"];
                             this.remarksField = reader["Remarks"].ToString();
-                            if (reader["Uri"] != DBNull.Value)
-                                this.uriField = new Uri(reader["Uri"].ToString());
+                            this.uriField = reader["Uri"].ToString();
                         }
                     }
                 }
@@ -103,20 +129,17 @@ namespace HLGranite.Nisan
                 connection.Close();
             }//end
         }
-        public static List<Stock> LoadAll()
+        public List<Stock> LoadAll()
         {
             List<Stock> result = new List<Stock>();
-
-            string providerName = ConfigurationManager.ConnectionStrings["NisanConnectionString"].ProviderName;
-            DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
             using (DbConnection connection = factory.CreateConnection())
             {
-                connection.ConnectionString = ConfigurationManager.ConnectionStrings["NisanConnectionString"].ConnectionString;
+                connection.ConnectionString = this.connectionString;
                 connection.Open();
                 using (DbCommand command = connection.CreateCommand())
                 {
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Stocks";
+                    command.CommandText = "SELECT * FROM " + base.tableName;
                     using (DbDataAdapter adapter = factory.CreateDataAdapter())
                     {
                         DataSet dataSet = new DataSet();
@@ -132,8 +155,7 @@ namespace HLGranite.Nisan
                                 stock.Type = row["Type"].ToString();
                                 stock.Price = (decimal)row["Price"];
                                 stock.Remarks = row["Remarks"].ToString();
-                                if (row["Uri"] != DBNull.Value)
-                                    stock.Uri = new Uri(row["Uri"].ToString());
+                                stock.Uri = row["Uri"].ToString();
                                 result.Add(stock);
                             }
                         }

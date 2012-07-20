@@ -67,15 +67,28 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void SaveTest()
         {
-            string name = "4' Batu Batik(L)";
+            string name = "4½' Batu Marble(L)";
 
             Stock target = new Stock();
             target.Type = name;
             target.Price = 300;
+            //target.Uri = new Uri("file://kiwi.jpg");
+            target.Uri = "kiwi.jpg";
             target.Save();
 
             Stock actual = new Stock(name);
             Assert.AreEqual(name, actual.Type);
+        }
+        [TestMethod()]
+        public void UpdateTest()
+        {
+            Stock expected = new Stock(3);
+            expected.Price = 333;
+            expected.Uri = "banana.jpg";
+            expected.Save();
+
+            Stock actual = new Stock(1);
+            Assert.AreEqual(expected.Uri, actual.Uri);
         }
 
         /// <summary>
@@ -97,9 +110,19 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void LoadAllTest()
         {
+            Stock target = new Stock();
             int expected = 0;
-            int actual = Stock.LoadAll().Count;
+            int actual = target.LoadAll().Count;
             Assert.AreNotEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void UriTest()
+        {
+            string expected = "kiwi.jpg";
+            Uri target = new Uri("file://" + expected);
+            string actual = target.Host;
+            Assert.AreEqual(expected, actual);
         }
     }
 }

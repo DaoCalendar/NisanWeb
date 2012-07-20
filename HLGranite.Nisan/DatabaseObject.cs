@@ -23,10 +23,13 @@ namespace HLGranite.Nisan
     public abstract class DatabaseObject
     {
         #region Properties
+        /// <summary>
+        /// file:// For storing uri path purpose.
+        /// </summary>
+        protected const string URI_PREFIX = "file://";
         protected DbProviderFactory factory;
         /// <summary>
         /// Database provider name ie. MySql or PostGre.
-        /// TODO: change to static or constant.
         /// </summary>
         protected string providerName;
         /// <summary>
@@ -39,7 +42,7 @@ namespace HLGranite.Nisan
 
         protected string remarksField;
 
-        protected Uri uriField;
+        protected string uriField;
 
         public int Id
         {
@@ -77,7 +80,7 @@ namespace HLGranite.Nisan
             }
         }
 
-        public Uri Uri
+        public string Uri
         {
             get { return this.uriField; }
             set { this.uriField = value; }
@@ -89,7 +92,7 @@ namespace HLGranite.Nisan
             this.idField = 0;
             this.tableNameField = string.Empty;
             this.remarksField = string.Empty;
-            //todo: this.uriField = new Uri("\\");
+            this.uriField = string.Empty;
             this.providerName = ConfigurationManager.ConnectionStrings["NisanConnectionString"].ProviderName;
             this.connectionString = ConfigurationManager.ConnectionStrings["NisanConnectionString"].ConnectionString;
             this.factory = DbProviderFactories.GetFactory(providerName);

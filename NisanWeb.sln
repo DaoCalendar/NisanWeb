@@ -27,20 +27,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLGranite.Nisan", "HLGranit
 EndProject
 Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "NisanSQL", "NisanSQL\NisanSQL.dbp", "{6079098D-B2E8-4212-AD38-8A25A301AB9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLGranite.Nisan.Test", "HLGranite.Nisan.Test\HLGranite.Nisan.Test.csproj", "{261128B6-2D89-4B04-88AA-B9565CF97DA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F83F06E-D7D4-42B8-AF8E-04FE868D1185}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		NisanWeb.vsmdi = NisanWeb.vsmdi
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = NisanWeb.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{21918121-1757-41F4-BFFA-35DFE4308F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21918121-1757-41F4-BFFA-35DFE4308F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21918121-1757-41F4-BFFA-35DFE4308F78}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{21918121-1757-41F4-BFFA-35DFE4308F78}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{AA5C622B-9B36-4846-9DE6-72F846723920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA5C622B-9B36-4846-9DE6-72F846723920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA5C622B-9B36-4846-9DE6-72F846723920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA5C622B-9B36-4846-9DE6-72F846723920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261128B6-2D89-4B04-88AA-B9565CF97DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261128B6-2D89-4B04-88AA-B9565CF97DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261128B6-2D89-4B04-88AA-B9565CF97DA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

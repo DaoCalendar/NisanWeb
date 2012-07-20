@@ -35,7 +35,7 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Vikbcc8LEeG5JtKMvktCdg" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VikbcM8LEeG5JtKMvktCdg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_ASq8QNApEeG0HuHKyQAhQg" name="Type" visibility="protected" type="_wyZFQNAoEeG0HuHKyQAhQg" aggregation="composite"/>
+    <ownedAttribute xmi:id="_ASq8QNApEeG0HuHKyQAhQg" name="type" visibility="protected" type="_wyZFQNAoEeG0HuHKyQAhQg" aggregation="composite"/>
     <ownedOperation xmi:id="_L2ZUQKMdEeGmn_qORpoPMA" name="Register"/>
     <ownedOperation xmi:id="_PYPDUKMdEeGmn_qORpoPMA" name="Login"/>
   </packagedElement>
@@ -255,7 +255,7 @@
       <ownedParameter xmi:id="_Y4DzEdAoEeG0HuHKyQAhQg" name="order" type="_GYidEKMgEeGmn_qORpoPMA"/>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_bPs_4NAoEeG0HuHKyQAhQg" name="Teller">
+  <packagedElement xmi:type="uml:Class" xmi:id="_bPs_4NAoEeG0HuHKyQAhQg" name="Admin">
     <generalization xmi:id="_fiDl4NAoEeG0HuHKyQAhQg" general="_QSEEYqMcEeGmn_qORpoPMA"/>
     <ownedOperation xmi:id="_cDyvQNAoEeG0HuHKyQAhQg" name="Pay(agent: Agent, amount: Decimal)"/>
   </packagedElement>

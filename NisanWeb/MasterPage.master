@@ -46,10 +46,10 @@
                                     <h1>Menu</h1>
                                     <asp:Menu ID="Menu2" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
                                         <Items>
-                                            <asp:MenuItem Text="Catalogue" Value="Catalogue" NavigateUrl="~/Catalogue.aspx" ImageUrl="~/Images/bullet.gif" />
-                                            <asp:MenuItem Text="Order" Value="Order" NavigateUrl="~/Order.aspx" ImageUrl="~/Images/bullet.gif" />
-                                            <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/Order.aspx" ImageUrl="~/Images/bullet.gif" />
-                                            <asp:MenuItem Text="Add User" Value="Add User" NavigateUrl="~/User.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Product Catalog" Value="Product Catalog" NavigateUrl="~/Catalog.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Order" Value="Order" NavigateUrl="~/Default.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/List.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Register" Value="Register" NavigateUrl="~/Register.aspx" ImageUrl="~/Images/bullet.gif" />
                                         </Items>
                                     </asp:Menu>
                                 </asp:Panel>
@@ -69,10 +69,10 @@
             <tr>
                 <td>
                     <div id="footer">
-                        <a href="About.aspx">About Us</a> | 
+                        <a href="~/About.aspx">About Us</a> | 
                         <a href="mailto:hlgranite@gmail.com">Contact Us</a>
                         <br />
-                        &nbsp;Copyright © 2012 by HLGranite
+                        ver 0.9 Copyright © 2012 by HLGranite
                     </div>
                 </td>
             </tr>

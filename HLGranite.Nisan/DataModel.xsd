@@ -15,7 +15,7 @@
   <xsd:element name="Nisan" type="Nisan"/>
   <xsd:element name="Designer" type="Designer"/>
   <xsd:element name="Carrier" type="Carrier"/>
-  <xsd:element name="Admin" type="Admin"/>
+  <xsd:element name="Teller" type="Teller"/>
   <xsd:complexType name="Customer">
     <xsd:complexContent>
       <xsd:extension base="User"/>
@@ -47,7 +47,7 @@
   </xsd:complexType>
   <xsd:simpleType name="Role">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Admin"/>
+      <xsd:enumeration value="Teller"/>
       <xsd:enumeration value="Designer"/>
       <xsd:enumeration value="Agent"/>
       <xsd:enumeration value="Carrier"/>
@@ -166,7 +166,7 @@
       <xsd:extension base="User"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="Admin">
+  <xsd:complexType name="Teller">
     <xsd:complexContent>
       <xsd:extension base="User"/>
     </xsd:complexContent>
