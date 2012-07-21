@@ -63,5 +63,21 @@ namespace HLGranite.Nisan.Test
             target.Email = "hlgranite@gmail.com";
             Assert.IsTrue(target.Save());
         }
+        [TestMethod()]
+        public void LoginPassTest()
+        {
+            User user = new User("W002");
+            bool expected = true;
+            bool actual = user.Login();
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void LoginFailTest()
+        {
+            User user = new User("A999");
+            bool expected = false;
+            bool actual = user.Login();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -19,15 +19,18 @@
                     <asp:TextBox ID="txtName" runat="server" Width="200px" />
                     <br />
                     <asp:Label runat="server" Text="Death" CssClass="labeling" />
-                    <asp:TextBox ID="txtDeath" runat="server" ToolTip="dd/MM/yyyy" Width="110px"></asp:TextBox>
+                    <asp:TextBox ID="txtDeath" runat="server" ToolTip="dd/MM/yyyy" Width="110px" 
+                        AutoPostBack="true" ontextchanged="txtDeath_TextChanged" />
                     <asp:ImageButton ID="btnDeath" runat="server" ImageUrl="~/Images/calendar.png" />
-                    <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="btnDeath" TargetControlID="txtDeath">
+                    <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="btnDeath" TargetControlID="txtDeath"
+                        Format="dd/MM/yyyy">
                     </asp:CalendarExtender>
                     <asp:MaskedEditExtender ID="MaskedEditExtender1" runat="server"
                         MaskType="Date"                   
                         Mask="99/99/9999" 
                         TargetControlID="txtDeath">
                     </asp:MaskedEditExtender>
+                    <asp:Label ID="lblDeathm" runat="server"></asp:Label>
                     <br />
                     <asp:Label runat="server" Text="Remarks" CssClass="labeling" />
                     <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" />
@@ -52,7 +55,7 @@
                 </asp:Panel>
                 <br />
                 <div class="center">
-                    <asp:Button runat="server" Text="Submit" />
+                    <asp:Button runat="server" Text="Submit" onclick="Submit_Click" />
                 </div>
             </div>
         </ContentTemplate>

@@ -20,6 +20,13 @@ namespace HLGranite.Nisan
             this.idField = id;
             Load();
         }
+        public User(string code)
+            : base()
+        {
+            Initialize();
+            this.codeField = code;
+            Load();
+        }
         private void Initialize()
         {
             System.Diagnostics.Debug.WriteLine("-- User.Initialize --");
@@ -29,6 +36,7 @@ namespace HLGranite.Nisan
             this.passwordField = string.Empty;
             this.phoneField = string.Empty;
             this.emailField = string.Empty;
+            this.typeField = Role.Customer;//security purpose just in case default creation is admin
             //this.addressField = new Address();
         }
         public override bool Save()
@@ -128,13 +136,15 @@ namespace HLGranite.Nisan
             throw new NotImplementedException();
         }
 
-        public void Register()
+        public bool Register()
         {
-            throw new NotImplementedException();
+            return Save();
         }
-        public bool Login()
+        public bool Login(string password)
         {
-            throw new NotImplementedException();
+            Load();
+            if (this.idField == 0) return false;
+            return this.passwordField.Equals(password);
         }
     }
 }

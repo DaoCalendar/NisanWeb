@@ -17,11 +17,14 @@
         <div id="header">
             <div id="header-logo">
                 <span class="floatright" style="padding:10px 20px 0 0">
-                    <asp:Label ID="Label1" runat="server" Text="User: " />
-                    <asp:TextBox ID="txtUser" runat="server" />
-                    <asp:Label ID="Label2" runat="server" Text="Password: " />
-                    <asp:TextBox ID="txtPasswod" runat="server" TextMode="Password" />
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" />
+                    <asp:Panel ID="pnlUser" runat="server">
+                        <asp:Label ID="Label1" runat="server" Text="User: " />
+                        <asp:TextBox ID="txtUser" runat="server" />
+                        <asp:Label ID="Label2" runat="server" Text="Password: " />
+                        <asp:TextBox ID="txtPasswod" runat="server" TextMode="Password" />
+                        <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" />
+                    </asp:Panel>
+                    <asp:LinkButton ID="linLogout" runat="server" Visible="false" CssClass="navi" OnClick="btnLogout_Click" Text="Logout" />
                 </span>
                 <div id="logo">
                     <asp:Label ID="lblTestTag" runat="server" Text="HLGranite Nisan Ordering System" />
