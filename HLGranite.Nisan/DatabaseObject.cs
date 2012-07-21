@@ -24,7 +24,7 @@ namespace HLGranite.Nisan
     {
         #region Properties
         /// <summary>
-        /// file:// For storing uri path purpose.
+        /// Obsolete. file:// For storing uri path purpose.
         /// </summary>
         protected const string URI_PREFIX = "file://";
         protected DbProviderFactory factory;
@@ -36,6 +36,11 @@ namespace HLGranite.Nisan
         /// Database connection string.
         /// </summary>
         protected string connectionString;
+        /// <summary>
+        /// Display message when there is an error.
+        /// </summary>
+        protected string message;
+
         protected int idField;
 
         protected string tableNameField;

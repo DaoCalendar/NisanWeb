@@ -12,23 +12,6 @@ public partial class Register : System.Web.UI.Page
         if (!IsPostBack)
             Initialize();
     }
-    protected bool Validating()
-    {
-        bool validated = true;
-        string message = string.Empty;
-        if (txtCode.Text.Trim().Length == 0)
-            message += "Agent code cannot be blank!\n";
-        if (txtName.Text.Trim().Length == 0)
-            message += "Name cannot be blank!\n";
-        if (!txtPassword.Text.Equals(txtPassword2.Text))
-        {
-            message += "Please confirm password again!\n";
-            validated &= false;
-        }
-
-        lblMessage.Text = message;
-        return validated;
-    }
     protected void Initialize()
     {
         //define state dropdownlist
@@ -39,8 +22,6 @@ public partial class Register : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        if (!Validating()) return;
-
         Agent agent = new Agent();
         agent.Code = txtCode.Text.Trim();
         agent.Name = txtName.Text.Trim();
@@ -58,5 +39,7 @@ public partial class Register : System.Web.UI.Page
             btnSubmit.Enabled = false;
             lblMessage.Text = "Register successfully. Thank you.";
         }
+        else
+            lblMessage.Text = agent.Message;
     }
 }

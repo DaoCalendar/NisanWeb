@@ -79,5 +79,25 @@ namespace HLGranite.Nisan.Test
             bool actual = user.Login("W002");
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod()]
+        public void IsExistTest()
+        {
+            User user = new User();
+            user.Code = "W002";
+
+            bool expected = true;
+            bool actual = user.IsExist;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void ValidateTest()
+        {
+            User user = new User();
+            user.Validate();
+
+            bool expected = false;
+            bool actual = (user.Message.Length > 0) ? false : true;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

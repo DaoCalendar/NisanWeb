@@ -5,7 +5,7 @@ using System.Data.Common;
 
 namespace HLGranite.Nisan
 {
-    public partial class User
+    public partial class User : IValidation
     {
         public User()
             : base()
@@ -27,6 +27,7 @@ namespace HLGranite.Nisan
             this.codeField = code;
             Load();
         }
+
         private void Initialize()
         {
             System.Diagnostics.Debug.WriteLine("-- User.Initialize --");
@@ -37,13 +38,30 @@ namespace HLGranite.Nisan
             this.phoneField = string.Empty;
             this.emailField = string.Empty;
             this.typeField = Role.Customer;//security purpose just in case default creation is admin
+            this.message = string.Empty;
             //this.addressField = new Address();
         }
+        public bool Register()
+        {
+            return Save();
+        }
+        public bool Login(string password)
+        {
+            Load();
+            if (this.idField == 0) return false;
+            return this.passwordField.Equals(password);
+        }
+
+        #region DatabaseObject methods
         public override bool Save()
         {
             bool success = true;
             if (this.idField == 0)
             {
+                Validate();
+                success &= (this.message.Length > 0) ? false : true;
+                if (!success) return success;
+
                 int addressId = 0;
                 if (this.addressField != null)
                 {
@@ -135,16 +153,79 @@ namespace HLGranite.Nisan
         {
             throw new NotImplementedException();
         }
+        #endregion
 
-        public bool Register()
+        #region IValidation methods
+        public bool IsExist
         {
-            return Save();
+            get
+            {
+                bool isExist = false;
+                using (DbConnection connection = factory.CreateConnection())
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    using (DbCommand command = connection.CreateCommand())
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        if (this.codeField.Length > 0)
+                        {
+                            command.CommandText = "SELECT Id FROM " + this.tableName + " WHERE Code=@Code;";
+                            command.Parameters.Add(CreateParameter("@Code", this.codeField));
+                        }
+                        else if (this.nameField.Length > 0)
+                        {
+                            command.CommandText = "SELECT Id FROM " + this.tableName + " WHERE Name=@Name;";
+                            command.Parameters.Add(CreateParameter("@Name", this.nameField));
+                        }
+
+                        object result = command.ExecuteScalar();
+                        if (result == null)
+                            isExist = false;
+                        else
+                        {
+                            isExist = true;
+                            this.message += "Name or code has been used. ";
+                        }
+                    }
+
+                    connection.Close();
+                }//end
+
+                return isExist;
+            }
         }
-        public bool Login(string password)
+        public bool IsValid
         {
-            Load();
-            if (this.idField == 0) return false;
-            return this.passwordField.Equals(password);
+            get
+            {
+                bool isValid = true;
+                if (this.codeField.Length == 0)
+                {
+                    isValid &= false;
+                    this.message += "Code cannot be blank. ";
+                }
+                if (this.nameField.Length == 0)
+                {
+                    isValid &= false;
+                    this.message += "Name cannot be blank. ";
+                }
+
+                return isValid;
+            }
         }
+        public string Message
+        {
+            get { return this.message; }
+        }
+        public void Validate()
+        {
+            bool valid = true;
+            valid &= IsValid;
+
+            //if code and name not empty then only go for database checking
+            if (valid) valid &= IsExist;
+        }
+        #endregion
     }
 }
