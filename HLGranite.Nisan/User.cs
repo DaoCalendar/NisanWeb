@@ -10,6 +10,7 @@ namespace HLGranite.Nisan
         public User()
             : base()
         {
+            System.Diagnostics.Debug.WriteLine("-- User --");
             Initialize();
         }
         public User(int id)
@@ -21,7 +22,9 @@ namespace HLGranite.Nisan
         }
         private void Initialize()
         {
+            System.Diagnostics.Debug.WriteLine("-- User.Initialize --");
             this.tableName = "Users";
+            this.codeField = string.Empty;
             this.nameField = string.Empty;
             this.passwordField = string.Empty;
             this.phoneField = string.Empty;
@@ -52,7 +55,7 @@ namespace HLGranite.Nisan
                         command.CommandText += " VALUES(@Type,@Code,@Name,@Password,@Email,@Phone,@AddressId,@Remarks,@Uri);";
                         command.CommandText += "SELECT SCOPE_IDENTITY();";
                         command.Parameters.Add(CreateParameter("@Type", this.typeField));
-                        command.Parameters.Add(CreateParameter("@Code", string.Empty));
+                        command.Parameters.Add(CreateParameter("@Code", this.codeField));
                         command.Parameters.Add(CreateParameter("@Name", this.nameField));
                         command.Parameters.Add(CreateParameter("@Password", this.passwordField));
                         command.Parameters.Add(CreateParameter("@Email", this.emailField));

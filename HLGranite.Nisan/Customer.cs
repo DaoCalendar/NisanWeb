@@ -10,7 +10,7 @@ namespace HLGranite.Nisan
             : base()
         {
             this.typeField = Role.Customer;
-            this.Name = name;
+            this.nameField = name;
             System.Diagnostics.Debug.WriteLine("-- Customer --");
         }
         //TODO: Make order

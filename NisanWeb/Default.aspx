@@ -12,7 +12,8 @@
                     <asp:Label ID="lblAgent" runat="server" />
                     <br />
                     <asp:Label runat="server" Text="Stone" CssClass="labeling" />
-                    <asp:DropDownList ID="ddlStock" runat="server" />
+                    <asp:DropDownList ID="ddlStock" runat="server" DataSourceID="ObjectDataSource1" 
+                        DataTextField="Type" DataValueField="Id" />
                     <br />
                     <asp:Label runat="server" Text="Name" CssClass="labeling" />
                     <asp:TextBox ID="txtName" runat="server" Width="200px" />
@@ -30,6 +31,9 @@
                     <br />
                     <asp:Label runat="server" Text="Remarks" CssClass="labeling" />
                     <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" />
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+                        SelectMethod="LoadAll" TypeName="HLGranite.Nisan.Stock">
+                    </asp:ObjectDataSource>
                 </asp:Panel>
                 <asp:Panel ID="Panel2" runat="server" GroupingText="Contact">
                     <asp:Label runat="server" Text="Email" CssClass="labeling" />

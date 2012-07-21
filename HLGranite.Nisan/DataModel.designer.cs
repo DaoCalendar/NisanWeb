@@ -26,15 +26,17 @@ namespace HLGranite.Nisan
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Customer))]
     public partial class User : DatabaseObject
     {
-        private Address addressField;
+        protected Address addressField;
 
-        private string nameField;
+        protected string codeField;
 
-        private string passwordField;
+        protected string nameField;
 
-        private string emailField;
+        protected string passwordField;
 
-        private string phoneField;
+        protected string emailField;
+
+        protected string phoneField;
 
         protected Role typeField;
 
@@ -47,6 +49,18 @@ namespace HLGranite.Nisan
             set
             {
                 this.addressField = value;
+            }
+        }
+
+        public string Code
+        {
+            get
+            {
+                return this.codeField;
+            }
+            set
+            {
+                this.codeField = value;
             }
         }
 

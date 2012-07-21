@@ -26,9 +26,9 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void AgentSaveTest()
         {
-            Agent target = new Agent("W001");
-            target.Name = "Fatimah bt Ali";
-            target.Email = "fatimah@hotmail.com";
+            Agent target = new Agent("W002");
+            target.Name = "roslan bt Ali";
+            target.Email = "roslan@hotmail.com";
 
             Address address = new Address();
             address.Street = "963 Jalan 6 Machang Bubok";
@@ -47,6 +47,14 @@ namespace HLGranite.Nisan.Test
             Designer target = new Designer("efa");
             target.Password = "efa123";
             target.Email = "efa@hotmail.com";
+            Assert.IsTrue(target.Save());
+        }
+        [TestMethod()]
+        public void AdminSaveTest()
+        {
+            Admin target = new Admin("hlgranite");
+            target.Name = "hlgranite";
+            target.Email = "hlgranite@gmail.com";
             Assert.IsTrue(target.Save());
         }
     }

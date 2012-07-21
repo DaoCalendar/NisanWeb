@@ -8,7 +8,6 @@ public partial class Catalog : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
     protected void Order_Click(object sender, EventArgs e)
     {
