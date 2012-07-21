@@ -351,7 +351,7 @@ namespace HLGranite.Nisan
 
         private List<TransactionItem> relatedItemsField;
 
-        private string quantityField;
+        private int quantityField;
 
         private TransactionStage statusField;
 
@@ -391,7 +391,7 @@ namespace HLGranite.Nisan
             }
         }
 
-        public string Quantity
+        public int Quantity
         {
             get
             {

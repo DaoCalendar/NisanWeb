@@ -38,6 +38,12 @@ namespace HLGranite.Nisan.Test
 
             Assert.IsTrue(target.Save());
         }
+        [TestMethod()]
+        public void AgentLoadTest()
+        {
+            Agent target = new Agent("W002");
+            Assert.IsTrue(target.Code.Length > 0);
+        }
         /// <summary>
         ///A test for Save
         ///</summary>

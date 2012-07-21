@@ -86,7 +86,42 @@ namespace HLGranite.Nisan
         }
         public override void Load()
         {
-            throw new NotImplementedException();
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                using (DbCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    if (this.idField > 0)
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField;
+                    else if (this.codeField.Length > 0)
+                    {
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Code=@Code";
+                        command.Parameters.Add(CreateParameter("@Code", this.codeField));
+                    }
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            this.idField = (int)reader["Id"];
+                            this.codeField = reader["Code"].ToString();
+                            this.nameField = reader["Name"].ToString();
+                            this.passwordField = reader["Password"].ToString();
+                            this.emailField = reader["Email"].ToString();
+                            this.phoneField = reader["Phone"].ToString();
+                            this.remarksField = reader["Remarks"].ToString();
+                            this.uriField = reader["Uri"].ToString();
+
+                            if (reader["AddressId"] != DBNull.Value)
+                                this.addressField = new Address((int)reader["AddressId"]);
+                        }
+                    }
+                }
+
+                connection.Close();
+            }//end
         }
         public override bool Delete()
         {

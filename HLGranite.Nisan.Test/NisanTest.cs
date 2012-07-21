@@ -61,6 +61,12 @@ namespace HLGranite.Nisan.Test
         //
         #endregion
 
+        [TestMethod()]
+        public void InheritanceTest()
+        {
+            Stock stock = new Stock(3);
+            Nisan target = new Nisan();
+        }
 
         /// <summary>
         ///A test for Save
@@ -68,12 +74,12 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void SaveTest()
         {
-            Nisan target = new Nisan(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.Save();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Nisan target = new Nisan(new Stock(3));
+            Stock stock = (Stock)target;
+            target.Name = "Ramli bin Taib";
+            target.Death = new System.DateTime(2012, 6, 21);
+            target.Save();
+            Assert.IsTrue(target.Id > 0);
         }
     }
 }

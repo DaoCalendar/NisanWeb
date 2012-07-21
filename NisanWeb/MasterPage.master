@@ -7,7 +7,7 @@
     <link href="Scripts/StyleSheet.css" rel="Stylesheet" type="text/css" />
     <link href="Scripts/Print.css" rel="stylesheet" media="print" type="text/css" />
     <link href="Scripts/sales.xml" type="application/rss+xml" rel="alternate" title="Latest Updates Feed" />
-    <%--<link href="Images/favicon.ico" rel="shortcut icon" type="image/ico" />--%>
+    <link href="Images/favicon.ico" rel="shortcut icon" type="image/ico" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

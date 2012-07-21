@@ -64,12 +64,36 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void SaveTest()
         {
-            Order target = new Order(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.Save();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Customer customer = new Customer("Ali");
+            customer.Email = "ali@gmail.com";
+
+            Address address = new Address();
+            address.Street = "2534 Lorong 2 Taman India";
+            address.Postal = "12345";
+            address.State = "Melaka";
+
+            Stock stock = new Stock(3);
+            Nisan nisan = new Nisan(stock);
+            nisan.Name = "Ramli" + new System.Random().Next(100) + " bin Taib";
+            nisan.Death = RandomDate();
+
+            Order target = new Order();
+            target.Agent = new Agent("W002");
+            target.Amount = stock.Price;
+            target.Quantity = 1;
+            target.Stock = nisan;
+            target.ShipTo = address;
+            Assert.IsTrue(target.Save());
+        }
+        private System.DateTime RandomDate()
+        {
+            System.Random random = new System.Random();
+            int year = 2011;
+            int month = 1;
+            month += random.Next(12);
+            int date = 1;
+            date += random.Next(27);
+            return new System.DateTime(year, month, date);
         }
     }
 }

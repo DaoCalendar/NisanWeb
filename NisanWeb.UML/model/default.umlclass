@@ -89,6 +89,10 @@
         <element xmi:type="uml:Property" href="default.uml#_ASq8QNApEeG0HuHKyQAhQg"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_AS7a8dApEeG0HuHKyQAhQg"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_ckxV8NMIEeGW6I5xDqRtqQ" type="3001">
+        <element xmi:type="uml:Property" href="default.uml#_ch9SgNMIEeGW6I5xDqRtqQ"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ckxV8dMIEeGW6I5xDqRtqQ"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_ZF7Kk9AVEeGsR_Ry4ivofw" showTitle="true"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_ZF7KlNAVEeGsR_Ry4ivofw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_ZF7KldAVEeGsR_Ry4ivofw"/>

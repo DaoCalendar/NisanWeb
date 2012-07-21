@@ -20,6 +20,7 @@ namespace HLGranite.Nisan
             this.Code = code;
             this.typeField = Role.Agent;
             //this.membersField = new List<Agent>();
+            base.Load();
         }
         public List<Order> GetSales()
         {

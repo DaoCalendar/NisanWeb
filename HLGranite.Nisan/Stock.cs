@@ -14,6 +14,7 @@ namespace HLGranite.Nisan
             : base()
         {
             Initialize();
+            System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
         /// <summary>
         /// Constructor for retrieve.
@@ -25,6 +26,7 @@ namespace HLGranite.Nisan
             Initialize();
             this.idField = id;
             Load();
+            System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
         /// <summary>
         /// Constructor for retrieve.
@@ -36,6 +38,7 @@ namespace HLGranite.Nisan
             Initialize();
             this.typeField = name;
             Load();
+            System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
 
         private void Initialize()

@@ -3,13 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-        Mailing Address:
         <h1>HL GRANITE MANUFACTURING</h1>
         <table width="100%">
         <tr>
             <td>
+                Mailing Address:
                 <h2>Head Quater:</h2>
                 <p />
                 600 & 601, Taman saga 2,<br />

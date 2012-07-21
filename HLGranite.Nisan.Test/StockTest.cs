@@ -97,8 +97,7 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void LoadTest()
         {
-            Stock target = new Stock();
-            target.Id = 1;
+            Stock target = new Stock(1);
             target.Load();
 
             Assert.IsTrue(target.Type.Length > 0);

@@ -12,6 +12,13 @@ namespace HLGranite.Nisan
         {
             Initialize();
         }
+        public Address(int id)
+            : base()
+        {
+            Initialize();
+            this.idField = id;
+            Load();
+        }
         private void Initialize()
         {
             this.tableName = "Addresses";
@@ -62,7 +69,32 @@ namespace HLGranite.Nisan
 
         public override void Load()
         {
-            throw new NotImplementedException();
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                using (DbCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    if (this.idField > 0)
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField;
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            this.idField = (int)reader["Id"];
+                            this.streetField = reader["Street"].ToString();
+                            this.postalField = reader["Postal"].ToString();
+                            this.stateField = reader["State"].ToString();
+                            this.remarksField = reader["Remarks"].ToString();
+                            this.uriField = reader["Uri"].ToString();
+                        }
+                    }
+                }
+
+                connection.Close();
+            }//end
         }
 
         public override bool Delete()

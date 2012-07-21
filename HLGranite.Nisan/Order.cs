@@ -31,7 +31,8 @@ namespace HLGranite.Nisan
                 success &= base.Save();
 
                 //insert into table Nisan
-                success &= this.Stock.Save();
+                if(this.Stock is Nisan)
+                    success &= (this.Stock as Nisan).Save();
 
                 //insert into table Order
                 using (DbConnection connection = factory.CreateConnection())
