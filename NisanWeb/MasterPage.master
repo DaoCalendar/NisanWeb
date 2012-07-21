@@ -48,6 +48,7 @@
                                             <asp:MenuItem Text="Order" Value="Order" NavigateUrl="~/Default.aspx" ImageUrl="~/Images/bullet.gif" />
                                             <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/List.aspx" ImageUrl="~/Images/bullet.gif" />
                                             <asp:MenuItem Text="Register" Value="Register" NavigateUrl="~/Register.aspx" ImageUrl="~/Images/bullet.gif" />
+                                            <asp:MenuItem Text="Muslim Calendar" Value="Muslim Calendar" NavigateUrl="~/Calendar.aspx" ImageUrl="~/Images/bullet.gif" />
                                         </Items>
                                     </asp:Menu>
                                 </asp:Panel>
