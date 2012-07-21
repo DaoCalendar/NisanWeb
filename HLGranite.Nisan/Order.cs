@@ -23,15 +23,19 @@ namespace HLGranite.Nisan
             bool success = true;
             if (this.idField == 0)
             {
+                if (this.Parent.CreatedBy is Customer)
+                    this.Parent.CreatedBy.Save();
                 //insert into table Transactions
                 this.Parent.CreatedAt = DateTime.Now;
+                if (this.Parent.CreatedBy == null || this.Parent.CreatedBy.Name.Length == 0)
+                    this.Parent.CreatedBy = this.agentField;
                 success &= this.Parent.Save();
 
                 //insert into table TransactionItems
                 success &= base.Save();
 
                 //insert into table Nisan
-                if(this.Stock is Nisan)
+                if (this.Stock is Nisan)
                     success &= (this.Stock as Nisan).Save();
 
                 //insert into table Order
@@ -43,17 +47,18 @@ namespace HLGranite.Nisan
                     using (DbCommand command = connection.CreateCommand())
                     {
                         command.CommandType = System.Data.CommandType.Text;
-                        command.CommandText = "INSERT INTO "+this.tableName;
+                        command.CommandText = "INSERT INTO " + this.tableName;
                         command.CommandText += "(ItemId,NisanId,Status)";
                         command.CommandText += " VALUES(@ItemId,@NisanId,@Status);";
+                        command.CommandText += "SELECT SCOPE_IDENTITY();";
                         command.Parameters.Add(CreateParameter("@ItemId", this.idField));
                         command.Parameters.Add(CreateParameter("@NisanId", this.Stock.Id));
                         command.Parameters.Add(CreateParameter("@Status", this.statusField));
-                        
+
                         object output = command.ExecuteScalar();
                         if (output != null)
                         {
-                            this.idField = (int)output;
+                            this.idField = Convert.ToInt32(output);
                             success &= true;
                         }
                         else
@@ -74,7 +79,7 @@ namespace HLGranite.Nisan
                         command.CommandType = System.Data.CommandType.Text;
                         command.CommandText = "UPDATE TransactionItems";
                         command.CommandText += " SET Amount=@Amount,Remarks=@Remarks,Uri=@Uri";
-                        command.CommandText += " WHERE Id=@Id";
+                        command.CommandText += " WHERE Id=@Id;";
                         command.Parameters.Add(CreateParameter("@Id", this.idField));
                         command.Parameters.Add(CreateParameter("@Amount", this.Amount));
                         command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
@@ -91,31 +96,6 @@ namespace HLGranite.Nisan
         }
         public List<Order> Own(string owner)
         {
-            //DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
-            //using (DbConnection connection = factory.CreateConnection())
-            //{
-            //    connection.ConnectionString = connectionString;
-            //    connection.Open();
-
-            //    //DataSet dataSet = new DataSet();
-            //    //DbDataAdapter adapter = new DbDataAdapter(sql, connection);
-            //    //adapter.Fill(dataSet);
-            //    using (DbCommand command = connection.CreateCommand())
-            //    {
-            //        command.CommandType = System.Data.CommandType.Text;
-            //        command.CommandText = "SELECT * FROM " + this.tableName+" WHERE 
-            //        using (DbDataReader reader = command.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                //TODO: Cloning room
-            //                Room room = new Room(
-            //                reader["Name"].ToString(), reader["Email"].ToString());
-            //                result.Add(room);
-            //            }
-            //        }
-            //    }
-            //}
             throw new NotImplementedException();
         }
         public Order Find(string name)

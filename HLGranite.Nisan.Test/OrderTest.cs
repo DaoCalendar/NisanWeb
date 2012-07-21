@@ -62,7 +62,7 @@ namespace HLGranite.Nisan.Test
         ///A test for Save
         ///</summary>
         [TestMethod()]
-        public void SaveTest()
+        public void CustomerSaveTest()
         {
             Customer customer = new Customer("Ali");
             customer.Email = "ali@gmail.com";
@@ -78,7 +78,35 @@ namespace HLGranite.Nisan.Test
             nisan.Death = RandomDate();
 
             Order target = new Order();
+            target.Status = TransactionStage.Confirmed;
             target.Agent = new Agent("W002");
+            target.Amount = stock.Price;
+            target.Quantity = 1;
+            target.Stock = nisan;
+            target.ShipTo = address;
+            target.Parent.CreatedBy = customer;//can be an agent
+            Assert.IsTrue(target.Save());
+        }
+        /// <summary>
+        ///A test for Save
+        ///</summary>
+        [TestMethod()]
+        public void AgentSaveTest()
+        {
+            Address address = new Address();
+            address.Street = "1234 Lorong 2 Taman Bangla";
+            address.Postal = "12345";
+            address.State = "Pahang";
+
+            Stock stock = new Stock(3);
+            Nisan nisan = new Nisan(stock);
+            nisan.Name = "Roslan" + new System.Random().Next(100) + " bt Mohd";
+            nisan.Death = RandomDate();
+
+            Agent agent = new Agent("W002");
+            Order target = new Order();
+            target.Status = TransactionStage.Confirmed;
+            target.Agent = agent;
             target.Amount = stock.Price;
             target.Quantity = 1;
             target.Stock = nisan;

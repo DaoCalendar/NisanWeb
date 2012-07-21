@@ -94,10 +94,10 @@ namespace HLGranite.Nisan
                 {
                     command.CommandType = System.Data.CommandType.Text;
                     if (this.idField > 0)
-                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField;
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField + ";";
                     else if (this.codeField.Length > 0)
                     {
-                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Code=@Code";
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Code=@Code;";
                         command.Parameters.Add(CreateParameter("@Code", this.codeField));
                     }
 

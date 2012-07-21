@@ -28,7 +28,7 @@ namespace HLGranite.Nisan
                     using (DbCommand command = connection.CreateCommand())
                     {
                         command.CommandType = System.Data.CommandType.Text;
-                        command.CommandText = "INSERT INTO " + this.tableName;
+                        command.CommandText = "INSERT INTO TransactionItems";
                         command.CommandText += "(Type,Parent,Amount,Remarks,Uri)";
                         command.CommandText += " VALUES(@Type,@Parent,@Amount,@Remarks,@Uri);";
                         command.CommandText += "SELECT SCOPE_IDENTITY();";
@@ -41,7 +41,7 @@ namespace HLGranite.Nisan
                         object output = command.ExecuteScalar();
                         if (output != null)
                         {
-                            this.idField = (int)output;
+                            this.idField = Convert.ToInt32(output);
                             success = true;
                         }
                     }
@@ -60,12 +60,11 @@ namespace HLGranite.Nisan
                         command.CommandType = System.Data.CommandType.Text;
                         command.CommandText = "UPDATE TransactionItems";
                         command.CommandText += " SET Amount=@Amount,Remarks=@Remarks,Uri=@Uri";
-                        command.CommandText += " WHERE Id=@Id";
+                        command.CommandText += " WHERE Id=@Id;";
                         command.Parameters.Add(CreateParameter("@Id", this.idField));
                         command.Parameters.Add(CreateParameter("@Amount", this.Amount));
                         command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
                         command.Parameters.Add(CreateParameter("@Uri", this.uriField));
-
                         success = (command.ExecuteNonQuery() > 0) ? true : false;
                     }
 

@@ -76,7 +76,7 @@ namespace HLGranite.Nisan
                         command.Parameters.Add(CreateParameter("@Name", this.nameField));
                         command.Parameters.Add(CreateParameter("@Jawi", this.jawiField));
                         command.Parameters.Add(CreateParameter("@Born", born));
-                        command.Parameters.Add(CreateParameter("@Death", death));                       
+                        command.Parameters.Add(CreateParameter("@Death", death));
                         command.Parameters.Add(CreateParameter("@Deathm", deathm));
                         command.Parameters.Add(CreateParameter("@Age", this.ageField));
                         command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));

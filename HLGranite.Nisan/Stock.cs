@@ -60,7 +60,7 @@ namespace HLGranite.Nisan
                     {
                         command.CommandType = System.Data.CommandType.Text;
                         command.CommandText = "INSERT INTO " + this.tableName + "(Type,Price,Remarks,Uri)";
-                        command.CommandText += " VALUES(@Type,@Price,@Remarks,@Uri)";
+                        command.CommandText += " VALUES(@Type,@Price,@Remarks,@Uri);";
                         command.Parameters.Add(CreateParameter("@Type", this.typeField));
                         command.Parameters.Add(CreateParameter("@Price", this.priceField));
                         command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
@@ -83,7 +83,7 @@ namespace HLGranite.Nisan
                         command.CommandType = System.Data.CommandType.Text;
                         command.CommandText = "UPDATE " + this.tableName;
                         command.CommandText += " SET Type=@Type,Price=@Price,Remarks=@Remarks,Uri=@Uri";
-                        command.CommandText += " WHERE Id=@Id";
+                        command.CommandText += " WHERE Id=@Id;";
                         command.Parameters.Add(CreateParameter("@Id", this.idField));
                         command.Parameters.Add(CreateParameter("@Type", this.typeField));
                         command.Parameters.Add(CreateParameter("@Price", this.priceField));

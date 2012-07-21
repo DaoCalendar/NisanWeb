@@ -77,7 +77,7 @@ namespace HLGranite.Nisan
                 {
                     command.CommandType = System.Data.CommandType.Text;
                     if (this.idField > 0)
-                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField;
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField + ";";
 
                     using (DbDataReader reader = command.ExecuteReader())
                     {

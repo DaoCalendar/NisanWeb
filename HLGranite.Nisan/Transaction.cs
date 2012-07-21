@@ -17,6 +17,8 @@ namespace HLGranite.Nisan
         {
             this.tableName = "Transactions";
             this.createdByField = new User();
+            this.noField = string.Empty;
+            this.referenceField = string.Empty;
             this.itemsField = new List<TransactionItem>();
         }
         public override bool Save()
@@ -45,7 +47,7 @@ namespace HLGranite.Nisan
                         object output = command.ExecuteScalar();
                         if (output != null)
                         {
-                            this.idField = (int)output;
+                            this.idField = Convert.ToInt32(output);
                             success = true;
                         }
                     }
