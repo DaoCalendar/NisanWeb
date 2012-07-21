@@ -68,7 +68,7 @@ namespace HLGranite.Nisan.Test
         {
             User user = new User("W002");
             bool expected = true;
-            bool actual = user.Login();
+            bool actual = user.Login("W002");
             Assert.AreEqual(expected, actual);
         }
         [TestMethod()]
@@ -76,7 +76,7 @@ namespace HLGranite.Nisan.Test
         {
             User user = new User("A999");
             bool expected = false;
-            bool actual = user.Login();
+            bool actual = user.Login("W002");
             Assert.AreEqual(expected, actual);
         }
     }

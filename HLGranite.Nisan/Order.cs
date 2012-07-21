@@ -106,6 +106,23 @@ namespace HLGranite.Nisan
             //SELECT Users.*,Addresses.Street
             //FROM Users LEFT OUTER JOIN Addresses ON Users.AddressId=Addresses.Id
             //WHERE Users.Id = ??
+
+            /**
+             * SELECT Orders.Status,Nisans.*
+,Users.Id,Users.Code,Users.Name AS Customer
+,TransactionItems.Id AS TransactionItemId
+,Transactions.Id AS TransactionId,Transactions.No AS No
+FROM Orders JOIN Nisans ON Orders.NisanId=Nisans.Id
+JOIN TransactionItems ON Orders.ItemId=TransactionItems.Id
+JOIN Transactions ON TransactionItems.Parent=Transactions.Id
+JOIN Users ON Transactions.CreatedBy=Users.Id
+--WHERE Nisans.Id=14;
+--WHERE Nisans.Name = 'Roslan34 bt Mohd'
+WHERE Users.Name='Ali'
+--WHERE Users.Code='W002';
+
+--select * from nisans;
+             */
         }
     }
 }

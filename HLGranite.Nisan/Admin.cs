@@ -13,6 +13,10 @@ namespace HLGranite.Nisan
             this.codeField = code;
             System.Diagnostics.Debug.WriteLine("-- Admin --");
         }
+        public List<Agent> LoadAllAgents()
+        {
+            throw new NotImplementedException();
+        }
         public void Pay(Agent agent, decimal amount)
         {
             throw new NotImplementedException();

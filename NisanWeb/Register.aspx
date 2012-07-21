@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:Panel runat="server" GroupingText="Register">
+    <asp:Panel runat="server" ID="Panel1" GroupingText="Register">
         <asp:Label runat="server" Text="Code" CssClass="labeling" />
         <asp:TextBox ID="txtCode" runat="server" />
         <br />
@@ -32,6 +32,7 @@
     </asp:Panel>
     <br />
     <div class="center">
-        <asp:Button ID="Button1" runat="server" Text="Submit" />
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" onclick="btnSubmit_Click" />
     </div>
+    <asp:Label ID="lblMessage" runat="server" CssClass="warn" />
 </asp:Content>
