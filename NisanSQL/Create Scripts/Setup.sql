@@ -5,6 +5,15 @@ GO
 
 USE [Nisan]
 
+--drop table commissions;
+--drop table Orders;
+--drop table transactionItems;
+--drop table Transactions;
+--drop table nisans;
+--drop table stocks;
+--drop table users;
+--drop table addresses;
+
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[Addresses]') AND OBJECTPROPERTY(id, N'IsTable') = 1)
 CREATE TABLE [Addresses] (
 	[Id]					int IDENTITY,
@@ -148,3 +157,5 @@ INSERT INTO Stocks(Type,Price) VALUES('2½'' Batu Hitam(L)',500);
 INSERT INTO Stocks(Type,Price) VALUES('2½'' Batu Hitam(P)',500);
 INSERT INTO Stocks(Type,Price) VALUES('2½'' Batu Hijau(L)',500);
 INSERT INTO Stocks(Type,Price) VALUES('2½'' Batu Hijau(P)',500);
+
+insert into users(Type,Code,Name,Password,Email) values(0,'hlgranite','hlgranite','hlgranite','hlgranite@gmail.com');

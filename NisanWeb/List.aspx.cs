@@ -10,12 +10,18 @@ public partial class List : System.Web.UI.Page
     private User user;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (this.Session["User"] != null) user = (User)Session["User"];
-        //ObjectDataSource1.TypeName
+        if (this.Session["User"] != null)
+            user = (User)Session["User"];
+
         //todo: handle different user role
         if (user is Agent)
         {
             GridView1.DataSource = (user as Agent).GetSales();
+            GridView1.DataBind();
+        }
+        else if (user is Admin)
+        {
+            GridView1.DataSource = (user as Admin).GetAllSales();
             GridView1.DataBind();
         }
 

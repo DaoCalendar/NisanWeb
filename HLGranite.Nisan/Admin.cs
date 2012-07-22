@@ -19,6 +19,10 @@ namespace HLGranite.Nisan
             this.codeField = code;
             System.Diagnostics.Debug.WriteLine("-- Admin --");
         }
+        public List<Order> GetAllSales()
+        {
+            return base.GetSales(string.Empty);
+        }
         public List<Agent> LoadAllAgents()
         {
             throw new NotImplementedException();

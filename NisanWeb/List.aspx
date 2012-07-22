@@ -15,11 +15,12 @@
                 <Columns>
                     <asp:TemplateField>
                         <HeaderTemplate>
-                            Id | Created At | Stock | Name | Amount | Amount
+                            Id | Created At | Sold To | Stock | Name | Amount | Amount
                         </HeaderTemplate>
                         <ItemTemplate>
                             <%# Eval("Id") %>
                             <%# Eval("Parent.CreatedAt","{0:dd/MM/yyyy}") %>
+                            <%# Eval("Agent.Code") %>
                             <%# Eval("Stock.Type") %>
                             <%# Eval("Stock.Name") %>
                             <%# Eval("Amount") %>
