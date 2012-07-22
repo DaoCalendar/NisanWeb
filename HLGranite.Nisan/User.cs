@@ -141,7 +141,11 @@ namespace HLGranite.Nisan
                             this.uriField = reader["Uri"].ToString();
 
                             if (reader["AddressId"] != DBNull.Value)
-                                this.addressField = new Address((int)reader["AddressId"]);
+                            {
+                                int addressId = Convert.ToInt32(reader["AddressId"]);
+                                if (addressId > 0)
+                                    this.addressField = new Address(addressId);
+                            }
                         }
                     }
                 }

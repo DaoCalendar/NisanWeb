@@ -55,7 +55,7 @@ CREATE TABLE [Nisans] (
 	[Jawi]					nvarchar(50),
 	[Born]					datetime,
 	[Death]					datetime,
-	[Deathm]				datetime,
+	[Deathm]				varchar(10),		--stored string ie. 1433-02-01
 	[Age]					smallint,
 	[Remarks]				nvarchar(255),
 	[Uri]					nvarchar(255),
@@ -96,12 +96,17 @@ IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[Orders
 CREATE TABLE [Orders] (
 	[Id]					int IDENTITY,
 	[ItemId]				int NOT NULL,		--TransactionItems.Id
+	[Quantity]				int NOT NULL DEFAULT 0,
 	[NisanId]				int NOT NULL,		--Nisans.Id
+	[AddressId]				int NOT NULL,
 	[Status]				smallint NOT NULL,	--TransactionStage
 CONSTRAINT [PK_Orders] PRIMARY KEY([Id]),
 CONSTRAINT [FK_Orders1] FOREIGN KEY ([ItemId])	REFERENCES [TransactionItems]([Id]),
-CONSTRAINT [FK_Orders2] FOREIGN KEY ([NisanId]) REFERENCES [Nisans]([Id])
+CONSTRAINT [FK_Orders2] FOREIGN KEY ([NisanId]) REFERENCES [Nisans]([Id]),
+CONSTRAINT [FK_Orders3] FOREIGN KEY ([AddressId]) REFERENCES [Addresses]([Id])
 )
+--alter table Orders add AddressId int;
+--alter table Orders add FOREIGN KEY(AddressId) REFERENCES Addresses(Id);
 GO
 
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[Commissions]') AND OBJECTPROPERTY(id, N'IsTable') = 1)

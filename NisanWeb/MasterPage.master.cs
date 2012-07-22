@@ -7,12 +7,17 @@ using HLGranite.Nisan;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    private User user;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (this.Session["User"] != null)
         {
             pnlUser.Visible = false;
             linLogout.Visible = true;
+            linUser.Visible = true;
+
+            user = (User)this.Session["User"];
+            linUser.Text = user.Code;
         }
     }
     //todo: btnSearch_Click
@@ -25,9 +30,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
         System.Diagnostics.Debug.WriteLine("login...");
         User user = new User(txtUser.Text);
         bool success = user.Login(txtPasswod.Text);
-        if (success) this.Session.Add("User", user);
+        if (success)
+        {
+            this.Session.Add("User", user);
+            linUser.Text = user.Code;
+        }
+
         pnlUser.Visible = !success;
         linLogout.Visible = success;
+        linUser.Visible = success;
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {

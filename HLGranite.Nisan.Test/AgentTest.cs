@@ -1,15 +1,18 @@
 ﻿using HLGranite.Nisan;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+
 namespace HLGranite.Nisan.Test
 {
-    
-    
+
+
     /// <summary>
-    ///This is a test class for NisanTest and is intended
-    ///to contain all NisanTest Unit Tests
+    ///This is a test class for AgentTest and is intended
+    ///to contain all AgentTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class NisanTest
+    public class AgentTest
     {
 
 
@@ -61,26 +64,16 @@ namespace HLGranite.Nisan.Test
         //
         #endregion
 
-        [TestMethod()]
-        public void InheritanceTest()
-        {
-            Stock stock = new Stock(3);
-            Nisan target = new Nisan();
-        }
 
         /// <summary>
-        ///A test for Save
+        ///A test for GetSales
         ///</summary>
         [TestMethod()]
-        public void SaveTest()
+        public void GetSalesTest()
         {
-            Nisan target = new Nisan(new Stock(3));
-            Stock stock = (Stock)target;
-            target.Name = "Roslan bt Ismail";
-            target.Death = new System.DateTime(2012, 6, 21);
-            target.Deathm = new System.DateTime(1423, 7, 23);
-            target.Save();
-            Assert.IsTrue(target.Id > 0);
+            Agent target = new Agent("W002");
+            List<Order> actual = target.GetSales();
+            Assert.AreNotEqual(0, actual.Count);
         }
     }
 }

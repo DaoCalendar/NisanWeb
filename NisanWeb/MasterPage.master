@@ -24,6 +24,7 @@
                         <asp:TextBox ID="txtPasswod" runat="server" TextMode="Password" />
                         <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" />
                     </asp:Panel>
+                    <asp:LinkButton ID="linUser" runat="server" Visible="false" CssClass="navi" />
                     <asp:LinkButton ID="linLogout" runat="server" Visible="false" CssClass="navi" OnClick="btnLogout_Click" Text="Logout" />
                 </span>
                 <div id="logo">

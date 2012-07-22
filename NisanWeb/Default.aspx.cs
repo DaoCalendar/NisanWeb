@@ -84,9 +84,42 @@ public partial class _Default : System.Web.UI.Page
         ddlState.DataSource = State.LoadAll();
         ddlState.DataBind();
     }
+    private DateTime ToDate(string sender)
+    {
+        int year = Convert.ToInt32(sender.Substring(6, 4));
+        int month = Convert.ToInt32(sender.Substring(3, 2));
+        int day = Convert.ToInt32(sender.Substring(0, 2));
+        return new DateTime(year, month, day);
+    }
     protected void Submit_Click(object sender, EventArgs e)
     {
+        Address address = new Address();
+        address.Street = txtAddress.Text;
+        address.Postal = txtPostal.Text;
+        address.State = ddlState.Text;
 
+        stockId = Convert.ToInt32(ddlStock.SelectedValue);
+        HLGranite.Nisan.Stock stock = new HLGranite.Nisan.Stock(stockId);
+        Nisan nisan = new Nisan(stock);
+        nisan.Name = txtName.Text.Trim();
+        nisan.Death = ToDate(txtDeath.Text);
+
+        Agent agent = new Agent("W002");
+
+        Order target = new Order();
+        target.Status = TransactionStage.Confirmed;
+        target.Agent = agent;
+        target.Amount = stock.Price;
+        target.Quantity = 1;
+        target.Stock = nisan;
+        target.ShipTo = address;
+        bool success = target.Save();
+        if (success)
+        {
+            Panel1.Enabled = false;
+            Panel2.Enabled = false;
+            btnSubmit.Enabled = false;
+        }
     }
     protected void txtDeath_TextChanged(object sender, EventArgs e)
     {

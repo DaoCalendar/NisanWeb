@@ -53,6 +53,9 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_7c4S8NDhEeGxUo6FUM1Y0A" name="Uri" type="_grRZoNCJEeGm2uMWAtE-6Q" aggregation="composite"/>
+    <ownedAttribute xmi:id="_VJcb8NNMEeGW6I5xDqRtqQ" name="message" visibility="protected" aggregation="composite">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
     <ownedOperation xmi:id="_QSp5pqMcEeGmn_qORpoPMA" name="Save" isAbstract="true"/>
     <ownedOperation xmi:id="_QSp5qKMcEeGmn_qORpoPMA" name="Load" isAbstract="true"/>
     <ownedOperation xmi:id="_Qu898NAoEeG0HuHKyQAhQg" name="Delete" isAbstract="true"/>
@@ -272,5 +275,16 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OmcI8dCOEeGQxpa24Ux5UA" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OmcI8NCOEeGQxpa24Ux5UA" value="1"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ZcPG0NNMEeGW6I5xDqRtqQ" name="IValidation">
+    <ownedAttribute xmi:id="_abGi0NNMEeGW6I5xDqRtqQ" name="IsExist" aggregation="composite">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_bu330NNMEeGW6I5xDqRtqQ" name="IsValid" aggregation="composite">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_dUKaoNNMEeGW6I5xDqRtqQ" name="Validate">
+      <ownedParameter xmi:id="_emBEENNMEeGW6I5xDqRtqQ" direction="return"/>
+    </ownedOperation>
   </packagedElement>
 </uml:Package>

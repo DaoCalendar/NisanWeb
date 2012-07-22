@@ -25,7 +25,7 @@ namespace HLGranite.Nisan
         {
             Initialize();
             this.idField = id;
-            Load();
+            this.Load();
             System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
         /// <summary>
@@ -37,7 +37,7 @@ namespace HLGranite.Nisan
         {
             Initialize();
             this.typeField = name;
-            Load();
+            this.Load();
             System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
 

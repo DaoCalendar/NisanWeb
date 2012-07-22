@@ -65,7 +65,14 @@ namespace HLGranite.Nisan
                         object deathm = DBNull.Value;
                         if (this.bornField != DateTime.MinValue) born = this.bornField;
                         if (this.deathField != DateTime.MinValue) death = this.deathField;
-                        if (this.deathmField != DateTime.MinValue) deathm = this.deathmField;
+                        if (this.deathmField != DateTime.MinValue)
+                        {
+                            //due to MSSQL Database fail to store datetime earlier than 1700
+                            deathm = string.Format("{0}-{1}-{2}",
+                                this.deathmField.Year.ToString("0000"),
+                                this.deathmField.Month.ToString("00"),
+                                this.deathmField.Day.ToString("00"));
+                        }
 
                         command.CommandType = System.Data.CommandType.Text;
                         command.CommandText = "INSERT INTO " + this.tableName;
@@ -100,9 +107,10 @@ namespace HLGranite.Nisan
 
             return success;
         }
-        public override void Load()
-        {
-        }
+        //public override void Load()
+        //{
+        //    throw new NotImplementedException();
+        //}
         /// <summary>
         /// TODO: Stock.Delete.
         /// </summary>

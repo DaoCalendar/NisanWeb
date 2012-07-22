@@ -38,6 +38,9 @@ namespace HLGranite.Nisan
                 if (this.Stock is Nisan)
                     success &= (this.Stock as Nisan).Save();
 
+                //insert into table address
+                success &= this.shipToField.Save();
+
                 //insert into table Order
                 using (DbConnection connection = factory.CreateConnection())
                 {
@@ -48,11 +51,13 @@ namespace HLGranite.Nisan
                     {
                         command.CommandType = System.Data.CommandType.Text;
                         command.CommandText = "INSERT INTO " + this.tableName;
-                        command.CommandText += "(ItemId,NisanId,Status)";
-                        command.CommandText += " VALUES(@ItemId,@NisanId,@Status);";
+                        command.CommandText += "(ItemId,Quantity,NisanId,AddressId,Status)";
+                        command.CommandText += " VALUES(@ItemId,@Quantity,@NisanId,@AddressId,@Status);";
                         command.CommandText += "SELECT SCOPE_IDENTITY();";
                         command.Parameters.Add(CreateParameter("@ItemId", this.idField));
                         command.Parameters.Add(CreateParameter("@NisanId", this.Stock.Id));
+                        command.Parameters.Add(CreateParameter("@Quantity", this.quantityField));
+                        command.Parameters.Add(CreateParameter("@AddressId", this.shipToField.Id));
                         command.Parameters.Add(CreateParameter("@Status", this.statusField));
 
                         object output = command.ExecuteScalar();

@@ -100,10 +100,11 @@ namespace HLGranite.Nisan.Test
 
             Stock stock = new Stock(3);
             Nisan nisan = new Nisan(stock);
-            nisan.Name = "Roslan" + new System.Random().Next(100) + " bt Mohd";
+            nisan.Name = "Che Som" + new System.Random().Next(100) + " bin Said";
             nisan.Death = RandomDate();
 
             Agent agent = new Agent("W002");
+
             Order target = new Order();
             target.Status = TransactionStage.Confirmed;
             target.Agent = agent;

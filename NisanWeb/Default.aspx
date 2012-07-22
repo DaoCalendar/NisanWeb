@@ -55,7 +55,7 @@
                 </asp:Panel>
                 <br />
                 <div class="center">
-                    <asp:Button runat="server" Text="Submit" onclick="Submit_Click" />
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" onclick="Submit_Click" />
                 </div>
             </div>
         </ContentTemplate>
