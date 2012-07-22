@@ -6,6 +6,12 @@ namespace HLGranite.Nisan
 {
     public partial class Carrier
     {
+        public Carrier()
+            : base()
+        {
+            this.typeField = Role.Carrier;
+            System.Diagnostics.Debug.WriteLine("-- Carrier --");
+        }
         public Carrier(string code)
             : base()
         {

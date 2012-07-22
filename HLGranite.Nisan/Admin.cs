@@ -6,6 +6,12 @@ namespace HLGranite.Nisan
 {
     public partial class Admin
     {
+        public Admin()
+            : base()
+        {
+            this.typeField = Role.Admin;
+            System.Diagnostics.Debug.WriteLine("-- Admin --");
+        }
         public Admin(string code)
             : base()
         {

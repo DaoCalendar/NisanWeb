@@ -41,6 +41,68 @@ namespace HLGranite.Nisan
             this.message = string.Empty;
             //this.addressField = new Address();
         }
+        public User GetRole()
+        {
+            User user = new User();
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                using (DbCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    if (this.idField > 0)
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField + ";";
+                    else if (this.codeField.Length > 0)
+                    {
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Code=@Code;";
+                        command.Parameters.Add(CreateParameter("@Code", this.codeField));
+                    }
+
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Role role = (Role)Convert.ToInt32(reader["Type"]);
+                            switch (role)
+                            {
+                                case Role.Admin:
+                                    user = new Admin();
+                                    break;
+                                case Role.Designer:
+                                    user = new Designer();
+                                    break;
+                                case Role.Agent:
+                                    user = new Agent();
+                                    break;
+                                case Role.Customer:
+                                default:
+                                    user = new Customer();
+                                    break;
+                            }
+                            user.Id = Convert.ToInt32(reader["Id"]);
+                            user.Code = reader["Code"].ToString();
+                            user.Name = reader["Name"].ToString();
+                            user.Password = reader["Password"].ToString();
+                            user.Email = reader["Email"].ToString();
+                            user.Phone = reader["Phone"].ToString();
+                            user.Remarks = reader["Remarks"].ToString();
+                            user.Uri = reader["Uri"].ToString();
+
+                            if (reader["AddressId"] != DBNull.Value)
+                            {
+                                int addressId = Convert.ToInt32(reader["AddressId"]);
+                                if (addressId > 0) user.Address = new Address(addressId);
+                            }
+                        }
+                    }
+                }
+
+                connection.Close();
+            }//end
+
+            return user;
+        }
         public bool Register()
         {
             return Save();
@@ -131,7 +193,8 @@ namespace HLGranite.Nisan
                     {
                         while (reader.Read())
                         {
-                            this.idField = (int)reader["Id"];
+                            this.idField = Convert.ToInt32(reader["Id"]);
+                            this.typeField = (Role)Convert.ToInt32(reader["Type"]);
                             this.codeField = reader["Code"].ToString();
                             this.nameField = reader["Name"].ToString();
                             this.passwordField = reader["Password"].ToString();

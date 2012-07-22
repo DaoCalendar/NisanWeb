@@ -6,6 +6,12 @@ namespace HLGranite.Nisan
 {
     public partial class Designer
     {
+        public Designer()
+            : base()
+        {
+            this.typeField = Role.Designer;
+            System.Diagnostics.Debug.WriteLine("-- Designer --");
+        }
         public Designer(string code)
             : base()
         {

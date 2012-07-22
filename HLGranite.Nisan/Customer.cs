@@ -6,6 +6,12 @@ namespace HLGranite.Nisan
 {
     public partial class Customer
     {
+        public Customer()
+            : base()
+        {
+            this.typeField = Role.Customer;
+            System.Diagnostics.Debug.WriteLine("-- Customer --");
+        }
         public Customer(string name)
             : base()
         {

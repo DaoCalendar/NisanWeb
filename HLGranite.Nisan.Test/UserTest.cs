@@ -66,9 +66,9 @@ namespace HLGranite.Nisan.Test
         [TestMethod()]
         public void LoginPassTest()
         {
-            User user = new User("W002");
+            User user = new User("agent");
             bool expected = true;
-            bool actual = user.Login("W002");
+            bool actual = user.Login("agent");
             Assert.AreEqual(expected, actual);
         }
         [TestMethod()]
@@ -78,6 +78,35 @@ namespace HLGranite.Nisan.Test
             bool expected = false;
             bool actual = user.Login("W002");
             Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void GetRoleTest()
+        {
+            User user = new User("agent");
+            bool expected = true;
+            bool actual = user.Login("agent");
+            Assert.AreEqual(expected, actual);
+
+            user = user.GetRole();
+            if (user is Agent)
+                Assert.IsTrue(true);
+            else
+                Assert.IsTrue(false);
+        }
+        [TestMethod()]
+        public void CastRoleTest()
+        {
+            User user = new User("agent");
+            bool expected = true;
+            bool actual = user.Login("agent");
+            Assert.AreEqual(expected, actual);
+
+            user = user.GetRole();
+            User target = (User)user;
+            if (target is Agent)
+                Assert.IsTrue(true);
+            else
+                Assert.IsTrue(false);
         }
         [TestMethod()]
         public void IsExistTest()

@@ -103,7 +103,7 @@ namespace HLGranite.Nisan.Test
             nisan.Name = "Che Som" + new System.Random().Next(100) + " bin Said";
             nisan.Death = RandomDate();
 
-            Agent agent = new Agent("W002");
+            Agent agent = new Agent("agent");
 
             Order target = new Order();
             target.Status = TransactionStage.Confirmed;

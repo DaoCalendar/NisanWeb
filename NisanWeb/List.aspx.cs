@@ -10,9 +10,13 @@ public partial class List : System.Web.UI.Page
     private User user;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (this.Session["User"] != null)
+        if (this.Session["User"] != null) user = (User)Session["User"];
+        //ObjectDataSource1.TypeName
+        //todo: handle different user role
+        if (user is Agent)
         {
-            user = (User)Session["User"];
+            GridView1.DataSource = (user as Agent).GetSales();
+            GridView1.DataBind();
         }
 
         if (!IsPostBack)
@@ -20,13 +24,5 @@ public partial class List : System.Web.UI.Page
     }
     private void Initialize()
     {
-        //ObjectDataSource1.TypeName
-        //todo: handle different user role
-        if (user != null)
-        {
-            Agent agent = new Agent(user.Code);
-            GridView1.DataSource = agent.GetSales();
-            GridView1.DataBind();
-        }
     }
 }

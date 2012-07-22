@@ -32,6 +32,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         bool success = user.Login(txtPasswod.Text);
         if (success)
         {
+            user = user.GetRole();
             this.Session.Add("User", user);
             linUser.Text = user.Code;
         }

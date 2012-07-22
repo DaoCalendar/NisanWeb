@@ -11,17 +11,33 @@ public partial class _Default : System.Web.UI.Page
     private int stockId = 0;
     private User user;
     private MuslimCalendar calendar;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //set user
         if (this.Session["User"] != null) user = (User)this.Session["User"];
+        if (user != null)
+        {
+            txtAgent.Text = user.Code;
+            lblAgent.Text = user.Name;
+            txtEmail.Text = user.Email;
+            txtPhone.Text = user.Phone;
+        }
+
+        //set choosen stock
         if (Request.QueryString["Stock"] != null)
             this.stockId = Convert.ToInt32(Request.QueryString["Stock"]);
+        if (this.stockId > 0)
+            ddlStock.SelectedValue = this.stockId.ToString();
+
+        //set muslim calendar
         string file = this.MapPath("App_Data\\muslimcal.xml");
         calendar = new MuslimCalendar(ReadXml(file));
 
         if (!IsPostBack)
             Initialize();
     }
+
     private DataTable ReadXml(string fileName)
     {
         DataTable table = new DataTable();
@@ -61,25 +77,6 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void Initialize()
     {
-        //done at web page
-        //define stock dropdownlist
-        //Stock stock = new Stock();
-        //ddlStock.DataSource = stock.LoadAll();
-        //ddlStock.DataValueField = "Id";
-        //ddlStock.DataTextField = "Type";
-        //ddlStock.DataBind();
-
-        if (user != null)
-        {
-            txtAgent.Text = user.Code;
-            lblAgent.Text = user.Name;
-            txtEmail.Text = user.Email;
-            txtPhone.Text = user.Phone;
-        }
-
-        if (this.stockId > 0)
-            ddlStock.SelectedValue = this.stockId.ToString();
-
         //define state dropdownlist
         ddlState.DataSource = State.LoadAll();
         ddlState.DataBind();
@@ -91,6 +88,7 @@ public partial class _Default : System.Web.UI.Page
         int day = Convert.ToInt32(sender.Substring(0, 2));
         return new DateTime(year, month, day);
     }
+
     protected void Submit_Click(object sender, EventArgs e)
     {
         Address address = new Address();
@@ -104,11 +102,9 @@ public partial class _Default : System.Web.UI.Page
         nisan.Name = txtName.Text.Trim();
         nisan.Death = ToDate(txtDeath.Text);
 
-        Agent agent = new Agent("W002");
-
         Order target = new Order();
         target.Status = TransactionStage.Confirmed;
-        target.Agent = agent;
+        target.Agent = user as Agent;
         target.Amount = stock.Price;
         target.Quantity = 1;
         target.Stock = nisan;
