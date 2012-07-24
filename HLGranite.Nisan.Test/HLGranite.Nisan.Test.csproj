@@ -48,9 +48,6 @@
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AuthoringTests.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\HLGranite.Nisan\HLGranite.Nisan.csproj">
       <Project>{AA5C622B-9B36-4846-9DE6-72F846723920}</Project>
       <Name>HLGranite.Nisan</Name>
