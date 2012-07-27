@@ -6,7 +6,8 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div>
-                <asp:Panel ID="Panel1" runat="server" GroupingText="Information">
+                <fieldset id="Panel1" class="shadowbox" runat="server" style="width:400px;">
+                    <legend>Information</legend>
                     <asp:Label runat="server" Text="Agent" CssClass="labeling" />
                     <asp:TextBox ID="txtAgent" runat="server" Width="40px" />
                     <asp:Label ID="lblAgent" runat="server" />
@@ -14,9 +15,14 @@
                     <asp:Label runat="server" Text="Stone" CssClass="labeling" />
                     <asp:DropDownList ID="ddlStock" runat="server" DataSourceID="ObjectDataSource1" 
                         DataTextField="Type" DataValueField="Id" />
+                    <asp:Label runat="server" Text="*" ToolTip="Compulsory" CssClass="warn" />
                     <br />
                     <asp:Label runat="server" Text="Name" CssClass="labeling" />
                     <asp:TextBox ID="txtName" runat="server" Width="200px" />
+                    <asp:Label runat="server" Text="*" ToolTip="Compulsory" CssClass="warn" />
+                    <br />
+                    <asp:Label runat="server" Text="Jawi" CssClass="labeling" />
+                    <asp:TextBox ID="txtJawi" runat="server" Width="200px" />
                     <br />
                     <asp:Label runat="server" Text="Death" CssClass="labeling" />
                     <asp:TextBox ID="txtDeath" runat="server" ToolTip="dd/MM/yyyy" Width="110px" 
@@ -33,27 +39,28 @@
                     <asp:Label ID="lblDeathm" runat="server"></asp:Label>
                     <br />
                     <asp:Label runat="server" Text="Remarks" CssClass="labeling" />
-                    <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" />
+                    <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" Width="200px" />
                     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                         SelectMethod="LoadAll" TypeName="HLGranite.Nisan.Stock">
                     </asp:ObjectDataSource>
-                </asp:Panel>
-                <asp:Panel ID="Panel2" runat="server" GroupingText="Contact">
-                    <asp:Label runat="server" Text="Email" CssClass="labeling" />
+                </fieldset>
+                <fieldset id="Panel2" class="shadowbox" runat="server" style="width:400px;">
+                    <legend><img src="Images/lorry.png" />Contact</legend>
+                    <asp:Label ID="Label1" runat="server" Text="Email" CssClass="labeling" />
                     <asp:TextBox ID="txtEmail" runat="server" />
                     <br />
-                    <asp:Label runat="server" Text="Phone" CssClass="labeling" />
+                    <asp:Label ID="Label2" runat="server" Text="Phone" CssClass="labeling" />
                     <asp:TextBox ID="txtPhone" runat="server" />
                     <br />
-                    <asp:Label runat="server" Text="Deliver To" CssClass="labeling" />
-                    <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" />
-                    <asp:Label runat="server" Text="Postal" CssClass="labeling" />
+                    <asp:Label ID="Label3" runat="server" Text="Deliver To" CssClass="labeling" />
+                    <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" Width="200px" />
+                    <asp:Label ID="Label4" runat="server" Text="Postal" CssClass="labeling" />
                     <asp:TextBox ID="txtPostal" runat="server" />
                     <br />
-                    <asp:Label runat="server" Text="State" CssClass="labeling" />
+                    <asp:Label ID="Label5" runat="server" Text="State" CssClass="labeling" />
                     <asp:DropDownList ID="ddlState" runat="server" />
-                </asp:Panel>
-                <br />
+                </fieldset>
+                <p />
                 <div class="center">
                     <asp:Button ID="btnSubmit" runat="server" Text="Submit" onclick="Submit_Click" />
                 </div>

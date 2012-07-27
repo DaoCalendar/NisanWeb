@@ -112,8 +112,8 @@ public partial class _Default : System.Web.UI.Page
         bool success = target.Save();
         if (success)
         {
-            Panel1.Enabled = false;
-            Panel2.Enabled = false;
+            //todo: Panel1.Enabled = false;
+            //todo: Panel2.Enabled = false;
             btnSubmit.Enabled = false;
         }
     }

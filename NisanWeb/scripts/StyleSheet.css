@@ -1254,3 +1254,25 @@ h3 {
 .monthView td {
 	/*border: solid 1pt;*/
 }
+
+
+
+/**
+ * Replace fieldset and make a shadow effect
+ */
+.shadowbox 
+{
+    background: ghostwhite;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    /** use base fieldset border */
+    /*border: 2px groove threedface;*/
+    
+    /** add radius at corner **/
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    
+    /** add shadow effect **/
+    -webkit-box-shadow: 6px 6px 0px 0px gainsboro;
+    box-shadow: 6px 6px 0px 0px gainsboro;
+}
