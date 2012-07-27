@@ -34,7 +34,8 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 80px;
-	background: #85ACF7 url('Images/hidr.jpg');
+	background: -moz-linear-gradient(top,#85ACF7,#000063);
+	background: -webkit-gradient(linear,0% 0%, 0% 100%, from(#85ACF7), to(#000063));
 }
 #body{
 	margin:0 auto;
