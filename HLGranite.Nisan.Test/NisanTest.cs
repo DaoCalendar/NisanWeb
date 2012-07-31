@@ -65,7 +65,7 @@ namespace HLGranite.Nisan.Test
         public void InheritanceTest()
         {
             Stock stock = new Stock(3);
-            Nisan target = new Nisan();
+            Nisan target = new Nisan();            
         }
 
         /// <summary>

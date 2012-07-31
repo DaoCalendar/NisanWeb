@@ -10,8 +10,8 @@
                 <div style="clear:both"></div>
             </HeaderTemplate>
             <ItemTemplate>
-                <div style="float:left">
-                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/Images/" + DataBinder.Eval(Container.DataItem,"Uri") %>' />
+                <div class="imagebox">                
+                    <asp:Image runat="server" Height="300px" ImageUrl='<%# "~/Images/" + DataBinder.Eval(Container.DataItem,"Uri") %>' />
                     <br />
                     <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem,"Type") %>' />
                     <br />

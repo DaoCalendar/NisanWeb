@@ -452,22 +452,22 @@ namespace HLGranite.Nisan
     {
 
         /// <remarks/>
-        Draft,
+        Order,
 
         /// <remarks/>
-        Confirmed,
+        Submit,
 
         /// <remarks/>
-        Paid,
+        Pay,
 
         /// <remarks/>
-        WorkInProgress,
+        Workiing,
 
         /// <remarks/>
-        Delivering,
+        Deliver,
 
         /// <remarks/>
-        Received,
+        Receive,
     }
 
     public partial class Transaction : DatabaseObject

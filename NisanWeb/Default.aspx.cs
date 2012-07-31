@@ -11,6 +11,7 @@ public partial class _Default : System.Web.UI.Page
     private int stockId = 0;
     private User user;
     private MuslimCalendar calendar;
+    private string name = string.Empty;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -30,14 +31,52 @@ public partial class _Default : System.Web.UI.Page
         if (this.stockId > 0)
             ddlStock.SelectedValue = this.stockId.ToString();
 
+        //search by name
+        if (Request.QueryString["Name"] != null)
+            this.name = Request.QueryString["Name"].ToString().ToLower();
+
         //set muslim calendar
         string file = this.MapPath("App_Data\\muslimcal.xml");
         calendar = new MuslimCalendar(ReadXml(file));
 
         if (!IsPostBack)
             Initialize();
+        if (this.name.Length > 0)
+            Load(this.name);
     }
 
+    protected void Initialize()
+    {
+        //define state dropdownlist
+        ddlState.DataSource = State.LoadAll();
+        ddlState.DataBind();
+    }
+    private void Load(string name)
+    {
+        Order order = new Order();
+        order = order.Find(name);
+        if (order == null) return;
+
+        Nisan nisan = order.Stock as Nisan;
+        ddlStock.SelectedValue = order.Stock.Id.ToString();
+        txtName.Text = nisan.Name;
+        txtJawi.Text = nisan.Jawi;
+        txtDeath.Text = nisan.Death.ToString("dd/MM/yyyy");
+        txtRemarks.Text = nisan.Remarks;
+
+        //txtEmail.Text = 
+        if (order.Agent != null)
+        {
+            txtEmail.Text = order.Agent.Email;
+            txtPhone.Text = order.Agent.Phone;
+        }
+        txtAddress.Text = order.ShipTo.Street;
+        txtPostal.Text = order.ShipTo.Postal;
+        ddlState.SelectedValue = order.ShipTo.State;
+
+        EnableForm(false);
+        btnSubmit.Visible = false;
+    }
     private DataTable ReadXml(string fileName)
     {
         DataTable table = new DataTable();
@@ -75,18 +114,30 @@ public partial class _Default : System.Web.UI.Page
         output = calendar.Day + " " + MuslimCalendar.GetMuslimMonth(calendar.Month) + " " + calendar.Year;
         return output;
     }
-    protected void Initialize()
-    {
-        //define state dropdownlist
-        ddlState.DataSource = State.LoadAll();
-        ddlState.DataBind();
-    }
     private DateTime ToDate(string sender)
     {
         int year = Convert.ToInt32(sender.Substring(6, 4));
         int month = Convert.ToInt32(sender.Substring(3, 2));
         int day = Convert.ToInt32(sender.Substring(0, 2));
         return new DateTime(year, month, day);
+    }
+    private void EnableForm(bool enabled)
+    {
+        txtAgent.Enabled = enabled;
+        ddlStock.Enabled = enabled;
+        txtName.Enabled = enabled;
+        txtJawi.Enabled = enabled;
+        txtDeath.Enabled = enabled;
+        btnDeath.Enabled = enabled;
+        txtRemarks.Enabled = enabled;
+
+        txtEmail.Enabled = enabled;
+        txtPhone.Enabled = enabled;
+        txtAddress.Enabled = enabled;
+        txtPostal.Enabled = enabled;
+        ddlState.Enabled = enabled;
+
+        btnSubmit.Enabled = enabled;
     }
 
     protected void Submit_Click(object sender, EventArgs e)
@@ -103,19 +154,16 @@ public partial class _Default : System.Web.UI.Page
         nisan.Death = ToDate(txtDeath.Text);
 
         Order target = new Order();
-        target.Status = TransactionStage.Confirmed;
-        target.Agent = user as Agent;
+        target.Status = TransactionStage.Submit;
+        if (user is Agent)
+            target.Agent = user as Agent;
         target.Amount = stock.Price;
         target.Quantity = 1;
         target.Stock = nisan;
         target.ShipTo = address;
         bool success = target.Save();
         if (success)
-        {
-            //todo: Panel1.Enabled = false;
-            //todo: Panel2.Enabled = false;
-            btnSubmit.Enabled = false;
-        }
+            EnableForm(false);
     }
     protected void txtDeath_TextChanged(object sender, EventArgs e)
     {

@@ -277,7 +277,7 @@ body {
 	font-size: 100%;
 	font-family: Arial, Sans-serif;
 	border: 1px solid #CCC;
-	background: #FFFFFF url(headerbg.gif) repeat-x bottom left;
+	background: #FFFFFF;/* url(../Images/headerbg.gif) repeat-x bottom left;*/
 	padding: 1px;
 	font-weight: bold;
 	height: 23px;
@@ -348,7 +348,7 @@ input.button {
 	font-size: 100%; 
 	font-family: Arial, Sans-serif; 
 	border: 1px solid #CCC; 
-	background: #FFFFFF url(headerbg.gif) repeat-x bottom left; 
+	background: #FFFFFF;/*url(../Images/headerbg.gif) repeat-x bottom left; */
 	padding: 1px; 
 	font-weight: bold; 
 	height: 23px;
@@ -365,7 +365,7 @@ input[type="submit"]{
 	font-size: 100%; 
 	font-family: Arial, Sans-serif; 
 	border: 1px solid #CCC; 
-	background: #FFFFFF url(Images/headerbg.gif) repeat-x bottom left; 
+	background: #FFFFFF;/*url(Images/../Images/headerbg.gif) repeat-x bottom left; */
 	padding: 1px; 
 	font-weight: bold; 
 	height: 23px;
@@ -1256,6 +1256,16 @@ h3 {
 }
 
 
+/**
+ * Use for stock display item.
+ */
+.imagebox 
+{
+    float:left;
+    margin: 10px;
+    display: inline-block;
+}
+
 
 /**
  * Replace fieldset and make a shadow effect
@@ -1265,7 +1275,7 @@ h3 {
     background: ghostwhite;
     padding: 10px;
     margin: 0 0 10px 0;
-    /** use base fieldset border */
+    /** use fieldset base border */
     /*border: 2px groove threedface;*/
     
     /** add radius at corner **/
