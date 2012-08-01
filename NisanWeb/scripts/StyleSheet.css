@@ -1,22 +1,6 @@
-﻿/**************************************************
-   AUTHOR:			Alain.lye & Yeang-Shing.Then
-   VERSION:         0.0.0.16    
-   DATE:			since 2009-03-14     
-   DESCRIPTION:		For master page use only.	
-** This CSS is cater for only master page usage. 
-** Do not put any unrelated css into this page.
- *************************************************/
-
-/**************************************************
-  UPDATE LOG
-***************************************************
-	AUTHOR			Change Log Description
-	-------			---------------
-(1) Alain Lye		Standardize CSS style 20090527
-http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page
-Handle IE6
-http://www.quirksmode.org/css/condcom.html
-**************************************************/
+﻿/**
+ * http://colorschemedesigner.com/#3-31Ts9kCw0w0
+ */
 html,
 body {
 	margin: 0;
@@ -60,7 +44,7 @@ body {
 	float: left;
 }
 #rightcolumn { 	
-	width: 790px;
+	width: 810px;
 	padding:0 10px 20px 10px;
 	float:left;
 }
@@ -162,9 +146,7 @@ body {
 /********************************************
 	(2)	Body
 ********************************************/
-#main {	
-	width:800px;
-	/*float: left; cannot put this .. it will make footer go up*/ 
+#main {
 	margin: 0;
 	padding: 0; 
 }

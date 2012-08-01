@@ -28,7 +28,8 @@
                     <asp:LinkButton ID="linLogout" runat="server" Visible="false" CssClass="navi" OnClick="btnLogout_Click" Text="Logout" />
                 </span>
                 <div id="logo">
-                    <asp:Label ID="lblTestTag" runat="server" Text="HLGranite Nisan Ordering System" />
+                    <img style="margin:5px 0 0 5px" src="Images/logo.png"/>
+                    <span>HLGranite Nisan Ordering System</span>
                 </div>
             </div>
             <asp:Panel ID="Panel1" runat="server" CssClass="search" DefaultButton="btnSearch">
