@@ -29,7 +29,7 @@
                 </span>
                 <div id="logo">
                     <img style="margin:5px 0 0 5px" src="Images/logo.png"/>
-                    <span>HLGranite Nisan Ordering System</span>
+                    <span style="vertical-align:top">HLGranite Nisan Ordering System</span>
                 </div>
             </div>
             <asp:Panel ID="Panel1" runat="server" CssClass="search" DefaultButton="btnSearch">
