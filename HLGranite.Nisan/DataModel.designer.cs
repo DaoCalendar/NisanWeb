@@ -349,6 +349,8 @@ namespace HLGranite.Nisan
 
         private Agent agentField;
 
+        private Customer customerField;
+
         private List<TransactionItem> relatedItemsField;
 
         private int quantityField;
@@ -377,6 +379,12 @@ namespace HLGranite.Nisan
             {
                 this.agentField = value;
             }
+        }
+
+        public Customer Customer
+        {
+            get { return this.customerField; }
+            set { this.customerField = value; }
         }
 
         public List<TransactionItem> RelatedItems

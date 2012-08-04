@@ -144,7 +144,7 @@ JOIN Stocks ON Nisans.Type = Stocks.Id
 JOIN TransactionItems ON Orders.ItemId=TransactionItems.Id
 JOIN Transactions ON TransactionItems.Parent=Transactions.Id
 JOIN Users ON Transactions.CreatedBy=Users.Id";
-                    if(code != null && code.Length>0)
+                    if (code != null && code.Length > 0)
                         sql += " WHERE Users.Code=@Code;";
                     command.CommandText = sql;
                     if (code != null && code.Length > 0)
@@ -160,9 +160,8 @@ JOIN Users ON Transactions.CreatedBy=Users.Id";
                             Order order = new Order();
                             order.Parent = parent;
                             order.Status = (TransactionStage)Convert.ToInt32(reader["Status"]);
-                            if (this is Agent)
-                                order.Agent = (this as Agent);
-                            else
+
+                            if (reader["Code"] != DBNull.Value && reader["Code"].ToString().Length>0)
                                 order.Agent = new Agent(reader["Code"].ToString());
                             order.Id = Convert.ToInt32(reader["TransactionItemId"]);
                             order.Amount = Convert.ToDecimal(reader["Amount"]);
@@ -199,6 +198,46 @@ JOIN Users ON Transactions.CreatedBy=Users.Id";
             }//end
 
             return sales;
+        }
+        public List<User> GetAdmin()
+        {
+            List<User> result = new List<User>();
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                using (DbCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Users WHERE Type = 0;";
+                    using (DbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            User user = new User();
+                            user.Id = Convert.ToInt32(reader["Id"]);
+                            user.Code = reader["Code"].ToString();
+                            user.Name = reader["Name"].ToString();
+                            user.Password = reader["Password"].ToString();
+                            user.Email = reader["Email"].ToString();
+                            user.Phone = reader["Phone"].ToString();
+                            user.Remarks = reader["Remarks"].ToString();
+                            user.Uri = reader["Uri"].ToString();
+                            if (reader["AddressId"] != DBNull.Value)
+                            {
+                                int addressId = Convert.ToInt32(reader["AddressId"]);
+                                if (addressId > 0) user.Address = new Address(addressId);
+                            }
+
+                            result.Add(user);
+                        }
+                    }
+                }
+
+                connection.Close();
+            }//end
+
+            return result;
         }
 
         #region DatabaseObject methods

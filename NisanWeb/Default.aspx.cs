@@ -72,9 +72,9 @@ public partial class _Default : System.Web.UI.Page
         Order order = new Order();
         order = order.Find(name);
         if (order == null) return;
+        if ((order.Stock as Nisan) == null) return;
 
         imgStatus.ImageUrl = string.Format("Images/{0}.png", order.Status.ToString().ToLower());
-
         Nisan nisan = order.Stock as Nisan;
         ddlStock.SelectedValue = new Stock(order.Stock.Type).Id.ToString();//todo: what not just order.Stock.Id
         txtName.Text = nisan.Name;
@@ -85,11 +85,17 @@ public partial class _Default : System.Web.UI.Page
         txtYear.Text = nisan.Deathm.Year.ToString();
         txtRemarks.Text = nisan.Remarks;
 
-        //txtEmail.Text = 
         if (order.Agent != null)
         {
+            txtCustomer.Text = order.Agent.Name;
             txtEmail.Text = order.Agent.Email;
             txtPhone.Text = order.Agent.Phone;
+        }
+        if (order.Customer != null)
+        {
+            txtCustomer.Text = order.Customer.Name;
+            txtEmail.Text = order.Customer.Email;
+            txtPhone.Text = order.Customer.Phone;
         }
         if (order.ShipTo != null)
         {
@@ -148,32 +154,27 @@ public partial class _Default : System.Web.UI.Page
     private void EnableForm(bool enabled)
     {
         ddlStock.Enabled = enabled;
-        txtName.Enabled = enabled;
-        txtJawi.Enabled = enabled;
-        txtDeath.Enabled = enabled;
+        txtName.ReadOnly = !enabled;
+        txtJawi.ReadOnly = !enabled;
+        txtDeath.ReadOnly = !enabled;
         btnDeath.Enabled = enabled;
         ddlDay.Enabled = enabled;
         ddlMonth.Enabled = enabled;
-        txtYear.Enabled = enabled;
-        txtRemarks.Enabled = enabled;
-        txtAgent.Enabled = enabled;
+        txtYear.ReadOnly = !enabled;
+        txtRemarks.ReadOnly = !enabled;
+        txtAgent.ReadOnly = !enabled;
 
-        txtCustomer.Enabled = enabled;
-        txtEmail.Enabled = enabled;
-        txtPhone.Enabled = enabled;
-        txtAddress.Enabled = enabled;
-        txtPostal.Enabled = enabled;
+        txtCustomer.ReadOnly = !enabled;
+        txtEmail.ReadOnly = !enabled;
+        txtPhone.ReadOnly = !enabled;
+        txtAddress.ReadOnly = !enabled;
+        txtPostal.ReadOnly = !enabled;
         ddlState.Enabled = enabled;
 
         btnSubmit.Enabled = enabled;
     }
     private void Submit()
     {
-        Address address = new Address();
-        address.Street = txtAddress.Text;
-        address.Postal = txtPostal.Text;
-        address.State = ddlState.Text;
-
         stockId = Convert.ToInt32(ddlStock.SelectedValue);
         HLGranite.Nisan.Stock stock = new HLGranite.Nisan.Stock(stockId);
         Nisan nisan = new Nisan(stock);
@@ -184,14 +185,51 @@ public partial class _Default : System.Web.UI.Page
 
         Order target = new Order();
         target.Status = TransactionStage.Submit;
-        if (user is Agent)
-            target.Agent = user as Agent;
+        if (user == null)
+        {
+            Customer customer = new Customer();
+            customer.Name = txtCustomer.Text;
+            customer.Email = txtEmail.Text;
+            customer.Phone = txtPhone.Text;
+
+            target.Customer = customer;
+            target.Parent.CreatedBy = customer;
+        }
+        else
+        {
+            if (txtCustomer.Text.Trim() != user.Name)
+            {
+                Customer customer = new Customer();
+                customer.Name = txtCustomer.Text;
+                customer.Email = txtEmail.Text;
+                customer.Phone = txtPhone.Text;
+
+                target.Customer = customer;
+                target.Parent.CreatedBy = customer;
+            }
+            else if (user is Agent)
+            {
+                target.Agent = (user as Agent);
+                target.Parent.CreatedBy = (user as Agent);
+            }
+        }
+
         target.Amount = stock.Price;
         target.Quantity = 1;
         target.Stock = nisan;
+
+        Address address = new Address();
+        address.Street = txtAddress.Text;
+        address.Postal = txtPostal.Text;
+        address.State = ddlState.Text;
         target.ShipTo = address;
+
         bool success = target.Save();
-        if (success) EnableForm(false);
+        if (success)
+        {
+            lblMessage.Text = "Your order has been sent to us and we will contact you shortly.";
+            EnableForm(false);
+        }
     }
 
     protected void Submit_Click(object sender, EventArgs e)

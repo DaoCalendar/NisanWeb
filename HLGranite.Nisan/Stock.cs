@@ -13,8 +13,8 @@ namespace HLGranite.Nisan
         public Stock()
             : base()
         {
-            Initialize();
             System.Diagnostics.Debug.WriteLine("-- Stock --");
+            Initialize();
         }
         /// <summary>
         /// Constructor for retrieve.
@@ -23,10 +23,10 @@ namespace HLGranite.Nisan
         public Stock(int id)
             : base()
         {
+            System.Diagnostics.Debug.WriteLine("-- Stock --");
             Initialize();
             this.idField = id;
             this.Load();
-            System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
         /// <summary>
         /// Constructor for retrieve.
@@ -35,10 +35,10 @@ namespace HLGranite.Nisan
         public Stock(string name)
             : base()
         {
+            System.Diagnostics.Debug.WriteLine("-- Stock --");
             Initialize();
             this.typeField = name;
             this.Load();
-            System.Diagnostics.Debug.WriteLine("-- Stock --");
         }
 
         private void Initialize()

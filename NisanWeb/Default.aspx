@@ -71,6 +71,7 @@
             <div class="center">
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit" onclick="Submit_Click" />
             </div>
+            <asp:Label ID="lblMessage" runat="server" CssClass="warn" />
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

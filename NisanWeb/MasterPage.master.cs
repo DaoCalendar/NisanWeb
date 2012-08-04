@@ -18,7 +18,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             user = (User)this.Session["User"];
             linUser.Text = user.Code;
-            if (user is Admin) Menu2.Visible = true;
+
+            Menu2.Visible = true;
+            if (user is Admin) Menu3.Visible = true;
         }
     }
     protected void btnSearch_Click(object sender, EventArgs e)
@@ -41,7 +43,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
             linLogout.Visible = success;
             linUser.Visible = success;
 
-            if (user is Admin) Menu2.Visible = true;
+            Menu2.Visible = true;
+            if (user is Admin) Menu3.Visible = true;
+            Response.Redirect("~/List.aspx", false);
         }
     }
     protected void btnLogout_Click(object sender, EventArgs e)

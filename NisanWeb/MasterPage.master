@@ -51,13 +51,21 @@
                                         <Items>
                                             <asp:MenuItem Text="Product Catalog" Value="Product Catalog" NavigateUrl="~/Catalog.aspx" ImageUrl="~/Images/bullet.gif" />
                                             <asp:MenuItem Text="Order" Value="Order" NavigateUrl="~/Default.aspx" ImageUrl="~/Images/bullet.gif" />
-                                            <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/List.aspx" ImageUrl="~/Images/bullet.gif" />
-                                            <asp:MenuItem Text="Muslim Calendar" Value="Muslim Calendar" NavigateUrl="~/Calendar.aspx" ImageUrl="~/Images/bullet.gif" />
                                         </Items>
                                     </asp:Menu>
                                     <asp:Menu ID="Menu2" Visible="false" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
                                         <Items>
+                                            <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/List.aspx" ImageUrl="~/Images/bullet.gif" />
+                                        </Items>
+                                    </asp:Menu>
+                                    <asp:Menu ID="Menu3" Visible="false" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
+                                        <Items>
                                             <asp:MenuItem Text="Register" Value="Register" NavigateUrl="~/Register.aspx" ImageUrl="~/Images/bullet.gif" />
+                                        </Items>
+                                    </asp:Menu>
+                                    <asp:Menu runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
+                                        <Items>
+                                            <asp:MenuItem Text="Muslim Calendar" Value="Muslim Calendar" NavigateUrl="~/Calendar.aspx" ImageUrl="~/Images/bullet.gif" />
                                         </Items>
                                     </asp:Menu>
                                 </asp:Panel>
@@ -80,7 +88,7 @@
                         <asp:HyperLink runat="server" NavigateUrl="~/About.aspx">About Us</asp:HyperLink> | 
                         <a href="mailto:hlgranite@gmail.com">Contact Us</a>
                         <br />
-                        ver 0.9.1 Copyright © 2012 by HLGranite
+                        ver 0.9.2 Copyright © 2012 by HLGranite
                     </div>
                 </td>
             </tr>

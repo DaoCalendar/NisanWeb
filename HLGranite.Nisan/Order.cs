@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Data.Common;
+using System.Net;
+using System.Net.Mail;
+using System.Web;
+//using System.Web.Mail;
 
 namespace HLGranite.Nisan
 {
@@ -25,6 +30,7 @@ namespace HLGranite.Nisan
             {
                 if (this.Parent.CreatedBy is Customer)
                     this.Parent.CreatedBy.Save();
+
                 //insert into table Transactions
                 this.Parent.CreatedAt = DateTime.Now;
                 if (this.Parent.CreatedBy == null || this.Parent.CreatedBy.Name.Length == 0)
@@ -97,6 +103,12 @@ namespace HLGranite.Nisan
                 }//end
             }
 
+            if (success)
+            {
+                User user = new User();
+                foreach (User u in user.GetAdmin())
+                    SendMail(u.Email);
+            }
             return success;
         }
         public List<Order> Own(string owner)
@@ -191,6 +203,67 @@ ORDER BY Transactions.CreatedAt DESC";
             int month = Convert.ToInt32(date.Substring(5, 2));
             int day = Convert.ToInt32(date.Substring(8, 2));
             return new DateTime(year, month, day);
+        }
+
+        private string ComposeSubject()
+        {
+            string output = string.Empty;
+            if (this.Agent != null) output += this.Agent.Code;
+            if (output.Length > 0) output += ": ";
+
+            output += this.Stock.Type + " - ";
+            output += (this.Stock as Nisan).Name;
+            return output;
+        }
+        /// <summary>
+        /// TODO: Continue compose email content.
+        /// </summary>
+        /// <returns></returns>
+        private string ComposeBody()
+        {
+            //string output = string.Empty;
+            string output = "Please ignore this just a testing<p/>";//todo: remove
+            if (this.Agent != null) output += string.Format("<h2>{0}</h2>", this.Agent.Code);
+            output += string.Format("<h2>{0}</h2>", this.Stock.Type);
+
+            Nisan nisan = this.Stock as Nisan;
+            output += string.Format("Name: {0}<br/>", nisan.Name);
+            output += string.Format("Jawi: {0}<br/>", nisan.Jawi);
+            output += string.Format("Death: {0}<br/>", nisan.Death.ToString("dd/MM/yyyy"));
+            output += string.Format("Muslim: {0}<p/>", nisan.Deathm.ToString("dd/MM/yyyy"));
+
+            output += "<h2>Delivery To:</h2>";
+            if (this.Customer != null) output += string.Format("Email: {0}<br/>", this.Customer.Email);
+            output += string.Format("{0}<br/>", this.ShipTo.Street);
+            output += string.Format("{0}<br/>", this.ShipTo.Postal);
+            output += string.Format("{0}<br/>", this.ShipTo.State);
+
+            return output;
+        }
+        /// <summary>
+        /// Notify admin with email after new order made.
+        /// </summary>
+        /// <seealso>http://infynet.wordpress.com/2011/12/05/sending-email-using-asp-net-and-gmailhotmail/</seealso>
+        private void SendMail(string receipient)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage(
+                    "hlgranite@gmail.com",receipient,
+                    ComposeSubject(), ComposeBody());
+                mail.IsBodyHtml = true;
+                NetworkCredential mailAuthentication = new NetworkCredential("yancyn@hotmail.com", "55175216");
+                SmtpClient mailClient = new SmtpClient("smtp.live.com", 587);
+                mailClient.EnableSsl = true;
+                mailClient.UseDefaultCredentials = false;
+                mailClient.Credentials = mailAuthentication;
+                mailClient.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+                return;
+            }
         }
     }
 }
