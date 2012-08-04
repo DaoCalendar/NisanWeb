@@ -461,7 +461,7 @@ namespace HLGranite.Nisan
         Pay,
 
         /// <remarks/>
-        Workiing,
+        Working,
 
         /// <remarks/>
         Deliver,

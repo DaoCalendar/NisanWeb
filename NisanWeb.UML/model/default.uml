@@ -130,11 +130,15 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_l8A6Qc63EeGMUc6iHmKVLQ" name="Agent" type="_XTH2QKMdEeGmn_qORpoPMA" aggregation="composite" association="_l7928M63EeGMUc6iHmKVLQ">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l8A6Q863EeGMUc6iHmKVLQ" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l8A6Qs63EeGMUc6iHmKVLQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l8A6Qs63EeGMUc6iHmKVLQ"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_OmcwANCOEeGQxpa24Ux5UA" name="RelatedItems" type="_gDvP8KMgEeGmn_qORpoPMA" aggregation="composite" association="_OPIcMNCOEeGQxpa24Ux5UA">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OmcwAtCOEeGQxpa24Ux5UA" value="*"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OmcwAdCOEeGQxpa24Ux5UA"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_5VmLktuQEeGyu8XJ3IH-zA" name="SoldTo" type="_QSEEYKMcEeGmn_qORpoPMA" aggregation="composite" association="_5VjIQNuQEeGyu8XJ3IH-zA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5VmyoduQEeGyu8XJ3IH-zA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5VmyoNuQEeGyu8XJ3IH-zA"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_IZOicKMgEeGmn_qORpoPMA" name="Payment">
@@ -293,5 +297,11 @@
     <ownedOperation xmi:id="_dUKaoNNMEeGW6I5xDqRtqQ" name="Validate">
       <ownedParameter xmi:id="_emBEENNMEeGW6I5xDqRtqQ" direction="return"/>
     </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5VjIQNuQEeGyu8XJ3IH-zA" memberEnd="_5VlkgNuQEeGyu8XJ3IH-zA _5VmLktuQEeGyu8XJ3IH-zA">
+    <ownedEnd xmi:id="_5VlkgNuQEeGyu8XJ3IH-zA" name="src" type="_GYidEKMgEeGmn_qORpoPMA" association="_5VjIQNuQEeGyu8XJ3IH-zA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5VmLkduQEeGyu8XJ3IH-zA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5VmLkNuQEeGyu8XJ3IH-zA" value="1"/>
+    </ownedEnd>
   </packagedElement>
 </uml:Package>

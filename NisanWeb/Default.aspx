@@ -9,10 +9,6 @@
             <asp:Image ID="imgStatus" runat="server" ImageUrl="Images/order.png" />
             <fieldset id="Panel1" class="shadowbox" runat="server" style="width:400px;">
                 <legend>Information</legend>
-                <asp:Label runat="server" Text="Agent" CssClass="labeling" />
-                <asp:TextBox ID="txtAgent" runat="server" Width="40px" />
-                <asp:Label ID="lblAgent" runat="server" />
-                <br />
                 <asp:Label runat="server" Text="Stone" CssClass="labeling" />
                 <asp:DropDownList ID="ddlStock" runat="server" DataSourceID="ObjectDataSource1" 
                     DataTextField="Type" DataValueField="Id" />
@@ -41,12 +37,18 @@
                 <br />
                 <asp:Label runat="server" Text="Remarks" CssClass="labeling" />
                 <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" Width="200px" />
+                <asp:Label ID="Label6" runat="server" Text="Agent" CssClass="labeling" />
+                <asp:TextBox ID="txtAgent" runat="server" Width="40px" />
+                <asp:Label ID="lblAgent" runat="server" />
                 <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                     SelectMethod="LoadAll" TypeName="HLGranite.Nisan.Stock">
                 </asp:ObjectDataSource>
             </fieldset>
             <fieldset id="Panel2" class="shadowbox" runat="server" style="width:400px;">
                 <legend><img src="Images/lorry.png" />&nbsp;Contact</legend>
+                <asp:Label runat="server" Text="Name" CssClass="labeling" />
+                <asp:TextBox ID="txtCustomer" runat="server" />
+                <br />
                 <asp:Label ID="Label1" runat="server" Text="Email" CssClass="labeling" />
                 <asp:TextBox ID="txtEmail" runat="server" />
                 <br />

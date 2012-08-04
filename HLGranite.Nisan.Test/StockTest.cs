@@ -99,8 +99,13 @@ namespace HLGranite.Nisan.Test
         {
             Stock target = new Stock(1);
             target.Load();
-
             Assert.IsTrue(target.Type.Length > 0);
+
+            string expected = "2' Batu Batik(L)";
+            target = new Stock(expected);
+            target.Load();
+            Assert.AreNotEqual(0, target.Id);
+            Assert.AreEqual(expected, target.Type);
         }
 
         /// <summary>

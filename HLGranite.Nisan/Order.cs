@@ -103,6 +103,11 @@ namespace HLGranite.Nisan
         {
             throw new NotImplementedException();
         }
+        /// <summary>
+        /// Find an last order with nisan death name with no case sensitive.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Order Find(string name)
         {
             Order order = new Order();
@@ -163,6 +168,7 @@ ORDER BY Transactions.CreatedAt DESC";
                             order.Stock = nisan;
 
                             Address shipTo = new Address();
+                            shipTo.Id = Convert.ToInt32(reader["AddressId"]);
                             shipTo.Street = reader["Street"].ToString();
                             shipTo.Postal = reader["Postal"].ToString();
                             shipTo.State = reader["State"].ToString();

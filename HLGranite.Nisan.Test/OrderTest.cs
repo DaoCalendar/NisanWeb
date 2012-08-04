@@ -79,7 +79,7 @@ namespace HLGranite.Nisan.Test
 
             Order target = new Order();
             target.Status = TransactionStage.Submit;
-            target.Agent = new Agent("W002");
+            //target.Agent = new Agent("W002");
             target.Amount = stock.Price;
             target.Quantity = 1;
             target.Stock = nisan;
@@ -103,7 +103,7 @@ namespace HLGranite.Nisan.Test
             nisan.Name = "Che Som" + new System.Random().Next(100) + " bin Said";
             nisan.Death = RandomDate();
 
-            Agent agent = new Agent("agent");
+            Agent agent = new Agent("W002");
 
             Order target = new Order();
             target.Status = TransactionStage.Submit;
@@ -132,7 +132,7 @@ namespace HLGranite.Nisan.Test
         public void FindTest()
         {
             Order target = new Order();
-            string name = "Roti bin Butter";
+            string name = "Ramli13 bin Taib";
             Order actual = target.Find(name);
             Assert.IsNotNull(actual);
             Assert.AreEqual(name, (actual.Stock as Nisan).Name);

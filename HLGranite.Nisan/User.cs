@@ -354,11 +354,15 @@ JOIN Users ON Transactions.CreatedBy=Users.Id";
             get
             {
                 bool isValid = true;
-                if (this.codeField.Length == 0)
+                if (!(this is Customer))
                 {
-                    isValid &= false;
-                    this.message += "Code cannot be blank. ";
+                    if (this.codeField.Length == 0)
+                    {
+                        isValid &= false;
+                        this.message += "Code cannot be blank. ";
+                    }
                 }
+
                 if (this.nameField.Length == 0)
                 {
                     isValid &= false;

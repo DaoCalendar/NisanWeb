@@ -47,13 +47,17 @@
                             <div id="sidebar">
                                 <asp:Panel ID="PanelAdminMenu" runat="server" CssClass="left-box">
                                     <h1>Menu</h1>
-                                    <asp:Menu ID="Menu2" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
+                                    <asp:Menu ID="Menu1" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
                                         <Items>
                                             <asp:MenuItem Text="Product Catalog" Value="Product Catalog" NavigateUrl="~/Catalog.aspx" ImageUrl="~/Images/bullet.gif" />
                                             <asp:MenuItem Text="Order" Value="Order" NavigateUrl="~/Default.aspx" ImageUrl="~/Images/bullet.gif" />
                                             <asp:MenuItem Text="Working List" Value="Working List" NavigateUrl="~/List.aspx" ImageUrl="~/Images/bullet.gif" />
-                                            <asp:MenuItem Text="Register" Value="Register" NavigateUrl="~/Register.aspx" ImageUrl="~/Images/bullet.gif" />
                                             <asp:MenuItem Text="Muslim Calendar" Value="Muslim Calendar" NavigateUrl="~/Calendar.aspx" ImageUrl="~/Images/bullet.gif" />
+                                        </Items>
+                                    </asp:Menu>
+                                    <asp:Menu ID="Menu2" Visible="false" runat="server" CssClass="menu" StaticMenuItemStyle-CssClass="menuItem">
+                                        <Items>
+                                            <asp:MenuItem Text="Register" Value="Register" NavigateUrl="~/Register.aspx" ImageUrl="~/Images/bullet.gif" />
                                         </Items>
                                     </asp:Menu>
                                 </asp:Panel>

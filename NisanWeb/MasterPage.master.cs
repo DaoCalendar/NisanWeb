@@ -18,12 +18,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             user = (User)this.Session["User"];
             linUser.Text = user.Code;
+            if (user is Admin) Menu2.Visible = true;
         }
     }
-    //todo: btnSearch_Click
     protected void btnSearch_Click(object sender, EventArgs e)
     {
         System.Diagnostics.Debug.WriteLine("btnSearch_Click");
+        Response.Redirect("~/Default.aspx?Name=" + txtSearch.Text, false);
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
@@ -35,11 +36,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
             user = user.GetRole();
             this.Session.Add("User", user);
             linUser.Text = user.Code;
-        }
 
-        pnlUser.Visible = !success;
-        linLogout.Visible = success;
-        linUser.Visible = success;
+            pnlUser.Visible = !success;
+            linLogout.Visible = success;
+            linUser.Visible = success;
+
+            if (user is Admin) Menu2.Visible = true;
+        }
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {

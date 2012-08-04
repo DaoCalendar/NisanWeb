@@ -23,6 +23,12 @@ public partial class _Default : System.Web.UI.Page
             lblAgent.Text = user.Name;
             txtEmail.Text = user.Email;
             txtPhone.Text = user.Phone;
+            if (user.Address != null)
+            {
+                txtAddress.Text = user.Address.Street;
+                txtPostal.Text = user.Address.Postal;
+                ddlState.SelectedValue = user.Address.State;
+            }
         }
 
         //set choosen stock
@@ -42,7 +48,7 @@ public partial class _Default : System.Web.UI.Page
         if (!IsPostBack)
             Initialize();
         if (this.name.Length > 0)
-            Load(this.name);
+            LoadOrder(this.name);
     }
 
     protected void Initialize()
@@ -51,14 +57,16 @@ public partial class _Default : System.Web.UI.Page
         ddlState.DataSource = State.LoadAll();
         ddlState.DataBind();
     }
-    private void Load(string name)
+    private void LoadOrder(string name)
     {
         Order order = new Order();
         order = order.Find(name);
         if (order == null) return;
 
+        imgStatus.ImageUrl = string.Format("Images/{0}.png", order.Status.ToString().ToLower());
+
         Nisan nisan = order.Stock as Nisan;
-        ddlStock.SelectedValue = order.Stock.Id.ToString();
+        ddlStock.SelectedValue = new Stock(order.Stock.Type).Id.ToString();//todo: what not just order.Stock.Id
         txtName.Text = nisan.Name;
         txtJawi.Text = nisan.Jawi;
         txtDeath.Text = nisan.Death.ToString("dd/MM/yyyy");
@@ -70,9 +78,12 @@ public partial class _Default : System.Web.UI.Page
             txtEmail.Text = order.Agent.Email;
             txtPhone.Text = order.Agent.Phone;
         }
-        txtAddress.Text = order.ShipTo.Street;
-        txtPostal.Text = order.ShipTo.Postal;
-        ddlState.SelectedValue = order.ShipTo.State;
+        if (order.ShipTo != null)
+        {
+            txtAddress.Text = order.ShipTo.Street;
+            txtPostal.Text = order.ShipTo.Postal;
+            ddlState.SelectedValue = order.ShipTo.State;
+        }
 
         EnableForm(false);
         btnSubmit.Visible = false;
@@ -123,14 +134,15 @@ public partial class _Default : System.Web.UI.Page
     }
     private void EnableForm(bool enabled)
     {
-        txtAgent.Enabled = enabled;
         ddlStock.Enabled = enabled;
         txtName.Enabled = enabled;
         txtJawi.Enabled = enabled;
         txtDeath.Enabled = enabled;
         btnDeath.Enabled = enabled;
         txtRemarks.Enabled = enabled;
+        txtAgent.Enabled = enabled;
 
+        txtCustomer.Enabled = enabled;
         txtEmail.Enabled = enabled;
         txtPhone.Enabled = enabled;
         txtAddress.Enabled = enabled;

@@ -120,12 +120,12 @@
   </xsd:complexType>
   <xsd:simpleType name="TransactionStage">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Draft"/>
-      <xsd:enumeration value="Confirmed"/>
-      <xsd:enumeration value="Paid"/>
-      <xsd:enumeration value="WorkInProgress"/>
-      <xsd:enumeration value="Delivering"/>
-      <xsd:enumeration value="Received"/>
+      <xsd:enumeration value="Order"/>
+      <xsd:enumeration value="Submit"/>
+      <xsd:enumeration value="Pay"/>
+      <xsd:enumeration value="Working"/>
+      <xsd:enumeration value="Deliver"/>
+      <xsd:enumeration value="Receive"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="Payment">
