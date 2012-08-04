@@ -12,11 +12,11 @@
                 <asp:Label runat="server" Text="Stone" CssClass="labeling" />
                 <asp:DropDownList ID="ddlStock" runat="server" DataSourceID="ObjectDataSource1" 
                     DataTextField="Type" DataValueField="Id" />
-                <asp:Label runat="server" Text="*" ToolTip="Compulsory" CssClass="warn" />
+                <asp:Label runat="server" Text="*" ToolTip="Mandatory" CssClass="warn" />
                 <br />
                 <asp:Label runat="server" Text="Name" CssClass="labeling" />
                 <asp:TextBox ID="txtName" runat="server" Width="200px" />
-                <asp:Label runat="server" Text="*" ToolTip="Compulsory" CssClass="warn" />
+                <asp:Label runat="server" Text="*" ToolTip="Mandatory" CssClass="warn" />
                 <br />
                 <asp:Label runat="server" Text="Jawi" CssClass="labeling" />
                 <asp:TextBox ID="txtJawi" runat="server" Width="200px" />
@@ -33,7 +33,11 @@
                     Mask="99/99/9999" 
                     TargetControlID="txtDeath">
                 </asp:MaskedEditExtender>
-                <asp:Label ID="lblDeathm" runat="server"></asp:Label>
+                <br />
+                <asp:Label runat="server" Text="Muslim Death" CssClass="labeling" />
+                <asp:DropDownList ID="ddlDay" runat="server" />
+                <asp:DropDownList ID="ddlMonth" runat="server" />
+                <asp:TextBox ID="txtYear" runat="server" Width="40px" />
                 <br />
                 <asp:Label runat="server" Text="Remarks" CssClass="labeling" />
                 <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" Width="200px" />

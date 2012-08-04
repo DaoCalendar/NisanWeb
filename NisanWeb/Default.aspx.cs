@@ -17,25 +17,10 @@ public partial class _Default : System.Web.UI.Page
     {
         //set user
         if (this.Session["User"] != null) user = (User)this.Session["User"];
-        if (user != null)
-        {
-            txtAgent.Text = user.Code;
-            lblAgent.Text = user.Name;
-            txtEmail.Text = user.Email;
-            txtPhone.Text = user.Phone;
-            if (user.Address != null)
-            {
-                txtAddress.Text = user.Address.Street;
-                txtPostal.Text = user.Address.Postal;
-                ddlState.SelectedValue = user.Address.State;
-            }
-        }
 
         //set choosen stock
         if (Request.QueryString["Stock"] != null)
             this.stockId = Convert.ToInt32(Request.QueryString["Stock"]);
-        if (this.stockId > 0)
-            ddlStock.SelectedValue = this.stockId.ToString();
 
         //search by name
         if (Request.QueryString["Name"] != null)
@@ -53,9 +38,34 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Initialize()
     {
+        //define muslim day dropdownlist
+        for (int i = 1; i <= 31; i++)
+            ddlDay.Items.Add(i.ToString());
+
+        //define muslim month dropdownlist
+        ddlMonth.DataSource = Enum.GetNames(typeof(MuslimMonth));
+        ddlMonth.DataBind();
+
         //define state dropdownlist
         ddlState.DataSource = State.LoadAll();
         ddlState.DataBind();
+
+        if (user != null)
+        {
+            txtAgent.Text = user.Code;
+            lblAgent.Text = user.Name;
+            txtCustomer.Text = user.Name;
+            txtEmail.Text = user.Email;
+            txtPhone.Text = user.Phone;
+            if (user.Address != null)
+            {
+                txtAddress.Text = user.Address.Street;
+                txtPostal.Text = user.Address.Postal;
+                ddlState.SelectedValue = user.Address.State;
+            }
+        }
+
+        if (this.stockId > 0) ddlStock.SelectedValue = this.stockId.ToString();
     }
     private void LoadOrder(string name)
     {
@@ -70,6 +80,9 @@ public partial class _Default : System.Web.UI.Page
         txtName.Text = nisan.Name;
         txtJawi.Text = nisan.Jawi;
         txtDeath.Text = nisan.Death.ToString("dd/MM/yyyy");
+        ddlDay.Text = nisan.Deathm.Day.ToString();
+        ddlMonth.SelectedIndex = nisan.Deathm.Month - 1;
+        txtYear.Text = nisan.Deathm.Year.ToString();
         txtRemarks.Text = nisan.Remarks;
 
         //txtEmail.Text = 
@@ -139,6 +152,9 @@ public partial class _Default : System.Web.UI.Page
         txtJawi.Enabled = enabled;
         txtDeath.Enabled = enabled;
         btnDeath.Enabled = enabled;
+        ddlDay.Enabled = enabled;
+        ddlMonth.Enabled = enabled;
+        txtYear.Enabled = enabled;
         txtRemarks.Enabled = enabled;
         txtAgent.Enabled = enabled;
 
@@ -151,8 +167,7 @@ public partial class _Default : System.Web.UI.Page
 
         btnSubmit.Enabled = enabled;
     }
-
-    protected void Submit_Click(object sender, EventArgs e)
+    private void Submit()
     {
         Address address = new Address();
         address.Street = txtAddress.Text;
@@ -163,7 +178,9 @@ public partial class _Default : System.Web.UI.Page
         HLGranite.Nisan.Stock stock = new HLGranite.Nisan.Stock(stockId);
         Nisan nisan = new Nisan(stock);
         nisan.Name = txtName.Text.Trim();
+        nisan.Jawi = txtJawi.Text.Trim();
         nisan.Death = ToDate(txtDeath.Text);
+        nisan.Deathm = new DateTime(Convert.ToInt32(txtYear.Text), ddlMonth.SelectedIndex + 1, Convert.ToInt32(ddlDay.Text));
 
         Order target = new Order();
         target.Status = TransactionStage.Submit;
@@ -174,11 +191,19 @@ public partial class _Default : System.Web.UI.Page
         target.Stock = nisan;
         target.ShipTo = address;
         bool success = target.Save();
-        if (success)
-            EnableForm(false);
+        if (success) EnableForm(false);
+    }
+
+    protected void Submit_Click(object sender, EventArgs e)
+    {
+        Submit();
     }
     protected void txtDeath_TextChanged(object sender, EventArgs e)
     {
-        lblDeathm.Text = ToMuslimDate(CastToLocalDate(txtDeath.Text));
+        //lblDeathm.Text = ToMuslimDate(CastToLocalDate(txtDeath.Text));        
+        calendar.GetDate(CastToLocalDate(txtDeath.Text));
+        ddlDay.Text = calendar.Day.ToString();
+        ddlMonth.SelectedIndex = calendar.Month - 1;
+        txtYear.Text = calendar.Year.ToString();
     }
 }

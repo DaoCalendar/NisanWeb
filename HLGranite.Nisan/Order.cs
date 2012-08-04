@@ -156,6 +156,7 @@ ORDER BY Transactions.CreatedAt DESC";
                             nisan.Type = reader["Type"].ToString();
                             nisan.Id = Convert.ToInt32(reader["Id"]);
                             nisan.Name = reader["Name"].ToString();
+                            nisan.Jawi = reader["Jawi"].ToString();
                             nisan.Death = Convert.ToDateTime(reader["Death"]);
                             if (reader["Deathm"] != DBNull.Value)
                                 nisan.Deathm = ToMuslimDate(reader["Deathm"].ToString());

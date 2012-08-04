@@ -172,12 +172,12 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_JHBiYM6rEeGMUc6iHmKVLQ" name="TransactionStage">
-    <ownedLiteral xmi:id="_MRMYUM6rEeGMUc6iHmKVLQ" name="Draft"/>
-    <ownedLiteral xmi:id="_OVl5AM6rEeGMUc6iHmKVLQ" name="Confirmed"/>
-    <ownedLiteral xmi:id="_QWVBsM6rEeGMUc6iHmKVLQ" name="Paid"/>
-    <ownedLiteral xmi:id="_SkVKUM6rEeGMUc6iHmKVLQ" name="WorkInProgress"/>
-    <ownedLiteral xmi:id="_e8ojwM6rEeGMUc6iHmKVLQ" name="Delivering"/>
-    <ownedLiteral xmi:id="_hPc68M6rEeGMUc6iHmKVLQ" name="Received"/>
+    <ownedLiteral xmi:id="_MRMYUM6rEeGMUc6iHmKVLQ" name="Order"/>
+    <ownedLiteral xmi:id="_OVl5AM6rEeGMUc6iHmKVLQ" name="Submit"/>
+    <ownedLiteral xmi:id="_QWVBsM6rEeGMUc6iHmKVLQ" name="Pay"/>
+    <ownedLiteral xmi:id="_SkVKUM6rEeGMUc6iHmKVLQ" name="Working"/>
+    <ownedLiteral xmi:id="_e8ojwM6rEeGMUc6iHmKVLQ" name="Deliver"/>
+    <ownedLiteral xmi:id="_hPc68M6rEeGMUc6iHmKVLQ" name="Receive"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_ioWLEM6sEeGMUc6iHmKVLQ" memberEnd="_ioYnUM6sEeGMUc6iHmKVLQ">
     <ownedEnd xmi:id="_ioYnUM6sEeGMUc6iHmKVLQ" name="src" association="_ioWLEM6sEeGMUc6iHmKVLQ">

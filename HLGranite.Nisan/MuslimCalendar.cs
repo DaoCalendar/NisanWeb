@@ -9,24 +9,6 @@ namespace HLGranite.Nisan
     public class MuslimCalendar
     {
         /// <summary>
-        /// Represent 12 muslim month.
-        /// </summary>
-        enum MuslimMonth
-        {
-            Muharram,
-            Safar,
-            Rabiulawal,
-            Rabiulakhir,
-            Jamadilawal,
-            Jamadilakhir,
-            Rejab,
-            Syaaban,
-            Ramadhan,
-            Syawal,
-            Zulkaedah,
-            Zulhijjah,
-        }
-        /// <summary>
         /// Default constructor.
         /// </summary>
         public MuslimCalendar()
@@ -268,5 +250,24 @@ namespace HLGranite.Nisan
             return gregorian;
         }
         #endregion
+    }
+
+    /// <summary>
+    /// Represent 12 muslim month.
+    /// </summary>
+    public enum MuslimMonth
+    {
+        Muharram = 1,
+        Safar,
+        Rabiulawal,
+        Rabiulakhir,
+        Jamadilawal,
+        Jamadilakhir,
+        Rejab,
+        Syaaban,
+        Ramadhan,
+        Syawal,
+        Zulkaedah,
+        Zulhijjah,
     }
 }
