@@ -135,7 +135,7 @@ namespace HLGranite.Nisan
 ,Orders.AddressId,Addresses.Street,Addresses.Postal,Addresses.State
 ,Orders.Quantity,Stocks.Type,Stocks.Id AS StockId
 ,Nisans.*
-,Users.Id,Users.Code,Users.Name AS Customer
+,Users.Id AS UserId,Users.Code,Users.Name AS Customer,Users.Email,Users.Phone
 ,TransactionItems.Id AS TransactionItemId, TransactionItems.Amount
 ,Transactions.Id AS TransactionId,Transactions.No AS No, Transactions.CreatedAt
 FROM Orders JOIN Nisans ON Orders.NisanId=Nisans.Id
@@ -158,6 +158,14 @@ ORDER BY Transactions.CreatedAt DESC";
 
                             order.Parent = parent;
                             order.Status = (TransactionStage)Convert.ToInt32(reader["Status"]);
+
+                            User user = new User(Convert.ToInt32(reader["UserId"]));
+                            user = user.GetRole();
+                            if (user is Customer)
+                                order.Customer = (user as Customer);
+                            if (user is Agent)
+                                order.Agent = (user as Agent);
+
                             //todo: order.Agent = new Agent(reader["Code"].ToString());
                             order.Id = Convert.ToInt32(reader["TransactionItemId"]);
                             order.Amount = Convert.ToDecimal(reader["Amount"]);
