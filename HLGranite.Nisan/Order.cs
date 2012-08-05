@@ -85,22 +85,21 @@ namespace HLGranite.Nisan
                 {
                     connection.ConnectionString = connectionString;
                     connection.Open();
+
                     using (DbCommand command = connection.CreateCommand())
                     {
                         command.CommandType = System.Data.CommandType.Text;
-                        command.CommandText = "UPDATE TransactionItems";
-                        command.CommandText += " SET Amount=@Amount,Remarks=@Remarks,Uri=@Uri";
+                        command.CommandText = "UPDATE " + this.tableName;
+                        command.CommandText += " SET Status=@Status";
                         command.CommandText += " WHERE Id=@Id;";
-                        command.Parameters.Add(CreateParameter("@Id", this.idField));
-                        command.Parameters.Add(CreateParameter("@Amount", this.Amount));
-                        command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
-                        command.Parameters.Add(CreateParameter("@Uri", this.uriField));
-
-                        success = (command.ExecuteNonQuery() > 0) ? true : false;
+                        command.Parameters.Add(CreateParameter("@Id", this.idField));                        
+                        command.Parameters.Add(CreateParameter("@Status", this.statusField));
+                        success &= (command.ExecuteNonQuery() > 0) ? true : false;
                     }
 
                     connection.Close();
                 }//end
+
             }
 
             if (success)

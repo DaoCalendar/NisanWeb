@@ -12,6 +12,7 @@ public partial class _Default : System.Web.UI.Page
     private User user;
     private MuslimCalendar calendar;
     private string name = string.Empty;
+    private Order order;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -34,6 +35,45 @@ public partial class _Default : System.Web.UI.Page
             Initialize();
         if (this.name.Length > 0)
             LoadOrder(this.name);
+
+        if (user != null)
+        {
+            if (user is Admin)
+            {
+                btnPay.Enabled = true;
+                btnDeliver.Enabled = true;
+                btnWork.Enabled = true;
+                btnReceive.Enabled = false;
+            }
+            else if (user is Designer)
+            {
+                btnPay.Enabled = false;
+                btnDeliver.Enabled = true;
+                btnWork.Enabled = true;
+                btnReceive.Enabled = false;
+            }
+            else if (user is Agent)
+            {
+                btnPay.Enabled = false;
+                btnDeliver.Enabled = false;
+                btnWork.Enabled = false;
+                btnReceive.Enabled = false;
+            }
+            else
+            {
+                btnPay.Enabled = false;
+                btnDeliver.Enabled = false;
+                btnWork.Enabled = false;
+                btnReceive.Enabled = true;
+            }
+        }
+        else
+        {
+            btnPay.Enabled = false;
+            btnDeliver.Enabled = false;
+            btnWork.Enabled = false;
+            btnReceive.Enabled = true;
+        }
     }
 
     protected void Initialize()
@@ -69,14 +109,14 @@ public partial class _Default : System.Web.UI.Page
     }
     private void LoadOrder(string name)
     {
-        Order order = new Order();
+        order = new Order();
         order = order.Find(name);
         if (order == null) return;
         if ((order.Stock as Nisan) == null) return;
 
         imgStatus.ImageUrl = string.Format("Images/{0}.png", order.Status.ToString().ToLower());
         Nisan nisan = order.Stock as Nisan;
-        ddlStock.SelectedValue = new Stock(order.Stock.Type).Id.ToString();//todo: what not just order.Stock.Id
+        ddlStock.SelectedValue = new Stock(order.Stock.Type).Id.ToString();//todo: why not just order.Stock.Id
         txtName.Text = nisan.Name;
         txtJawi.Text = nisan.Jawi;
         txtDeath.Text = nisan.Death.ToString("dd/MM/yyyy");
@@ -243,5 +283,49 @@ public partial class _Default : System.Web.UI.Page
         ddlDay.Text = calendar.Day.ToString();
         ddlMonth.SelectedIndex = calendar.Month - 1;
         txtYear.Text = calendar.Year.ToString();
+    }
+    protected void btnPay_Click(object sender, EventArgs e)
+    {
+        if (order != null && (order.Stock is Nisan))
+        {
+            System.Diagnostics.Debug.WriteLine("btnPay_Click");
+            order.Status = TransactionStage.Pay;
+            order.Save();
+
+            LoadOrder(name);
+        }
+    }
+    protected void btnWork_Click(object sender, EventArgs e)
+    {
+        if (order != null && (order.Stock is Nisan))
+        {
+            System.Diagnostics.Debug.WriteLine("btnWork_Click");
+            order.Status = TransactionStage.Working;
+            order.Save();
+
+            LoadOrder(name);
+        }
+    }
+    protected void btnDeliver_Click(object sender, EventArgs e)
+    {
+        if (order != null && (order.Stock is Nisan))
+        {
+            System.Diagnostics.Debug.WriteLine("btnDeliver_Click");
+            order.Status = TransactionStage.Deliver;
+            order.Save();
+
+            LoadOrder(name);
+        }
+    }
+    protected void btnReceive_Click(object sender, EventArgs e)
+    {
+        if (order != null && (order.Stock is Nisan))
+        {
+            System.Diagnostics.Debug.WriteLine("btnReceive_Click");
+            order.Status = TransactionStage.Receive;
+            order.Save();
+
+            LoadOrder(name);
+        }
     }
 }

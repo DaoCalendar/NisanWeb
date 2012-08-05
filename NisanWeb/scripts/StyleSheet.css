@@ -28,7 +28,7 @@ body {
 	padding-bottom: 40px; /* Height of the footer */
 }
 #footer{    	
-	position:absolute; 	
+	position:absolute;
 	bottom:0;	
 	width:100%;
 	border-top: 1px solid #f2f2f2;

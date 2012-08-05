@@ -19,6 +19,7 @@
                             <td>Stock</td>
                             <td>Name</td>
                             <td>Created</td>
+                            <td>Status</td>
                             <td>Amount</td>
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -26,6 +27,7 @@
                             <td><%# Eval("Stock.Type") %></td>
                             <td><a href="Default.aspx?Name=<%# Eval("Stock.Name") %>"><%# Eval("Stock.Name") %></a></td>
                             <td><%# Eval("Parent.CreatedAt","{0:dd/MM/yyyy}") %></td>
+                            <td><%# Eval("Status") %></td>
                             <td>RM<%# Eval("Amount") %></td>
                         </ItemTemplate>
                     </asp:TemplateField>

@@ -6,12 +6,15 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <p />
+            <asp:Button ID="btnPay" runat="server" Style="border:0px; background-color: Transparent;position:absolute; left: 450px; height:30px;width:70px;" onclick="btnPay_Click" />
+            <asp:Button ID="btnWork" runat="server" Style="border:0px;background-color: Transparent;position:absolute; left: 550px; height:30px;width:70px;" onclick="btnWork_Click" />
+            <asp:Button ID="btnDeliver" runat="server" Style="border:0px;background-color: Transparent;position:absolute; left: 650px; height:30px;width:70px;" onclick="btnDeliver_Click" />
+            <asp:Button ID="btnReceive" runat="server" Style="border:0px;background-color: Transparent;position:absolute; left: 750px; height:30px;width:70px;" onclick="btnReceive_Click" />
             <asp:Image ID="imgStatus" runat="server" ImageUrl="Images/order.png" />
             <fieldset id="Panel1" class="shadowbox" runat="server" style="width:400px;">
                 <legend>Information</legend>
                 <asp:Label runat="server" Text="Stone" CssClass="labeling" />
-                <asp:DropDownList ID="ddlStock" runat="server" DataSourceID="ObjectDataSource1" 
-                    DataTextField="Type" DataValueField="Id" />
+                <asp:DropDownList ID="ddlStock" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Type" DataValueField="Id" />
                 <asp:Label runat="server" Text="*" ToolTip="Mandatory" CssClass="warn" />
                 <br />
                 <asp:Label runat="server" Text="Name" CssClass="labeling" />

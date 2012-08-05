@@ -137,5 +137,18 @@ namespace HLGranite.Nisan.Test
             Assert.IsNotNull(actual);
             Assert.AreEqual(name, (actual.Stock as Nisan).Name);
         }
+        [TestMethod()]
+        public void PayTest()
+        {
+            Order target = new Order();
+            string name = "hj ahmad bin abdul halim";
+            
+            Order expected = target.Find(name);
+            expected.Status = TransactionStage.Pay;
+            expected.Save();
+
+            Order actual = target.Find(name);
+            Assert.AreEqual(expected.Status, actual.Status);
+        }
     }
 }
