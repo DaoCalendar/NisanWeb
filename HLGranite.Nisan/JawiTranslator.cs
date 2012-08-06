@@ -36,7 +36,7 @@ namespace HLGranite.Nisan
             try
             {
                 WebRequest req = WebRequest.Create(string.Format(queryString, rumi));
-                req.Proxy = GetProxy();//todo: take this off
+                //req.Proxy = GetProxy();
                 if (req.Proxy != null) req.Credentials = req.Proxy.Credentials;
                 using (WebResponse res = req.GetResponse())
                 {
