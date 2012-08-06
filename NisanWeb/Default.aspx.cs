@@ -272,9 +272,11 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
-    protected void Submit_Click(object sender, EventArgs e)
+    protected void txtName_TextChanged(object sender, EventArgs e)
     {
-        Submit();
+        System.Diagnostics.Debug.WriteLine("txtName_TextChanged");
+        JawiTranslator translator = new JawiTranslator();
+        txtJawi.Text = translator.Translate(txtName.Text.Trim());
     }
     protected void txtDeath_TextChanged(object sender, EventArgs e)
     {
@@ -283,6 +285,10 @@ public partial class _Default : System.Web.UI.Page
         ddlDay.Text = calendar.Day.ToString();
         ddlMonth.SelectedIndex = calendar.Month - 1;
         txtYear.Text = calendar.Year.ToString();
+    }
+    protected void Submit_Click(object sender, EventArgs e)
+    {
+        Submit();
     }
     protected void btnPay_Click(object sender, EventArgs e)
     {

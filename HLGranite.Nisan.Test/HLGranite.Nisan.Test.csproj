@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JawiTranslatorTest.cs" />
     <Compile Include="MuslimCalendarTest.cs" />
     <Compile Include="NisanTest.cs" />
     <Compile Include="OrderTest.cs" />
