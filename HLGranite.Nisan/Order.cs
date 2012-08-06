@@ -253,6 +253,10 @@ ORDER BY Transactions.CreatedAt DESC";
         /// <seealso>http://infynet.wordpress.com/2011/12/05/sending-email-using-asp-net-and-gmailhotmail/</seealso>
         private void SendMail(string receipient)
         {
+            //checking
+            if (receipient == null) return;
+            if (receipient.Length == 0) return;
+
             try
             {
                 MailMessage mail = new MailMessage(

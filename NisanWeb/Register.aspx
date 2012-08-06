@@ -7,6 +7,9 @@
         <asp:Label runat="server" Text="Code" CssClass="labeling" />
         <asp:TextBox ID="txtCode" runat="server" />
         <br />
+        <asp:Label runat="server" Text="Email" CssClass="labeling" />
+        <asp:TextBox ID="txtEmail" runat="server" />
+        <br />
         <asp:Label runat="server" Text="Name" CssClass="labeling" />
         <asp:TextBox ID="txtName" runat="server" />
         <br />

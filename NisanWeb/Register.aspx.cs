@@ -26,6 +26,9 @@ public partial class Register : System.Web.UI.Page
         agent.Code = txtCode.Text.Trim();
         agent.Name = txtName.Text.Trim();
         agent.Password = txtPassword.Text;
+        agent.Email = txtEmail.Text.Trim();
+        agent.Phone = txtPhone.Text.Trim();
+        agent.Remarks = txtRemarks.Text.Trim();
 
         Address address = new Address();
         address.Street = txtAddress.Text;
