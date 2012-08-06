@@ -88,7 +88,7 @@
                         <asp:HyperLink runat="server" NavigateUrl="~/About.aspx">About Us</asp:HyperLink> | 
                         <a href="mailto:hlgranite@gmail.com">Contact Us</a>
                         <br />
-                        <asp:HyperLink runat="server" NavigateUrl="~/ChangeLog.aspx">ver 0.9.2</asp:HyperLink>
+                        <asp:HyperLink ID="linVersion" runat="server" NavigateUrl="~/ChangeLog.aspx" />
                         &nbsp;Copyright © 2012 by HLGranite
                     </div>
                 </td>
