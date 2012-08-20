@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-        <h1>HL GRANITE MANUFACTURING</h1>
+        <h1>HL GRANITE & MARBLE MANUFACTURING</h1>
         <table width="100%">
         <tr>
             <td>
@@ -27,10 +27,10 @@
                 06400 Alor Star, Kedah. Malaysia.<br />
                 <p />
                 Hotline: +6012-4200963 (Wooysthen)<br />
-                Tel. 	: 	+604.7319486<br />
-                Fax. 	: 	+604.7319486<br />
+                Tel : +604.7319486<br />
+                Fax : +604.7319486<br />
                 Email: <a href="mailto:hlgranite@gmail.com">hlgranite@gmail.com</a><br />
-                Website 	: 	<a href="http://www.hlgranite.com">http://www.hlgranite.com</a>
+                Website: <a href="http://www.hlgranite.com">http://www.hlgranite.com</a>
             </td>
             <td></td>
         </tr>

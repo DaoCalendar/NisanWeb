@@ -6,6 +6,11 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <h1>Change Logs</h1>
+            <h3>20 Aug 2012 ver 0.9.3</h3>
+            <ul>
+                <li>added pay button.</li>
+                <li>fixed IE compatible view.</li>
+            </ul>
             <h3>5 Aug 2012 ver 0.9.2</h3>
             <ul>
                 <li>handle authorization for customer, agent, and admin.</li>
