@@ -28,8 +28,11 @@
                     <asp:LinkButton ID="linLogout" runat="server" Visible="false" CssClass="navi" OnClick="btnLogout_Click" Text="Logout" />
                 </span>
                 <div id="logo">
-                    <img style="margin:5px 0 0 5px" src="Images/logo.png"/>
-                    <span style="vertical-align:top">HLGranite Nisan Ordering System</span>
+                    <img style="margin:5px 0 0 5px;" src="Images/logo.png"/>
+                    <span style="vertical-align:top;position:absolute;margin:0 0 0 10px;">
+                        HL Granite and Marble Manufacturing<br />
+                        Nisan Ordering System
+                    </span>
                 </div>
             </div>
             <asp:Panel ID="Panel1" runat="server" CssClass="search" DefaultButton="btnSearch">

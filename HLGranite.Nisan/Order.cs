@@ -92,7 +92,7 @@ namespace HLGranite.Nisan
                         command.CommandText = "UPDATE " + this.tableName;
                         command.CommandText += " SET Status=@Status";
                         command.CommandText += " WHERE Id=@Id;";
-                        command.Parameters.Add(CreateParameter("@Id", this.idField));                        
+                        command.Parameters.Add(CreateParameter("@Id", this.idField));
                         command.Parameters.Add(CreateParameter("@Status", this.statusField));
                         success &= (command.ExecuteNonQuery() > 0) ? true : false;
                     }
@@ -223,14 +223,15 @@ ORDER BY Transactions.CreatedAt DESC";
             return output;
         }
         /// <summary>
-        /// TODO: Continue compose email content.
+        /// Compose email content.
         /// </summary>
         /// <returns></returns>
         private string ComposeBody()
         {
             //string output = string.Empty;
             string output = "Please ignore this just a testing<p/>";//todo: remove
-            if (this.Agent != null) output += string.Format("<h2>{0}</h2>", this.Agent.Code);
+            if (this.Agent != null) output += string.Format("<h2>by Agent: {0}</h2>", this.Agent.Code);
+
             output += string.Format("<h2>{0}</h2>", this.Stock.Type);
 
             Nisan nisan = this.Stock as Nisan;
@@ -260,7 +261,7 @@ ORDER BY Transactions.CreatedAt DESC";
             try
             {
                 MailMessage mail = new MailMessage(
-                    "hlgranite@gmail.com",receipient,
+                    "hlgranite@gmail.com", receipient,
                     ComposeSubject(), ComposeBody());
                 mail.IsBodyHtml = true;
                 NetworkCredential mailAuthentication = new NetworkCredential("yancyn@hotmail.com", "55175216");
