@@ -6,10 +6,15 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <h1>Change Logs</h1>
+            <h3>22 Aug 2012 ver 0.9.4</h3>
+            <ul>
+                <li>Fixed display customer info at order page.</li>
+            </ul>
             <h3>20 Aug 2012 ver 0.9.3</h3>
             <ul>
                 <li>added pay button.</li>
                 <li>fixed IE compatible view.</li>
+                <li>auto get jawi after key in rumi name.</li>
             </ul>
             <h3>5 Aug 2012 ver 0.9.2</h3>
             <ul>

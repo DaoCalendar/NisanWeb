@@ -16,7 +16,7 @@ namespace HLGranite.Nisan
         {
             this.tableName = "Orders";
             this.relatedItemsField = new List<TransactionItem>();
-            this.agentField = new Agent();
+            //this.agentField = new Agent();//can be null same to customer field
             this.shipToField = new Address();
 
             this.Parent = new Transaction();
@@ -29,7 +29,10 @@ namespace HLGranite.Nisan
             if (this.idField == 0)
             {
                 if (this.Parent.CreatedBy is Customer)
+                {
+                    this.Parent.CreatedBy.Code = "CASH";
                     this.Parent.CreatedBy.Save();
+                }
 
                 //insert into table Transactions
                 this.Parent.CreatedAt = DateTime.Now;
@@ -238,9 +241,12 @@ ORDER BY Transactions.CreatedAt DESC";
             output += string.Format("Name: {0}<br/>", nisan.Name);
             output += string.Format("Jawi: {0}<br/>", nisan.Jawi);
             output += string.Format("Death: {0}<br/>", nisan.Death.ToString("dd/MM/yyyy"));
-            output += string.Format("Muslim: {0}<p/>", nisan.Deathm.ToString("dd/MM/yyyy"));
+            output += string.Format("Muslim: {0}<br/>", nisan.Deathm.ToString("dd/MM/yyyy"));
+            output += string.Format("Remarks: {0}<p/>", nisan.Remarks);
 
-            output += "<h2>Delivery To:</h2>";
+            output += "<h2>Delivery To: ";
+            if (this.Customer != null) output += this.Customer.Name;
+            output += "</h2>";
             if (this.Customer != null) output += string.Format("Email: {0}<br/>", this.Customer.Email);
             output += string.Format("{0}<br/>", this.ShipTo.Street);
             output += string.Format("{0}<br/>", this.ShipTo.Postal);
@@ -264,12 +270,15 @@ ORDER BY Transactions.CreatedAt DESC";
                     "hlgranite@gmail.com", receipient,
                     ComposeSubject(), ComposeBody());
                 mail.IsBodyHtml = true;
-                NetworkCredential mailAuthentication = new NetworkCredential("yancyn@hotmail.com", "55175216");
-                SmtpClient mailClient = new SmtpClient("smtp.live.com", 587);
+                NetworkCredential mailAuthentication = new NetworkCredential("hlgranite@gmail.com", "123456");
+                SmtpClient mailClient = new SmtpClient("smtp.gmail.com", 587);//smtp.live.com
                 mailClient.EnableSsl = true;
                 mailClient.UseDefaultCredentials = false;
                 mailClient.Credentials = mailAuthentication;
                 mailClient.Send(mail);
+
+                System.Diagnostics.Debug.WriteLine(string.Format("Email '{0}' has been sent to {1}",
+                    mail.Subject, receipient));
             }
             catch (Exception ex)
             {

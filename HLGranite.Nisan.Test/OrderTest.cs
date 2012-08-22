@@ -138,6 +138,28 @@ namespace HLGranite.Nisan.Test
             Assert.AreEqual(name, (actual.Stock as Nisan).Name);
         }
         [TestMethod()]
+        public void FindOrderByAgentTest()
+        {
+            Order target = new Order();
+            string name = "Che Som58 bin Said";
+            Order actual = target.Find(name);
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(name, (actual.Stock as Nisan).Name);
+            Assert.AreEqual("W002", actual.Agent.Code, "It is under agent W002");
+        }
+        [TestMethod()]
+        public void FindOrderByCustomerTest()
+        {
+            Order target = new Order();
+            string name = "Ramli89 bin Taib";
+            Order actual = target.Find(name);
+            
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(name, (actual.Stock as Nisan).Name);
+            Assert.AreEqual("ali@gmail.com", actual.Customer.Email,"It is direct ordered by a customer");
+        }
+        [TestMethod()]
         public void PayTest()
         {
             Order target = new Order();

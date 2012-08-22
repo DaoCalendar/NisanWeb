@@ -125,18 +125,30 @@ public partial class _Default : System.Web.UI.Page
         txtYear.Text = nisan.Deathm.Year.ToString();
         txtRemarks.Text = nisan.Remarks;
 
-        if (order.Agent != null)
+        if (order.Agent == null)
         {
+            txtAgent.Text = string.Empty;
+            lblAgent.Text = string.Empty;
+        }
+        else
+        {
+            txtAgent.Text = order.Agent.Code;
+            lblAgent.Text = order.Agent.Name;
+
+            //define customer field first
+            //if contains customer it will be overwrite later
             txtCustomer.Text = order.Agent.Name;
             txtEmail.Text = order.Agent.Email;
             txtPhone.Text = order.Agent.Phone;
         }
+
         if (order.Customer != null)
         {
             txtCustomer.Text = order.Customer.Name;
             txtEmail.Text = order.Customer.Email;
             txtPhone.Text = order.Customer.Phone;
         }
+
         if (order.ShipTo != null)
         {
             txtAddress.Text = order.ShipTo.Street;
