@@ -35,7 +35,7 @@
                     </span>
                 </div>
             </div>
-            <asp:Panel ID="Panel1" runat="server" CssClass="search" DefaultButton="btnSearch">
+            <asp:Panel ID="Panel1" runat="server" CssClass="search" Style="margin:5px 0 0 0;" DefaultButton="btnSearch">
                 <asp:TextBox ID="txtSearch" runat="server" ToolTip="Order No or name" />
                 <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click"/>
                 <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="txtSearch"
