@@ -41,9 +41,9 @@ namespace HLGranite.Nisan
             this.message = string.Empty;
             //this.addressField = new Address();
         }
-        public User GetRole()
+        public User Find()
         {
-            User user = new User();
+            User user = null;
             using (DbConnection connection = factory.CreateConnection())
             {
                 connection.ConnectionString = connectionString;
@@ -53,6 +53,11 @@ namespace HLGranite.Nisan
                     command.CommandType = System.Data.CommandType.Text;
                     if (this.idField > 0)
                         command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Id=" + this.idField + ";";
+                    else if (this.emailField.Length > 0)
+                    {
+                        command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Email=@Email;";
+                        command.Parameters.Add(CreateParameter("@Email", this.emailField));
+                    }
                     else if (this.codeField.Length > 0)
                     {
                         command.CommandText = "SELECT * FROM " + this.tableName + " WHERE Code=@Code;";
@@ -293,7 +298,40 @@ JOIN Users ON Transactions.CreatedBy=Users.Id";
             }
             else
             {
-                //todo: update user
+                //update user
+                int addressId = 0;
+                if (this.addressField != null)
+                {
+                    success &= this.addressField.Save();
+                    addressId = this.addressField.Id;
+                }
+
+                using (DbConnection connection = factory.CreateConnection())
+                {
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+                    using (DbCommand command = connection.CreateCommand())
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        command.CommandText = "UPDATE " + this.tableName;
+                        command.CommandText += " SET Type=@Type,Code=@Code,Name=@Name,Password=@Password,Email=@Email,Phone=@Phone,AddressId=@AddressId,Remarks=@Remarks,Uri=@Uri";
+                        command.CommandText += " WHERE Id=@Id;";
+                        command.Parameters.Add(CreateParameter("@ID", this.idField));
+                        command.Parameters.Add(CreateParameter("@Type", this.typeField));
+                        command.Parameters.Add(CreateParameter("@Code", this.codeField));
+                        command.Parameters.Add(CreateParameter("@Name", this.nameField));
+                        command.Parameters.Add(CreateParameter("@Password", this.passwordField));
+                        command.Parameters.Add(CreateParameter("@Email", this.emailField));
+                        command.Parameters.Add(CreateParameter("@Phone", this.phoneField));
+                        command.Parameters.Add(CreateParameter("@AddressId", addressId));
+                        command.Parameters.Add(CreateParameter("@Remarks", this.remarksField));
+                        command.Parameters.Add(CreateParameter("@Uri", this.uriField));
+
+                        success = (command.ExecuteNonQuery() > 0) ? true : false;
+                    }
+
+                    connection.Close();
+                }//end
             }
 
             return success;

@@ -30,7 +30,10 @@ namespace HLGranite.Nisan
             {
                 if (this.Parent.CreatedBy is Customer)
                 {
-                    this.Parent.CreatedBy.Code = "CASH";
+                    //not overwrite existing agent code
+                    if(this.Parent.CreatedBy.Code.Length==0) this.Parent.CreatedBy.Code = "CASH";
+                    User existUser = this.Parent.CreatedBy.Find();
+                    if (existUser != null) this.Parent.CreatedBy.Id = existUser.Id;
                     this.Parent.CreatedBy.Save();
                 }
 
@@ -110,6 +113,8 @@ namespace HLGranite.Nisan
                 User user = new User();
                 foreach (User u in user.GetAdmin())
                     SendMail(u.Email);
+                if(this.Agent != null) SendMail(this.Agent.Email);
+                if (this.Customer != null) SendMail(this.Customer.Email);
             }
             return success;
         }
@@ -162,7 +167,7 @@ ORDER BY Transactions.CreatedAt DESC";
                             order.Status = (TransactionStage)Convert.ToInt32(reader["Status"]);
 
                             User user = new User(Convert.ToInt32(reader["UserId"]));
-                            user = user.GetRole();
+                            user = user.Find();
                             if (user is Customer)
                                 order.Customer = (user as Customer);
                             if (user is Agent)
@@ -235,6 +240,7 @@ ORDER BY Transactions.CreatedAt DESC";
             string output = "Please ignore this just a testing<p/>";//todo: remove
             if (this.Agent != null) output += string.Format("<h2>by Agent: {0}</h2>", this.Agent.Code);
 
+            output += string.Format("Status: {0}<br/>", this.Status);
             output += string.Format("<h2>{0}</h2>", this.Stock.Type);
 
             Nisan nisan = this.Stock as Nisan;

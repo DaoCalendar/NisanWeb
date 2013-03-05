@@ -87,7 +87,7 @@ namespace HLGranite.Nisan.Test
             bool actual = user.Login("agent");
             Assert.AreEqual(expected, actual);
 
-            user = user.GetRole();
+            user = user.Find();
             if (user is Agent)
                 Assert.IsTrue(true);
             else
@@ -101,7 +101,7 @@ namespace HLGranite.Nisan.Test
             bool actual = user.Login("agent");
             Assert.AreEqual(expected, actual);
 
-            user = user.GetRole();
+            user = user.Find();
             User target = (User)user;
             if (target is Agent)
                 Assert.IsTrue(true);

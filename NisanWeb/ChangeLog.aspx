@@ -9,6 +9,7 @@
             <h3>22 Aug 2012 ver 0.9.4</h3>
             <ul>
                 <li>Fixed display customer info at order page.</li>
+                <li>Notify customer and agent when order submit or status has been changed.</li>
             </ul>
             <h3>20 Aug 2012 ver 0.9.3</h3>
             <ul>
